@@ -1,3 +1,5 @@
+# Plugin QuestEditor : MIT License
+# @author Vladimir Petrenko
 tool
 extends EditorPlugin
 

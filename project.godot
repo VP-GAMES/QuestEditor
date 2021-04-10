@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Resource",
+"class": "QuestData",
+"language": "GDScript",
+"path": "res://addons/quest_editor/model/QuestData.gd"
+}, {
+"base": "Resource",
+"class": "QuestQuest",
+"language": "GDScript",
+"path": "res://addons/quest_editor/model/QuestQuest.gd"
+} ]
 _global_script_class_icons={
-
+"QuestData": "",
+"QuestQuest": ""
 }
 
 [application]
