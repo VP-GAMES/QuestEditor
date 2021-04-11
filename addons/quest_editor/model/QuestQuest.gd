@@ -15,16 +15,32 @@ func set_editor(editor: EditorPlugin) -> void:
 # ***** EDITOR_PLUGIN_END *****
 
 signal name_changed(name)
-signal icon_changed
+signal uiname_changed(uiname)
+signal description_changed(description)
 
 export (String) var uuid
 export (String) var name
-export (String) var icon
+export (String) var uiname
+export (String) var description
+export (Resource) var state
+
+const UUID = preload("res://addons/quest_editor/uuid/uuid.gd")
+
+func _init() -> void:
+	uuid = UUID.v4()
+	state = QuestState.new()
+	state.uuid = UUID.v4()
+	state.name = "INITIAL"
+	state.description = "Initial, state is not realy defined"
 
 func change_name(new_name: String):
 	name = new_name
 	emit_signal("name_changed")
 
-func set_icon(new_icon_path: String) -> void:
-	icon = new_icon_path
-	emit_signal("icon_changed")
+func change_uiname(new_uiname: String):
+	uiname = new_uiname
+	emit_signal("uiname_changed")
+
+func change_description(new_description: String):
+	description = new_description
+	emit_signal("description_changed")

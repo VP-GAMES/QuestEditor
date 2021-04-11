@@ -14,14 +14,26 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/quest_editor/model/QuestData.gd"
 }, {
+"base": "Node",
+"class": "QuestManager",
+"language": "GDScript",
+"path": "res://addons/quest_editor/QuestManager.gd"
+}, {
 "base": "Resource",
 "class": "QuestQuest",
 "language": "GDScript",
 "path": "res://addons/quest_editor/model/QuestQuest.gd"
+}, {
+"base": "Resource",
+"class": "QuestState",
+"language": "GDScript",
+"path": "res://addons/quest_editor/model/QuestState.gd"
 } ]
 _global_script_class_icons={
 "QuestData": "",
-"QuestQuest": ""
+"QuestManager": "",
+"QuestQuest": "",
+"QuestState": ""
 }
 
 [application]
