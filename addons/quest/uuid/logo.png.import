@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Trash.png-532868b6e8979a868f3f9a0243b1ba29.stex"
+path="res://.import/logo.png-a754537fb716a52849a8fb29a9a57940.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/quest_editor/icon/Trash.png"
-dest_files=[ "res://.import/Trash.png-532868b6e8979a868f3f9a0243b1ba29.stex" ]
+source_file="res://addons/quest/uuid/logo.png"
+dest_files=[ "res://.import/logo.png-a754537fb716a52849a8fb29a9a57940.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

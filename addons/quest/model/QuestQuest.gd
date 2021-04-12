@@ -22,16 +22,14 @@ export (String) var uuid
 export (String) var name
 export (String) var uiname
 export (String) var description
-export (Resource) var state
+export (String) var state
 
 const UUID = preload("res://addons/quest_editor/uuid/uuid.gd")
 
 func _init() -> void:
 	uuid = UUID.v4()
 	state = QuestState.new()
-	state.uuid = UUID.v4()
-	state.name = "INITIAL"
-	state.description = "Initial, state is not realy defined"
+	state = "UNDEFINED"
 
 func change_name(new_name: String):
 	name = new_name
