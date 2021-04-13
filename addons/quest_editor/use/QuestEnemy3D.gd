@@ -1,0 +1,2 @@
+extends Spatial
+class_name QuestEnemy3D

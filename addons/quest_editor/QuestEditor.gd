@@ -11,7 +11,7 @@ onready var _save_ui = $VBox/Margin/HBox/Save as Button
 onready var _label_ui = $VBox/Margin/HBox/Label as Label
 onready var _languages_ui = $VBox/Margin/HBox/Language as OptionButton
 onready var _tabs_ui = $VBox/Tabs as TabContainer
-onready var _actors_ui = $VBox/Tabs/Actors as VBoxContainer
+#onready var _actors_ui = $VBox/Tabs/Actors as VBoxContainer
 
 const IconResourceActor = preload("res://addons/quest_editor/icons/Actor.png")
 
@@ -55,24 +55,28 @@ func get_data() -> QuestData:
 	return _data
 
 func _load_data() -> void:
-	_data.init_data()
+#	_data.init_data()
+	pass
 
 func _on_tab_changed(tab: int) -> void:
 	_data_to_childs()
 
 func _data_to_childs() -> void:
-	_actors_ui.set_data(_data)
+#	_actors_ui.set_data(_data)
+	pass
 
 func save_data() -> void:
-	_data.save()
+#	_data.save()
+	pass
 
 func _init_localization() -> void:
-	if _data.setting_localization_editor_enabled():
-		_label_ui.show()
-		_languages_ui.show()
-	else:
-		_label_ui.hide()
-		_languages_ui.hide()
+#	if _data.setting_localization_editor_enabled():
+#		_label_ui.show()
+#		_languages_ui.show()
+#	else:
+#		_label_ui.hide()
+#		_languages_ui.hide()
+	pass
 
 var _locales
 func init_languages() -> void:
