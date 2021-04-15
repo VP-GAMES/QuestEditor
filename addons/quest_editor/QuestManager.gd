@@ -10,7 +10,7 @@ var _inventory
 # InventoryAdapter implementation description
 #
 # Please implement methods in your inventory:
-# has_item(id: String) -> void: 			<= Check is item in inventory
+# has_item(id: String) -> bool: 			<= Check is item in inventory
 # add_item(id: String, quantity) -> void:	<= Add item's in quantity to inventory 
 # del_item(id: String, quantity) -> void:	<= Del item's in quantity from inventory
 # all_items() -> Array:						<= List of all available items [DB]

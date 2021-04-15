@@ -1,11 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://addons/quest_editor/QuestEditor.gd" type="Script" id=1]
 [ext_resource path="res://addons/quest_editor/icons/Save.png" type="Texture" id=2]
-[ext_resource path="res://addons/quest_editor/DragDrop.tscn" type="PackedScene" id=3]
-[ext_resource path="res://addons/quest_editor/icons/Put.png" type="Texture" id=4]
 
-[node name="Control" type="Control"]
+[node name="QuestEditor" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -45,26 +43,6 @@ margin_bottom = 20.0
 rect_min_size = Vector2( 20, 20 )
 hint_tooltip = "Save"
 icon = ExtResource( 2 )
-
-[node name="Label" type="Label" parent="VBox/Margin/HBox"]
-margin_left = 26.0
-margin_top = 3.0
-margin_right = 89.0
-margin_bottom = 17.0
-text = "Language:"
-
-[node name="Language" type="OptionButton" parent="VBox/Margin/HBox"]
-margin_left = 93.0
-margin_right = 122.0
-margin_bottom = 20.0
-
-[node name="TextureRect" parent="VBox/Margin/HBox" instance=ExtResource( 3 )]
-margin_left = 126.0
-margin_right = 146.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 20, 20 )
-texture = ExtResource( 4 )
-stretch_mode = 4
 
 [node name="Tabs" type="TabContainer" parent="VBox"]
 margin_top = 30.0
