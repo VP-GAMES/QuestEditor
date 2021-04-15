@@ -1,2 +1,0 @@
-extends Spatial
-class_name QuestTrigger3D

@@ -1,2 +1,0 @@
-extends KinematicBody
-class_name QuestPlayer3D
