@@ -1,16 +1,16 @@
-# Dialogue actors UI for DialogueEditor : MIT License
+# Quest quests UI for QuestEditor : MIT License
 # @author Vladimir Petrenko
 tool
 extends Panel
 
-var _data: DialogueData
+var _data: QuestData
 
 onready var _add_ui = $Margin/VBox/HBox/Add as Button
-onready var _actors_ui = $Margin/VBox/Scroll/Actors
+onready var _quests_ui = $Margin/VBox/Scroll/Quests as VBoxContainer
 
-const DialogueActorUI = preload("res://addons/dialogue_editor/scenes/actors/DialogueActorUI.tscn")
+const QuestQuestUI = preload("res://addons/quest_editor/scenes/quests/QuestQuestUI.tscn")
 
-func set_data(data: DialogueData) -> void:
+func set_data(data: QuestData) -> void:
 	_data = data
 	_init_connections()
 	_update_view()
@@ -18,18 +18,18 @@ func set_data(data: DialogueData) -> void:
 func _init_connections() -> void:
 	if not _add_ui.is_connected("pressed", self, "_on_add_pressed"):
 		assert(_add_ui.connect("pressed", self, "_on_add_pressed") == OK)
-	if not _data.is_connected("actor_added", self, "_on_actor_added"):
-		assert(_data.connect("actor_added", self, "_on_actor_added") == OK)
-	if not _data.is_connected("actor_removed", self, "_on_actor_removed"):
-		assert(_data.connect("actor_removed", self, "_on_actor_removed") == OK)
+	if not _data.is_connected("quest_added", self, "_on_quest_added"):
+		assert(_data.connect("quest_added", self, "_on_quest_added") == OK)
+	if not _data.is_connected("quest_removed", self, "_on_quest_removed"):
+		assert(_data.connect("quest_removed", self, "_on_quest_removed") == OK)
 
 func _on_add_pressed() -> void:
-	_data.add_actor()
+	_data.add_quest()
 
-func _on_actor_added(actor: DialogueActor) -> void:
+func _on_quest_added(quest: QuestQuest) -> void:
 	_update_view()
 
-func _on_actor_removed(actor: DialogueActor) -> void:
+func _on_quest_removed(quest: QuestQuest) -> void:
 	_update_view()
 	
 func _update_view() -> void:
@@ -37,15 +37,15 @@ func _update_view() -> void:
 	_draw_view()
 
 func _clear_view() -> void:
-	for actor_ui in _actors_ui.get_children():
-		_actors_ui.remove_child(actor_ui)
-		actor_ui.queue_free()
+	for quest_ui in _quests_ui.get_children():
+		_quests_ui.remove_child(quest_ui)
+		quest_ui.queue_free()
 
 func _draw_view() -> void:
-	for actor in _data.actors:
-		_draw_actor(actor)
+	for quest in _data.quests:
+		_draw_quest(quest)
 
-func _draw_actor(actor: DialogueActor) -> void:
-	var actor_ui = DialogueActorUI.instance()
-	_actors_ui.add_child(actor_ui)
-	actor_ui.set_data(actor, _data)
+func _draw_quest(quest: QuestQuest) -> void:
+	var quest_ui = QuestQuestUI.instance()
+	_quests_ui.add_child(quest_ui)
+	quest_ui.set_data(quest, _data)

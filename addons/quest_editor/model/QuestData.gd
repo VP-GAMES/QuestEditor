@@ -127,3 +127,32 @@ func get_quest_by_name(quest_name: String) -> QuestQuest:
 		if quest.name == quest_name:
 			return quest
 	return null
+
+# ***** LOAD SAVE *****
+func init_data() -> void:
+	var file = File.new()
+	if file.file_exists(PATH_TO_SAVE):
+		var resource = ResourceLoader.load(PATH_TO_SAVE) as QuestData
+		if resource.quests and not resource.quests.empty():
+			quests = resource.quests
+
+func save() -> void:
+	ResourceSaver.save(PATH_TO_SAVE, self)
+
+# ***** EDITOR SETTINGS *****
+const BACKGROUND_COLOR_SELECTED = Color("#868991")
+const SLOT_COLOR_DEFAULT = Color(1, 1, 1)
+const SLOT_COLOR_PATH = Color(0.4, 0.78, 0.945)
+
+const PATH_TO_SAVE = "res://addons/quest_editor/QuestsSave.res"
+const SETTINGS_QUESTS_SPLIT_OFFSET = "quest_editor/quests_split_offset"
+const SETTINGS_QUESTS_SPLIT_OFFSET_DEFAULT = 215
+
+func setting_quests_split_offset() -> int:
+	var offset = SETTINGS_QUESTS_SPLIT_OFFSET_DEFAULT
+	if ProjectSettings.has_setting(SETTINGS_QUESTS_SPLIT_OFFSET):
+		offset = ProjectSettings.get_setting(SETTINGS_QUESTS_SPLIT_OFFSET)
+	return offset
+
+func setting_quests_split_offset_put(offset: int) -> void:
+	ProjectSettings.set_setting(SETTINGS_QUESTS_SPLIT_OFFSET, offset)
