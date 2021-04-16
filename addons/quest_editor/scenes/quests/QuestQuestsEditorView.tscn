@@ -2,7 +2,7 @@
 
 [ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestsEditorView.gd" type="Script" id=1]
 [ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuests.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/quest_editor/scenes/quests/DialogueActorData.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestData.tscn" type="PackedScene" id=3]
 
 [node name="QuestQuestsEditorView" type="VBoxContainer"]
 anchor_right = 1.0
