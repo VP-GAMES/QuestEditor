@@ -50,9 +50,9 @@ _global_script_classes=[ {
 "path": "res://addons/quest_editor/model/QuestQuest.gd"
 }, {
 "base": "Resource",
-"class": "QuestState",
+"class": "QuestTrigger",
 "language": "GDScript",
-"path": "res://addons/quest_editor/model/QuestState.gd"
+"path": "res://addons/quest_editor/model/QuestTrigger.gd"
 }, {
 "base": "Node2D",
 "class": "QuestTrigger2D",
@@ -68,7 +68,7 @@ _global_script_class_icons={
 "QuestNPC2D": "",
 "QuestPlayer2D": "",
 "QuestQuest": "",
-"QuestState": "",
+"QuestTrigger": "",
 "QuestTrigger2D": ""
 }
 

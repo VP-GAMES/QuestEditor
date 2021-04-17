@@ -17,6 +17,7 @@ func set_editor(editor: EditorPlugin) -> void:
 signal name_changed(name)
 signal uiname_changed(uiname)
 signal description_changed(description)
+signal state_changed(state)
 
 export (String) var uuid
 export (String) var name
@@ -28,7 +29,6 @@ const UUID = preload("res://addons/quest_editor/uuid/uuid.gd")
 
 func _init() -> void:
 	uuid = UUID.v4()
-	state = QuestState.new()
 	state = "UNDEFINED"
 
 func change_name(new_name: String):
