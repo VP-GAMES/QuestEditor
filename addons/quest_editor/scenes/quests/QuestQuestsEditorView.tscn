@@ -27,7 +27,6 @@ rect_clip_content = true
 
 [node name="QuestData" parent="Split" instance=ExtResource( 3 )]
 anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 221.0
 margin_right = 1024.0
 margin_bottom = 600.0

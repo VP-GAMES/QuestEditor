@@ -33,15 +33,12 @@ func get_data() -> QuestData:
 
 func _load_data() -> void:
 	_data.init_data()
-	pass
 
 func _on_tab_changed(tab: int) -> void:
 	_data_to_childs()
 
 func _data_to_childs() -> void:
 	_quests_ui.set_data(_data)
-	pass
 
 func save_data() -> void:
 	_data.save()
-	pass

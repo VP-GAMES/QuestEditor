@@ -12,7 +12,7 @@ onready var _texture_ui = $HBox/Texture as TextureRect
 onready var _name_ui = $HBox/Name as LineEdit
 onready var _del_ui = $HBox/Del as Button
 
-const _texture = preload("res://addons/quest_editor/icons/Quest.png")
+const _texture = preload("res://addons/quest_editor/icons/QuestPath.png")
 
 func set_data(quest: QuestQuest, data: QuestData):
 	_quest = quest

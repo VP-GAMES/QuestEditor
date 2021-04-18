@@ -8,12 +8,12 @@ var _split_viewport_size = 0
 
 onready var _split_ui = $Split as SplitContainer
 onready var _quests_ui = $Split/Quests as Control
-onready var _quest_data_ui = $Split/QuestData as BoxContainer
+onready var _quest_data_ui = $Split/QuestData as VBoxContainer
 
 func set_data(data: QuestData) -> void:
 	_data = data
-	_quests_ui.set_data(data)
-	#_quest_data_ui.set_data(data)
+	_quests_ui.set_data(_data)
+	_quest_data_ui.set_data(_data)
 	_init_connections()
 
 func _init_connections() -> void:

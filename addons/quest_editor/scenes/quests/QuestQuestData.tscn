@@ -1,18 +1,76 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://addons/quest_editor/ui_extensions/dropdown/Dropdown.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/quest_editor/icons/Add.png" type="Texture" id=2]
+[ext_resource path="res://addons/quest_editor/default/fonts/Pangolin-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestData.gd" type="Script" id=4]
 
-[node name="Control" type="VBoxContainer"]
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[node name="QuestQuestData" type="VBoxContainer"]
 anchor_right = 1.0
 size_flags_horizontal = 3
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxStartTitle" type="HBoxContainer" parent="."]
+[node name="HBoxName" type="HBoxContainer" parent="."]
 margin_right = 1024.0
-margin_bottom = 14.0
+margin_bottom = 30.0
+
+[node name="Label" type="Label" parent="HBoxName"]
+margin_right = 85.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 85, 0 )
+size_flags_vertical = 5
+text = "UIName"
+valign = 1
+
+[node name="UIName" type="LineEdit" parent="HBoxName"]
+margin_left = 89.0
+margin_right = 1024.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+
+[node name="HBoxDescription" type="HBoxContainer" parent="."]
+margin_top = 34.0
+margin_right = 1024.0
+margin_bottom = 154.0
+
+[node name="Label" type="Label" parent="HBoxDescription"]
+margin_right = 80.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 80, 0 )
+size_flags_vertical = 5
+text = "Description"
+
+[node name="Description" type="TextEdit" parent="HBoxDescription"]
+margin_left = 84.0
+margin_right = 1024.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 120 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+
+[node name="Dropdown" parent="HBoxDescription" instance=ExtResource( 1 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 556.0
+margin_right = 1024.0
+margin_bottom = 120.0
+
+[node name="HBoxStartTitle" type="HBoxContainer" parent="."]
+margin_top = 158.0
+margin_right = 1024.0
+margin_bottom = 172.0
 
 [node name="Label" type="Label" parent="HBoxStartTitle"]
 margin_right = 29.0
@@ -20,9 +78,9 @@ margin_bottom = 14.0
 text = "Start"
 
 [node name="HBoxStart" type="HBoxContainer" parent="."]
-margin_top = 18.0
+margin_top = 176.0
 margin_right = 1024.0
-margin_bottom = 42.0
+margin_bottom = 200.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxStart"]
@@ -55,9 +113,9 @@ margin_right = 1024.0
 margin_bottom = 24.0
 
 [node name="HBoxRunning" type="HBoxContainer" parent="."]
-margin_top = 46.0
+margin_top = 204.0
 margin_right = 1024.0
-margin_bottom = 70.0
+margin_bottom = 228.0
 
 [node name="CheckBox" type="CheckBox" parent="HBoxRunning"]
 margin_right = 145.0
@@ -72,14 +130,14 @@ margin_right = 1024.0
 margin_bottom = 24.0
 
 [node name="HSeparator" type="HSeparator" parent="."]
-margin_top = 74.0
+margin_top = 232.0
 margin_right = 1024.0
-margin_bottom = 78.0
+margin_bottom = 236.0
 
 [node name="HBoxRequerements" type="HBoxContainer" parent="."]
-margin_top = 82.0
+margin_top = 240.0
 margin_right = 1024.0
-margin_bottom = 106.0
+margin_bottom = 264.0
 
 [node name="CheckBox" type="CheckBox" parent="HBoxRequerements"]
 margin_right = 66.0
@@ -101,9 +159,9 @@ margin_right = 1024.0
 margin_bottom = 24.0
 
 [node name="HBoxRequerementsAdd" type="HBoxContainer" parent="."]
-margin_top = 110.0
+margin_top = 268.0
 margin_right = 1024.0
-margin_bottom = 130.0
+margin_bottom = 288.0
 
 [node name="Button" type="Button" parent="HBoxRequerementsAdd"]
 margin_right = 22.0
@@ -119,14 +177,14 @@ margin_bottom = 17.0
 text = "Requerements"
 
 [node name="HSeparator2" type="HSeparator" parent="."]
-margin_top = 134.0
+margin_top = 292.0
 margin_right = 1024.0
-margin_bottom = 138.0
+margin_bottom = 296.0
 
 [node name="HBoxTasksAdd" type="HBoxContainer" parent="."]
-margin_top = 142.0
+margin_top = 300.0
 margin_right = 1024.0
-margin_bottom = 162.0
+margin_bottom = 320.0
 
 [node name="Button" type="Button" parent="HBoxTasksAdd"]
 margin_right = 22.0
@@ -141,9 +199,9 @@ margin_bottom = 17.0
 text = "Tasks"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_top = 166.0
+margin_top = 324.0
 margin_right = 1024.0
-margin_bottom = 190.0
+margin_bottom = 348.0
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 margin_top = 5.0
@@ -187,14 +245,14 @@ margin_right = 1024.0
 margin_bottom = 24.0
 
 [node name="HSeparator3" type="HSeparator" parent="."]
-margin_top = 194.0
+margin_top = 352.0
 margin_right = 1024.0
-margin_bottom = 198.0
+margin_bottom = 356.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
-margin_top = 202.0
+margin_top = 360.0
 margin_right = 1024.0
-margin_bottom = 226.0
+margin_bottom = 384.0
 
 [node name="CheckBox" type="CheckBox" parent="HBoxContainer2"]
 margin_right = 114.0
@@ -208,9 +266,9 @@ margin_right = 118.0
 margin_bottom = 19.0
 
 [node name="HBoxStart2" type="HBoxContainer" parent="."]
-margin_top = 230.0
+margin_top = 388.0
 margin_right = 1024.0
-margin_bottom = 254.0
+margin_bottom = 412.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxStart2"]
