@@ -4,6 +4,16 @@ tool
 extends Resource
 class_name QuestTrigger
 
+# ***** EDITOR_PLUGIN BOILERPLATE *****
+var _editor: EditorPlugin
+var _undo_redo: UndoRedo
+
+func set_editor(editor: EditorPlugin) -> void:
+	_editor = editor
+	if _editor:
+		_undo_redo = _editor.get_undo_redo()
+# ***** EDITOR_PLUGIN_END *****
+
 signal name_changed(name)
 signal icon_changed
 signal scene_changed

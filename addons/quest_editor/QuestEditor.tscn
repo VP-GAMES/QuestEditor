@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://addons/quest_editor/QuestEditor.gd" type="Script" id=1]
 [ext_resource path="res://addons/quest_editor/icons/Save.png" type="Texture" id=2]
 [ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestsEditorView.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/quest_editor/scenes/triggers/QuestTriggersEditorView.tscn" type="PackedScene" id=4]
 
 [node name="QuestEditor" type="Control"]
 anchor_right = 1.0
@@ -56,5 +57,12 @@ tab_align = 0
 [node name="Quests" parent="VBox/Tabs" instance=ExtResource( 3 )]
 margin_left = 4.0
 margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Triggers" parent="VBox/Tabs" instance=ExtResource( 4 )]
+visible = false
+margin_left = 4.0
+margin_top = 34.0
 margin_right = -4.0
 margin_bottom = -4.0

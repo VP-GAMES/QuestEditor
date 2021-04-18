@@ -128,6 +128,114 @@ func get_quest_by_name(quest_name: String) -> QuestQuest:
 			return quest
 	return null
 
+# ***** TRIGGER *****
+signal trigger_added(trigger)
+signal trigger_removed(trigger)
+signal trigger_selection_changed(trigger)
+signal trigger_stacks_changed(trigger)
+signal trigger_icon_changed(trigger)
+signal trigger_scene_changed(trigger)
+
+func emit_trigger_stacks_changed(trigger: QuestTrigger) -> void:
+	emit_signal("trigger_stacks_changed", trigger)
+
+func emit_trigger_icon_changed(trigger: QuestTrigger) -> void:
+	emit_signal("trigger_icon_changed", trigger)
+
+func emit_trigger_scene_changed(trigger: QuestTrigger) -> void:
+	emit_signal("trigger_scene_changed", trigger)
+
+export(Array) var triggers = [_create_trigger()]
+var _trigger_selected: QuestTrigger
+
+func add_trigger(sendSignal = true) -> void:
+	var trigger = _create_trigger()
+	if _undo_redo != null:
+		_undo_redo.create_action("Add trigger")
+		_undo_redo.add_do_method(self, "_add_trigger", trigger)
+		_undo_redo.add_undo_method(self, "_del_trigger", trigger)
+		_undo_redo.commit_action()
+	else:
+		_add_trigger(trigger, sendSignal)
+
+func _create_trigger() -> QuestTrigger:
+	var trigger = QuestTrigger.new()
+	trigger.set_editor(_editor)
+	trigger.uuid = UUID.v4()
+	trigger.name = _next_trigger_name()
+	return trigger
+
+func _next_trigger_name() -> String:
+	var base_name = "Trigger"
+	var value = -9223372036854775807
+	var trigger_found = false
+	if triggers:
+		for trigger in triggers:
+			var name = trigger.name
+			if name.begins_with(base_name):
+				trigger_found = true
+				var behind = trigger.name.substr(base_name.length())
+				var regex = RegEx.new()
+				regex.compile("^[0-9]+$")
+				var result = regex.search(behind)
+				if result:
+					var new_value = int(behind)
+					if  value < new_value:
+						value = new_value
+	var next_name = base_name
+	if value != -9223372036854775807:
+		next_name += str(value + 1)
+	elif trigger_found:
+		next_name += "1"
+	return next_name
+
+func _add_trigger(trigger: QuestTrigger, sendSignal = true, position = triggers.size()) -> void:
+	if not triggers:
+		triggers = []
+	triggers.insert(position, trigger)
+	emit_signal("trigger_added", trigger)
+	select_trigger(trigger)
+
+func del_trigger(trigger) -> void:
+	if _undo_redo != null:
+		var index = triggers.find(trigger)
+		_undo_redo.create_action("Del trigger")
+		_undo_redo.add_do_method(self, "_del_trigger", trigger)
+		_undo_redo.add_undo_method(self, "_add_trigger", trigger, false, index)
+		_undo_redo.commit_action()
+	else:
+		_del_trigger(trigger)
+
+func _del_trigger(trigger) -> void:
+	var index = triggers.find(trigger)
+	if index > -1:
+		triggers.remove(index)
+		emit_signal("trigger_removed", trigger)
+		_trigger_selected = null
+		var trigger_selected = selected_trigger()
+		select_trigger(trigger_selected)
+
+func selected_trigger() -> QuestTrigger:
+	if not _trigger_selected and not triggers.empty():
+		_trigger_selected = triggers[0]
+	return _trigger_selected
+
+func select_trigger(trigger: QuestTrigger) -> void:
+	_trigger_selected = trigger
+	emit_signal("trigger_selection_changed", _trigger_selected)
+
+func get_trigger_by_uuid(uuid: String) -> QuestTrigger:
+	for trigger in triggers:
+		if trigger.uuid == uuid:
+			return trigger
+	return null
+
+func get_trigger_by_name(trigger_name: String) -> QuestTrigger:
+	for trigger in triggers:
+		if trigger.name == trigger_name:
+			return trigger
+	return null
+
 # ***** LOAD SAVE *****
 func init_data() -> void:
 	var file = File.new()
@@ -135,6 +243,8 @@ func init_data() -> void:
 		var resource = ResourceLoader.load(PATH_TO_SAVE) as QuestData
 		if resource.quests and not resource.quests.empty():
 			quests = resource.quests
+		if resource.triggers and not resource.triggers.empty():
+			triggers = resource.triggers
 
 func save() -> void:
 	ResourceSaver.save(PATH_TO_SAVE, self)
