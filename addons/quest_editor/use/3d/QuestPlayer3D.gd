@@ -1,0 +1,2 @@
+extends KinematicBody2D
+class_name QuestNPC3D

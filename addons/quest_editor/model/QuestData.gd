@@ -20,6 +20,16 @@ func set_editor(editor: EditorPlugin) -> void:
 const UUID = preload("res://addons/quest_editor/uuid/uuid.gd")
 # ***** EDITOR_PLUGIN_END *****
 
+# ***** PLAYER *****
+
+signal player_changed(player)
+
+export(String) var player
+
+func change_player(new_player: String) -> void:
+	player = new_player
+	emit_signal("player_changed")
+
 # ***** QUEST *****
 signal quest_added(quest)
 signal quest_removed(quest)
@@ -257,6 +267,8 @@ const SLOT_COLOR_PATH = Color(0.4, 0.78, 0.945)
 const PATH_TO_SAVE = "res://addons/quest_editor/QuestsSave.res"
 const SETTINGS_QUESTS_SPLIT_OFFSET = "quest_editor/quests_split_offset"
 const SETTINGS_QUESTS_SPLIT_OFFSET_DEFAULT = 215
+const SETTINGS_TRIGGERS_SPLIT_OFFSET = "quest_editor/triggers_split_offset"
+const SETTINGS_TRIGGERS_SPLIT_OFFSET_DEFAULT = 215
 
 func setting_quests_split_offset() -> int:
 	var offset = SETTINGS_QUESTS_SPLIT_OFFSET_DEFAULT
@@ -266,3 +278,46 @@ func setting_quests_split_offset() -> int:
 
 func setting_quests_split_offset_put(offset: int) -> void:
 	ProjectSettings.set_setting(SETTINGS_QUESTS_SPLIT_OFFSET, offset)
+
+func setting_triggers_split_offset() -> int:
+	var offset = SETTINGS_TRIGGERS_SPLIT_OFFSET_DEFAULT
+	if ProjectSettings.has_setting(SETTINGS_TRIGGERS_SPLIT_OFFSET):
+		offset = ProjectSettings.get_setting(SETTINGS_TRIGGERS_SPLIT_OFFSET)
+	return offset
+
+func setting_triggers_split_offset_put(offset: int) -> void:
+	ProjectSettings.set_setting(SETTINGS_TRIGGERS_SPLIT_OFFSET, offset)
+
+# ***** UTILS *****
+func filename(value: String) -> String:
+	var index = value.find_last("/")
+	return value.substr(index + 1)
+
+func filename_only(value: String) -> String:
+	var first = value.find_last("/")
+	var second = value.find_last(".")
+	return value.substr(first + 1, second - first - 1)
+
+func file_path(value: String) -> String:
+	var index = value.find_last("/")
+	return value.substr(0, index)
+
+func file_extension(value: String):
+	var index = value.find_last(".")
+	if index == -1:
+		return null
+	return value.substr(index + 1)
+
+func resource_exists(resource_path) -> bool:
+	var file = File.new()
+	return file.file_exists(resource_path)
+
+func resize_texture(t: Texture, size: Vector2):
+	var itex = t
+	if itex:
+		var texture = t.get_data()
+		if size.x > 0 && size.y > 0:
+			texture.resize(size.x, size.y)
+		itex = ImageTexture.new()
+		itex.create_from_image(texture)
+	return itex

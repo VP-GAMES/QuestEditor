@@ -9,6 +9,7 @@ var _data:= QuestData.new()
 onready var _save_ui = $VBox/Margin/HBox/Save as Button
 onready var _tabs_ui = $VBox/Tabs as TabContainer
 onready var _quests_ui = $VBox/Tabs/Quests as VBoxContainer
+onready var _triggers_ui = $VBox/Tabs/Triggers as VBoxContainer
 
 const IconResourceQuests = preload("res://addons/quest_editor/icons/Quest.png")
 const IconResourceTriggers = preload("res://addons/quest_editor/icons/Triggers.png")
@@ -41,6 +42,7 @@ func _on_tab_changed(tab: int) -> void:
 
 func _data_to_childs() -> void:
 	_quests_ui.set_data(_data)
+	_triggers_ui.set_data(_data)
 
 func save_data() -> void:
 	_data.save()
