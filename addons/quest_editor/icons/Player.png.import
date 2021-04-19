@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Actor.png-5e5f0a26ae3c5fa62800e8d97202ddd1.stex"
+path="res://.import/Player.png-28ed9f1f289479b9bc46dd8b2981220b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/quest_editor/icons/Actor.png"
-dest_files=[ "res://.import/Actor.png-5e5f0a26ae3c5fa62800e8d97202ddd1.stex" ]
+source_file="res://addons/quest_editor/icons/Player.png"
+dest_files=[ "res://.import/Player.png-28ed9f1f289479b9bc46dd8b2981220b.stex" ]
 
 [params]
 

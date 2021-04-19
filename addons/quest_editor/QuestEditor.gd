@@ -10,11 +10,11 @@ onready var _save_ui = $VBox/Margin/HBox/Save as Button
 onready var _tabs_ui = $VBox/Tabs as TabContainer
 onready var _quests_ui = $VBox/Tabs/Quests as VBoxContainer
 
-const IconResourceActor = preload("res://addons/quest_editor/icons/Actor.png")
+const IconResourceQuests = preload("res://addons/quest_editor/icons/Quest.png")
 const IconResourceTriggers = preload("res://addons/quest_editor/icons/Triggers.png")
 
 func _ready() -> void:
-	_tabs_ui.set_tab_icon(0, IconResourceActor)
+	_tabs_ui.set_tab_icon(0, IconResourceQuests)
 	_tabs_ui.set_tab_icon(1, IconResourceTriggers)
 
 func set_editor(editor: EditorPlugin) -> void:
