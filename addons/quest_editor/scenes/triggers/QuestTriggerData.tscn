@@ -54,7 +54,7 @@ margin_top = 0.0
 margin_right = 998.0
 margin_bottom = 30.0
 
-[node name="Button" type="Button" parent="HBoxPath"]
+[node name="Open" type="Button" parent="HBoxPath"]
 margin_left = 1002.0
 margin_right = 1024.0
 margin_bottom = 30.0
