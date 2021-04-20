@@ -103,5 +103,8 @@ handle_input_locally = false
 render_target_update_mode = 0
 
 [node name="Camera" type="Camera" parent="VBoxPreview/ViewportContainer3D/Viewport"]
+transform = Transform( 1, 0, 0, 0, 0.961262, 0.275637, 0, -0.275637, 0.961262, 0, 6, 20 )
+current = true
+near = 0.09
 
 [node name="Viewport3D" type="Node" parent="VBoxPreview/ViewportContainer3D/Viewport"]

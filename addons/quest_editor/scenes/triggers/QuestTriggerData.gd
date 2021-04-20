@@ -58,7 +58,7 @@ func _draw_view() -> void:
 		_update_previews()
 
 func _draw_view_type_ui() -> void:
-	_type_ui.text = _trigger.type + " " + _trigger.dimension
+	_type_ui.text = _trigger.type
 
 func _update_previews() -> void:
 	_2D_preview_ui.hide()

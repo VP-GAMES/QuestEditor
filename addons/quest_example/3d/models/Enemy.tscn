@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/quest_example/3d/models/godotEnemy.glb" type="PackedScene" id=1]
+
+[sub_resource type="SphereShape" id=1]
+radius = 2.14832
+
+[node name="NPC" type="Area"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 2.16475, 0 )
+shape = SubResource( 1 )
+
+[node name="godotEnemy" parent="." instance=ExtResource( 1 )]
