@@ -7,7 +7,9 @@
 
 [node name="QuestTriggerData" type="VBoxContainer"]
 anchor_right = 1.0
+anchor_bottom = 1.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -60,3 +62,46 @@ margin_right = 1024.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 20, 20 )
 icon = ExtResource( 1 )
+
+[node name="HSeparator" type="HSeparator" parent="."]
+margin_top = 52.0
+margin_right = 1024.0
+margin_bottom = 56.0
+
+[node name="VBoxPreview" type="VBoxContainer" parent="."]
+margin_top = 60.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ViewportContainer2D" type="ViewportContainer" parent="VBoxPreview"]
+margin_right = 1024.0
+margin_bottom = 540.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="VBoxPreview/ViewportContainer2D"]
+size = Vector2( 1024, 540 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Viewport2D" type="Node" parent="VBoxPreview/ViewportContainer2D/Viewport"]
+
+[node name="ViewportContainer3D" type="ViewportContainer" parent="VBoxPreview"]
+visible = false
+margin_right = 1024.0
+margin_bottom = 540.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="VBoxPreview/ViewportContainer3D"]
+size = Vector2( 1024, 540 )
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="Camera" type="Camera" parent="VBoxPreview/ViewportContainer3D/Viewport"]
+
+[node name="Viewport3D" type="Node" parent="VBoxPreview/ViewportContainer3D/Viewport"]
