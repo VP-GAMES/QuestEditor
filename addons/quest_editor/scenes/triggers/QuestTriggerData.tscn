@@ -25,28 +25,28 @@ text = "Type"
 
 [node name="Type" type="Label" parent="HBoxType"]
 margin_left = 114.0
-margin_right = 190.0
+margin_right = 148.0
 margin_bottom = 14.0
-text = "UNDEFINED"
+text = "NULL"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxPath" type="HBoxContainer" parent="."]
 margin_top = 18.0
 margin_right = 1024.0
 margin_bottom = 48.0
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxPath"]
 margin_top = 8.0
 margin_right = 85.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 85, 0 )
 text = "Scene"
 
-[node name="Put" parent="HBoxContainer" instance=ExtResource( 4 )]
+[node name="Put" parent="HBoxPath" instance=ExtResource( 4 )]
 margin_left = 89.0
 margin_right = 109.0
 margin_bottom = 30.0
 
-[node name="Path" parent="HBoxContainer" instance=ExtResource( 3 )]
+[node name="Path" parent="HBoxPath" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 113.0
@@ -54,7 +54,7 @@ margin_top = 0.0
 margin_right = 998.0
 margin_bottom = 30.0
 
-[node name="Button" type="Button" parent="HBoxContainer"]
+[node name="Button" type="Button" parent="HBoxPath"]
 margin_left = 1002.0
 margin_right = 1024.0
 margin_bottom = 30.0

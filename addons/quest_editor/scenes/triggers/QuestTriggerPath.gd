@@ -5,14 +5,16 @@
 tool
 extends LineEdit
 
+var _trigger: QuestTrigger
 var _data: QuestData
 
 var _path_ui_style_resource: StyleBoxFlat
 
-const QuestPlayerPathDialog = preload("res://addons/quest_editor/QuestPlayerPathDialog.tscn")
+const QuestTriggerPathDialog = preload("res://addons/quest_editor/scenes/triggers/QuestTriggerPathDialog.tscn")
 
-func set_data(data: QuestData) -> void:
+func set_data(trigger: QuestTrigger, data: QuestData) -> void:
 	_data = data
+	_trigger = trigger
 	_init_styles()
 	_init_connections()
 	_draw_view()
@@ -22,8 +24,8 @@ func _init_styles() -> void:
 	_path_ui_style_resource.set_bg_color(Color("#192e59"))
 
 func _init_connections() -> void:
-	if not _data.is_connected("player_changed", self, "_on_player_changed"):
-		assert(_data.connect("player_changed", self, "on_player_changed") == OK)
+	if not _trigger.is_connected("scene_changed", self, "on_scene_changed"):
+		assert(_trigger.connect("scene_changed", self, "on_scene_changed") == OK)
 	if not is_connected("focus_entered", self, "_on_focus_entered"):
 		assert(connect("focus_entered", self, "_on_focus_entered") == OK)
 	if not is_connected("focus_exited", self, "_on_focus_exited"):
@@ -33,16 +35,16 @@ func _init_connections() -> void:
 	if not is_connected("gui_input", self, "_on_gui_input"):
 		assert(connect("gui_input", self, "_on_gui_input") == OK)
 
-func on_player_changed() -> void:
+func on_scene_changed() -> void:
 	_draw_view()
 
 func _draw_view() -> void:
 	text = ""
-	if _data.player:
+	if _trigger.scene:
 		if has_focus():
-			 text = _data.player
+			 text = _trigger.scene
 		else:
-			text = _data.filename(_data.player)
+			text = _data.filename(_trigger.scene)
 		_check_path_ui()
 
 func _input(event) -> void:
@@ -51,23 +53,23 @@ func _input(event) -> void:
 			release_focus()
 
 func _on_focus_entered() -> void:
-	text = _data.player
+	text = _trigger.scene
 
 func _on_focus_exited() -> void:
-	text = _data.filename(_data.player)
+	text = _data.filename(_trigger.scene)
 
 func _path_value_changed(path_value) -> void:
-	_data.player = path_value
+	_trigger.scene = path_value
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed:
 			if event.button_index == BUTTON_MIDDLE:
 				grab_focus()
-				var file_dialog = QuestPlayerPathDialog.instance()
-				if _data.resource_exists(_data.player):
-					file_dialog.current_dir = _data.file_path(_data.player)
-					file_dialog.current_file = _data.filename(_data.player)
+				var file_dialog = QuestTriggerPathDialog.instance()
+				if _data.resource_exists(_trigger.scene):
+					file_dialog.current_dir = _data.file_path(_trigger.scene)
+					file_dialog.current_file = _data.filename(_trigger.scene)
 				file_dialog.add_filter("*.tscn")
 				var root = get_tree().get_root()
 				root.add_child(file_dialog)
@@ -91,9 +93,9 @@ func drop_data(position, data) -> void:
 	_path_value_changed(path_value)
 
 func _check_path_ui() -> void:
-	if _data.player and not _data.resource_exists(_data.player):
+	if _trigger.scene and not _data.resource_exists(_trigger.scene):
 		set("custom_styles/normal", _path_ui_style_resource)
-		hint_tooltip =  "Your resource path: \"" + _data.player + "\" does not exists"
+		hint_tooltip =  "Your resource path: \"" + _trigger.scene + "\" does not exists"
 	else:
 		set("custom_styles/normal", null)
 		hint_tooltip =  ""

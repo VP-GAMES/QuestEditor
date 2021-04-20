@@ -3,10 +3,6 @@
 [ext_resource path="res://addons/quest_editor/default/fonts/Pangolin-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://addons/quest_editor/scenes/triggers/QuestTriggerPath.gd" type="Script" id=2]
 
-
-
-
-
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
 
