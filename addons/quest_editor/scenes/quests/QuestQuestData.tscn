@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://addons/quest_editor/ui_extensions/dropdown/Dropdown.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/quest_editor/icons/Add.png" type="Texture" id=2]
 [ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestDataNameDescription.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestData.gd" type="Script" id=4]
+[ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestDataRequerements.tscn" type="PackedScene" id=5]
 
 [node name="QuestQuestData" type="VBoxContainer"]
 anchor_right = 1.0
@@ -15,129 +16,89 @@ __meta__ = {
 
 [node name="QuestQuestNameDescription" parent="." instance=ExtResource( 3 )]
 
-[node name="HSeparatorTop" type="HSeparator" parent="."]
+[node name="HSeparatorAfterNameDescription" type="HSeparator" parent="."]
 margin_top = 158.0
 margin_right = 1024.0
 margin_bottom = 162.0
 
-[node name="HBoxStartTitle" type="HBoxContainer" parent="."]
-margin_top = 166.0
+[node name="QuestQuestRequerements" parent="." instance=ExtResource( 5 )]
+margin_bottom = 190.0
+
+[node name="HSeparatorAfterRequerements" type="HSeparator" parent="."]
+margin_top = 194.0
 margin_right = 1024.0
-margin_bottom = 180.0
+margin_bottom = 198.0
 
-[node name="Label" type="Label" parent="HBoxStartTitle"]
-margin_right = 29.0
-margin_bottom = 14.0
-text = "Start"
-
-[node name="HBoxStart" type="HBoxContainer" parent="."]
-margin_top = 184.0
+[node name="QuestQuestStart" type="VBoxContainer" parent="."]
+margin_top = 202.0
 margin_right = 1024.0
-margin_bottom = 208.0
-size_flags_horizontal = 3
+margin_bottom = 282.0
 
-[node name="Label" type="Label" parent="HBoxStart"]
+[node name="HBoxStartTitle" type="HBoxContainer" parent="QuestQuestStart"]
+margin_right = 1024.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="QuestQuestStart/HBoxStartTitle"]
 margin_top = 5.0
-margin_right = 43.0
+margin_right = 74.0
 margin_bottom = 19.0
-text = "Trigger"
+text = "Start trigger"
 
-[node name="StartTrigger" parent="HBoxStart" instance=ExtResource( 1 )]
+[node name="StartTrigger" parent="QuestQuestStart/HBoxStartTitle" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 47.0
-margin_right = 503.0
+margin_left = 78.0
+margin_right = 1024.0
 margin_bottom = 24.0
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="Label2" type="Label" parent="HBoxStart"]
-margin_left = 507.0
+[node name="HBoxStart" type="HBoxContainer" parent="QuestQuestStart"]
+margin_top = 28.0
+margin_right = 1024.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="QuestQuestStart/HBoxStart"]
 margin_top = 5.0
-margin_right = 563.0
+margin_right = 87.0
 margin_bottom = 19.0
-text = "Dialogue"
+text = "Start dialogue"
 
-[node name="StartDialogue" parent="HBoxStart" instance=ExtResource( 1 )]
+[node name="StartDialogue" parent="QuestQuestStart/HBoxStart" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 567.0
+margin_left = 91.0
 margin_right = 1024.0
 margin_bottom = 24.0
 
-[node name="HBoxRunning" type="HBoxContainer" parent="."]
-margin_top = 212.0
+[node name="HBoxRunning" type="HBoxContainer" parent="QuestQuestStart"]
+margin_top = 56.0
 margin_right = 1024.0
-margin_bottom = 236.0
+margin_bottom = 80.0
 
-[node name="CheckBox" type="CheckBox" parent="HBoxRunning"]
-margin_right = 145.0
-margin_bottom = 24.0
-text = "Runnning dialogue"
-
-[node name="RunningDialogue" parent="HBoxRunning" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 149.0
-margin_right = 1024.0
-margin_bottom = 24.0
-
-[node name="HSeparator" type="HSeparator" parent="."]
-margin_top = 240.0
-margin_right = 1024.0
-margin_bottom = 244.0
-
-[node name="HBoxRequerements" type="HBoxContainer" parent="."]
-margin_top = 248.0
-margin_right = 1024.0
-margin_bottom = 272.0
-
-[node name="CheckBox" type="CheckBox" parent="HBoxRequerements"]
-margin_right = 66.0
-margin_bottom = 24.0
-text = "Single"
-
-[node name="Label" type="Label" parent="HBoxRequerements"]
-margin_left = 70.0
+[node name="Label" type="Label" parent="QuestQuestStart/HBoxRunning"]
 margin_top = 5.0
-margin_right = 145.0
+margin_right = 109.0
 margin_bottom = 19.0
-text = "Quest done"
+text = "Running dialogue"
 
-[node name="Dropdown" parent="HBoxRequerements" instance=ExtResource( 1 )]
+[node name="RunningDialogue" parent="QuestQuestStart/HBoxRunning" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 149.0
+margin_left = 113.0
 margin_right = 1024.0
 margin_bottom = 24.0
-
-[node name="HBoxRequerementsAdd" type="HBoxContainer" parent="."]
-margin_top = 276.0
-margin_right = 1024.0
-margin_bottom = 296.0
-
-[node name="Button" type="Button" parent="HBoxRequerementsAdd"]
-margin_right = 22.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 20, 20 )
-icon = ExtResource( 2 )
-
-[node name="Label" type="Label" parent="HBoxRequerementsAdd"]
-margin_left = 26.0
-margin_top = 3.0
-margin_right = 120.0
-margin_bottom = 17.0
-text = "Requerements"
 
 [node name="HSeparator2" type="HSeparator" parent="."]
-margin_top = 300.0
+margin_top = 286.0
 margin_right = 1024.0
-margin_bottom = 304.0
+margin_bottom = 290.0
 
 [node name="HBoxTasksAdd" type="HBoxContainer" parent="."]
-margin_top = 308.0
+margin_top = 294.0
 margin_right = 1024.0
-margin_bottom = 328.0
+margin_bottom = 314.0
 
 [node name="Button" type="Button" parent="HBoxTasksAdd"]
 margin_right = 22.0
@@ -152,9 +113,9 @@ margin_bottom = 17.0
 text = "Tasks"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_top = 332.0
+margin_top = 318.0
 margin_right = 1024.0
-margin_bottom = 356.0
+margin_bottom = 342.0
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 margin_top = 5.0
@@ -198,14 +159,14 @@ margin_right = 1024.0
 margin_bottom = 24.0
 
 [node name="HSeparator3" type="HSeparator" parent="."]
-margin_top = 360.0
+margin_top = 346.0
 margin_right = 1024.0
-margin_bottom = 364.0
+margin_bottom = 350.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
-margin_top = 368.0
+margin_top = 354.0
 margin_right = 1024.0
-margin_bottom = 392.0
+margin_bottom = 378.0
 
 [node name="CheckBox" type="CheckBox" parent="HBoxContainer2"]
 margin_right = 114.0
@@ -219,9 +180,9 @@ margin_right = 118.0
 margin_bottom = 19.0
 
 [node name="HBoxStart2" type="HBoxContainer" parent="."]
-margin_top = 396.0
+margin_top = 382.0
 margin_right = 1024.0
-margin_bottom = 420.0
+margin_bottom = 406.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxStart2"]

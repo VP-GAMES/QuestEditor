@@ -5,6 +5,7 @@ var _quest: QuestQuest
 var _data: QuestData
 
 onready var _name_description_ui = $QuestQuestNameDescription as VBoxContainer
+onready var _requerements_ui = $QuestQuestRequerements as VBoxContainer
 
 func set_data(data: QuestData) -> void:
 	_data = data
@@ -21,3 +22,4 @@ func _on_quest_selection_changed(quest: QuestQuest) -> void:
 func _selection_changed() -> void:
 	_quest = _data.selected_quest()
 	_name_description_ui.set_data(_quest, _data)
+	_requerements_ui.set_data(_quest, _data)
