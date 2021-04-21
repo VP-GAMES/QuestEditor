@@ -20,16 +20,6 @@ func set_editor(editor: EditorPlugin) -> void:
 const UUID = preload("res://addons/quest_editor/uuid/uuid.gd")
 # ***** EDITOR_PLUGIN_END *****
 
-# ***** PLAYER *****
-
-signal player_changed(player)
-
-export(String) var player
-
-func change_player(new_player: String) -> void:
-	player = new_player
-	emit_signal("player_changed")
-
 # ***** QUEST *****
 signal quest_added(quest)
 signal quest_removed(quest)
