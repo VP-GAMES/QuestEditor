@@ -10,6 +10,8 @@ func set_data(quest: QuestQuest, data: QuestData) -> void:
 	_data = data
 	_quest = quest
 	_init_connections()
+	_fill_dropdown()
+	_quests_dropdown_ui.set_selected_by_value(_quest.quest_completed)
 
 func _init_connections() -> void:
 	if not _quests_dropdown_ui.is_connected("gui_input", self, "_on_gui_input"):
@@ -18,6 +20,9 @@ func _init_connections() -> void:
 		_quests_dropdown_ui.connect("selection_changed", self, "_on_selection_changed")
 
 func _on_gui_input(event: InputEvent) -> void:
+	_fill_dropdown()
+
+func _fill_dropdown() -> void:
 	_quests_dropdown_ui.clear()
 	var item_null = {"text": "NONE", "value": ""}
 	_quests_dropdown_ui.add_item(item_null)

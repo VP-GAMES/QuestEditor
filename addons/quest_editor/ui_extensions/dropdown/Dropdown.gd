@@ -33,7 +33,7 @@ func set_selected(index: int) -> void:
 	selected = index
 	text = _items[selected].text
 
-func set_selected_by_value(value: String) -> void:
+func set_selected_by_value(value) -> void:
 	for index in range(_items.size()):
 		if _items[index].value == value:
 			selected = index
