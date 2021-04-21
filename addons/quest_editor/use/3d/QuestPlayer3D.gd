@@ -1,2 +1,2 @@
-extends KinematicBody2D
-class_name QuestNPC3D
+extends Area
+class_name QuestPlayer3D

@@ -1,2 +1,2 @@
-extends Node2D
+extends Area
 class_name QuestNPC3D

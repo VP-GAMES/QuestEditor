@@ -50,7 +50,7 @@ func _init_connections_trigger() -> void:
 		assert(_trigger.connect("scene_changed", self, "_on_scene_changed") == OK)
 
 func _on_scene_changed() -> void:
-	_draw_view_type_ui()
+	_draw_view()
 
 func _draw_view() -> void:
 	if _trigger:
@@ -64,10 +64,10 @@ func _update_previews() -> void:
 	_2D_preview_ui.hide()
 	_3D_preview_ui.hide()
 	if _trigger and _trigger.scene and not _trigger.scene.empty():
-		if _trigger.dimension  == "2D":
+		if _trigger.dimension == "2D":
 			_2D_preview_ui.show()
 			_update_preview2D()
-		if _trigger.dimension  == "3D":
+		if _trigger.dimension == "3D":
 			_3D_preview_ui.show()
 			_update_preview3D()
 
@@ -75,15 +75,15 @@ func _update_preview2D() -> void:
 	for child in _2D_viewport_ui.get_children():
 		_2D_viewport_ui.remove_child(child)
 		child.queue_free()
-		if _trigger and _trigger.scene:
-			var scene = load(_trigger.scene).instance()
-			scene.position = Vector2(_preview_ui.rect_size.x / 2, _preview_ui.rect_size.y / 2)
-			_2D_viewport_ui.add_child(scene)
+	if _trigger and _trigger.scene:
+		var scene = load(_trigger.scene).instance()
+		scene.position = Vector2(_preview_ui.rect_size.x / 2, _preview_ui.rect_size.y / 2)
+		_2D_viewport_ui.add_child(scene)
 
 func _update_preview3D() -> void:
 	for child in _3D_viewport_ui.get_children():
 		_3D_viewport_ui.remove_child(child)
 		child.queue_free()
-		if _trigger and _trigger.scene:
-			var scene = load(_trigger.scene).instance()
-			_3D_viewport_ui.add_child(scene)
+	if _trigger and _trigger.scene:
+		var scene = load(_trigger.scene).instance()
+		_3D_viewport_ui.add_child(scene)
