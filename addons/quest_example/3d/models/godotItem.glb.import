@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/HealthNormal.glb-efe13f10eb262731b36268ea587dd635.scn"
+path="res://.import/godotItem.glb-f6fc3ae7c3fd622ba437e6270cef95fc.scn"
 
 [deps]
 
-source_file="res://addons/quest_example/3d/models/HealthNormal.glb"
-dest_files=[ "res://.import/HealthNormal.glb-efe13f10eb262731b36268ea587dd635.scn" ]
+source_file="res://addons/quest_example/3d/models/godotItem.glb"
+dest_files=[ "res://.import/godotItem.glb-f6fc3ae7c3fd622ba437e6270cef95fc.scn" ]
 
 [params]
 

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/quest_editor/use/3d/QuestTrigger3D.gd" type="Script" id=1]
+[ext_resource path="res://addons/quest_example/3d/models/godotTrigger.glb" type="PackedScene" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.651212, 1.39368, 1.65569 )
+
+[node name="Trigger" type="Area"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45803, 0 )
+shape = SubResource( 1 )
+
+[node name="godotTrigger" parent="." instance=ExtResource( 2 )]

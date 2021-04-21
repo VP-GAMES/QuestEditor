@@ -40,9 +40,10 @@ func _on_preview_ui_resized() -> void:
 
 func _selection_changed() -> void:
 	_trigger = _data.selected_trigger()
-	_put_ui.set_data(_trigger, _data)
-	_path_ui.set_data(_trigger, _data)
-	_init_connections_trigger()
+	if _trigger:
+		_put_ui.set_data(_trigger, _data)
+		_path_ui.set_data(_trigger, _data)
+		_init_connections_trigger()
 	_draw_view()
 
 func _init_connections_trigger() -> void:
@@ -55,7 +56,7 @@ func _on_scene_changed() -> void:
 func _draw_view() -> void:
 	if _trigger:
 		_draw_view_type_ui()
-		_update_previews()
+	_update_previews()
 
 func _draw_view_type_ui() -> void:
 	_type_ui.text = _trigger.type
