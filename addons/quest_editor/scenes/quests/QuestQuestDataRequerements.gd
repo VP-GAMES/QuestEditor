@@ -11,7 +11,7 @@ func set_data(quest: QuestQuest, data: QuestData) -> void:
 	_quest = quest
 	_init_connections()
 	_fill_dropdown()
-	_quests_dropdown_ui.set_selected_by_value(_quest.quest_completed)
+	_quests_dropdown_ui.set_selected_by_value(_quest.precompleted_quest)
 
 func _init_connections() -> void:
 	if not _quests_dropdown_ui.is_connected("gui_input", self, "_on_gui_input"):
@@ -32,4 +32,4 @@ func _fill_dropdown() -> void:
 			_quests_dropdown_ui.add_item(item_d)
 
 func _on_selection_changed(quest: Dictionary) -> void:
-	_quest.quest_completed = quest.value
+	_quest.precompleted_quest = quest.value

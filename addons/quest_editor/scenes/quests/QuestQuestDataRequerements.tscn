@@ -19,15 +19,15 @@ margin_bottom = 24.0
 
 [node name="Label" type="Label" parent="HBoxRequerements"]
 margin_top = 5.0
-margin_right = 120.0
+margin_right = 130.0
 margin_bottom = 19.0
 rect_min_size = Vector2( 120, 0 )
-text = "Quest completed"
+text = "Precompleted quest"
 
 [node name="Quests" parent="HBoxRequerements" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 124.0
+margin_left = 134.0
 margin_right = 1024.0
 margin_bottom = 24.0
 

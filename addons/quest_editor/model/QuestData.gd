@@ -236,6 +236,41 @@ func get_trigger_by_name(trigger_name: String) -> QuestTrigger:
 			return trigger
 	return null
 
+func all_destinations() -> Array:
+	var destinations = []
+	for trigger in triggers:
+		if trigger.type and trigger.type == QuestTrigger.DESTINATION:
+			destinations.append(trigger)
+	return destinations
+
+func all_enemies() -> Array:
+	var enemies = []
+	for trigger in triggers:
+		if trigger.type and trigger.type == QuestTrigger.ENEMY:
+			enemies.append(trigger)
+	return enemies
+
+func all_items() -> Array:
+	var items = []
+	for trigger in triggers:
+		if trigger.type and trigger.type == QuestTrigger.ITEM:
+			items.append(trigger)
+	return items
+
+func all_npcs() -> Array:
+	var npcs = []
+	for trigger in triggers:
+		if trigger.type and trigger.type == QuestTrigger.NPC:
+			npcs.append(trigger)
+	return npcs
+
+func all_triggers() -> Array:
+	var triggers_use = []
+	for trigger in triggers:
+		if trigger.type and trigger.type == QuestTrigger.TRIGGER:
+			triggers_use.append(trigger)
+	return triggers_use
+
 # ***** LOAD SAVE *****
 func init_data() -> void:
 	var file = File.new()

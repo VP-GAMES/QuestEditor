@@ -34,6 +34,7 @@ func set_selected(index: int) -> void:
 	text = _items[selected].text
 
 func set_selected_by_value(value) -> void:
+	text = ""
 	for index in range(_items.size()):
 		if _items[index].value == value:
 			selected = index

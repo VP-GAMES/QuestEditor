@@ -24,7 +24,8 @@ export (String) var name
 export (String) var uiname
 export (String) var description
 export (String) var state
-export (String) var quest_completed = ""
+export (String) var precompleted_quest = ""
+export (String) var quest_trigger = ""
 
 const UUID = preload("res://addons/quest_editor/uuid/uuid.gd")
 
