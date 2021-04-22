@@ -35,3 +35,29 @@ func _fill_dropdown() -> void:
 
 func _on_trigger_selection_changed(quest: Dictionary) -> void:
 	_quest.quest_trigger = quest.value
+
+
+var dialogue_editor
+
+func _process(delta: float) -> void:
+	if not dialogue_editor:
+		_dropdown_ui_init()
+
+func _dropdown_ui_init() -> void:
+	if not dialogue_editor:
+		dialogue_editor = get_tree().get_root().find_node("DialogueEditor", true, false)
+	if dialogue_editor:
+		var data = dialogue_editor.get_data()
+		if data:
+			if not data.is_connected("data_changed", self, "_on_dialogue_data_changed"):
+				data.connect("data_changed", self, "_on_dialogue_data_changed")
+			if not data.is_connected("data_key_value_changed", self, "_on_dialogue_data_changed"):
+				data.connect("data_key_value_changed", self, "_on_dialogue_data_changed")
+			_on_dialogue_data_changed()
+
+func _on_dialogue_data_changed() -> void:
+	if _start_ui:
+		_start_ui.clear()
+		for key in dialogue_editor.get_data().data.keys:
+			_start_ui.add_item(key.value)
+#		_start_ui.set_selected_by_value(_sentence.text)
