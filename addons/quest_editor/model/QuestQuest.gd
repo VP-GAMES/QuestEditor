@@ -26,6 +26,8 @@ export (String) var description
 export (String) var state
 export (String) var precompleted_quest = ""
 export (String) var quest_trigger = ""
+export (String) var quest_start_dialogue = ""
+export (String) var quest_running_dialogue = ""
 
 const UUID = preload("res://addons/quest_editor/uuid/uuid.gd")
 

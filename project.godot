@@ -287,9 +287,18 @@ _global_script_class_icons={
 config/name="QuestEditor"
 config/icon="res://icon.png"
 
+[dialogue_editor]
+
+scenes_split_offset=300
+dialogues_selected_dialogue="Recursion"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "dialogue_editor", "inventory_editor", "localization_editor", "quest_editor" )
+
+[locale]
+
+translations=PoolStringArray( "res://localization/localizations.en.translation", "res://localization/localizations.de.translation", "res://localization/localizations.ru.translation" )
 
 [rendering]
 
