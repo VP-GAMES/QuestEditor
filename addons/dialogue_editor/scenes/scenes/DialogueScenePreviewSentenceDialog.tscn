@@ -1,0 +1,137 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/dialogue_editor/icons/Image.png" type="Texture" id=1]
+[ext_resource path="res://addons/dialogue_editor/icons/Add.png" type="Texture" id=2]
+[ext_resource path="res://addons/dialogue_editor/scenes/scenes/DialogueScenePreviewSentenceDialog.gd" type="Script" id=4]
+
+[node name="WindowDialog" type="WindowDialog"]
+visible = true
+rect_min_size = Vector2( 400, 210 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 3
+custom_constants/margin_top = 3
+custom_constants/margin_left = 3
+custom_constants/margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 397.0
+margin_bottom = 207.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxName" type="HBoxContainer" parent="Margin/VBox"]
+margin_right = 394.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="ActorLabel" type="Label" parent="Margin/VBox/HBoxName"]
+margin_top = 3.0
+margin_right = 50.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 50, 0 )
+text = "Actor"
+
+[node name="Actor" type="OptionButton" parent="Margin/VBox/HBoxName"]
+margin_left = 54.0
+margin_right = 394.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="HBoxTexture" type="HBoxContainer" parent="Margin/VBox"]
+margin_top = 24.0
+margin_right = 394.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+
+[node name="ActorTexture" type="Label" parent="Margin/VBox/HBoxTexture"]
+margin_top = 3.0
+margin_right = 50.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 50, 0 )
+text = "Texture"
+
+[node name="Textures" type="OptionButton" parent="Margin/VBox/HBoxTexture"]
+margin_left = 54.0
+margin_right = 394.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="Center" type="CenterContainer" parent="Margin/VBox"]
+margin_top = 48.0
+margin_right = 394.0
+margin_bottom = 148.0
+
+[node name="Texture" type="TextureRect" parent="Margin/VBox/Center"]
+margin_left = 147.0
+margin_right = 247.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+texture = ExtResource( 1 )
+expand = true
+
+[node name="VBoxAdd" type="VBoxContainer" parent="Margin/VBox"]
+margin_top = 152.0
+margin_right = 394.0
+margin_bottom = 172.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxAdd" type="HBoxContainer" parent="Margin/VBox/VBoxAdd"]
+margin_right = 394.0
+margin_bottom = 20.0
+
+[node name="Add" type="Button" parent="Margin/VBox/VBoxAdd/HBoxAdd"]
+margin_right = 22.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+icon = ExtResource( 2 )
+
+[node name="Text" type="Label" parent="Margin/VBox/VBoxAdd/HBoxAdd"]
+margin_left = 26.0
+margin_top = 3.0
+margin_right = 86.0
+margin_bottom = 17.0
+text = "New field"
+
+[node name="VBoxText" type="VBoxContainer" parent="Margin/VBox"]
+margin_top = 176.0
+margin_right = 394.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxAction" type="HBoxContainer" parent="Margin/VBox"]
+margin_top = 184.0
+margin_right = 394.0
+margin_bottom = 204.0
+alignment = 1
+
+[node name="Clear" type="Button" parent="Margin/VBox/HBoxAction"]
+margin_left = 149.0
+margin_right = 193.0
+margin_bottom = 20.0
+text = "Clear"
+
+[node name="Close" type="Button" parent="Margin/VBox/HBoxAction"]
+margin_left = 197.0
+margin_right = 244.0
+margin_bottom = 20.0
+text = "Close"
