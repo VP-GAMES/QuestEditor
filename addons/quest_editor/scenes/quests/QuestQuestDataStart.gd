@@ -16,6 +16,8 @@ func set_data(quest: QuestQuest, data: QuestData) -> void:
 	_init_connections()
 	_fill_trigger_ui_dropdown()
 	_trigger_ui.set_selected_by_value(_quest.quest_trigger)
+	_start_ui.set_selected_by_value(_quest.quest_start_dialogue)
+	_running_ui.set_selected_by_value(_quest.quest_running_dialogue)
 
 func _init_connections() -> void:
 	if not _trigger_ui.is_connected("gui_input", self, "_on_trigger_gui_input"):
@@ -54,9 +56,9 @@ func _dialogue_editor_init() -> void:
 		dialogue_editor = get_tree().get_root().find_node("DialogueEditor", true, false)
 	if dialogue_editor and _data:
 		_fill_start_ui_dropdown()
-		#_start_ui.set_selected_by_value(_quest.quest_start_dialogue)
+		_start_ui.set_selected_by_value(_quest.quest_start_dialogue)
 		_fill_running_ui_dropdown()
-		#_running_ui.set_selected_by_value(_quest.quest_running_dialogue)
+		_running_ui.set_selected_by_value(_quest.quest_running_dialogue)
 
 # *** START DIALOGUE ***
 func _on_start_gui_input(event: InputEvent) -> void:
@@ -67,7 +69,6 @@ func _fill_start_ui_dropdown() -> void:
 		var dialogue_data = dialogue_editor.get_data()
 		_start_ui.clear()
 		for dialogue in dialogue_data.dialogues:
-			print("UUID: ", dialogue.uuid)
 			var item_d = {"text": dialogue.name, "value": dialogue.uuid}
 			_start_ui.add_item(item_d)
 
