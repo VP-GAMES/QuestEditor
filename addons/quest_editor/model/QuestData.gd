@@ -13,8 +13,8 @@ func editor() -> EditorPlugin:
 
 func set_editor(editor: EditorPlugin) -> void:
 	_editor = editor
-#	for quest in quests:
-#		quest.set_editor(_editor)
+	for quest in quests:
+		quest.set_editor(_editor)
 	_undo_redo = _editor.get_undo_redo()
 
 const UUID = preload("res://addons/quest_editor/uuid/uuid.gd")

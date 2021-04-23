@@ -18,43 +18,44 @@ margin_bottom = 24.0
 
 [node name="Label" type="Label" parent="HBox"]
 margin_top = 5.0
-margin_right = 84.0
+margin_right = 130.0
 margin_bottom = 19.0
+rect_min_size = Vector2( 130, 0 )
 text = "Quest trigger"
 
 [node name="Trigger" parent="HBox" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 88.0
-margin_right = 329.0
+margin_left = 134.0
+margin_right = 360.0
 margin_bottom = 24.0
 caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="Label2" type="Label" parent="HBox"]
-margin_left = 333.0
+margin_left = 364.0
 margin_top = 5.0
-margin_right = 420.0
+margin_right = 451.0
 margin_bottom = 19.0
 text = "Start dialogue"
 
 [node name="Start" parent="HBox" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 424.0
-margin_right = 665.0
+margin_left = 455.0
+margin_right = 681.0
 margin_bottom = 24.0
 
 [node name="Label3" type="Label" parent="HBox"]
-margin_left = 669.0
+margin_left = 685.0
 margin_top = 5.0
-margin_right = 778.0
+margin_right = 794.0
 margin_bottom = 19.0
 text = "Running dialogue"
 
 [node name="Running" parent="HBox" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 782.0
+margin_left = 798.0
 margin_right = 1024.0
 margin_bottom = 24.0

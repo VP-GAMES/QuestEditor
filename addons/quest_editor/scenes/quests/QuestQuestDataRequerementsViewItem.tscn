@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/quest_editor/icons/Trash.png" type="Texture" id=1]
+[ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestDataRequerementsViewItem.gd" type="Script" id=2]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 24.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_top = 5.0
+margin_right = 130.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 130, 0 )
+text = "Player method"
+
+[node name="Method" type="LineEdit" parent="."]
+margin_left = 134.0
+margin_right = 386.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 390.0
+margin_top = 5.0
+margin_right = 484.0
+margin_bottom = 19.0
+text = "Response type"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Type" type="OptionButton" parent="."]
+margin_left = 488.0
+margin_right = 741.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Response" type="LineEdit" parent="."]
+margin_left = 745.0
+margin_right = 998.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Del" type="Button" parent="."]
+margin_left = 1002.0
+margin_right = 1024.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 20, 20 )
+icon = ExtResource( 1 )

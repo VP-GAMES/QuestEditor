@@ -21,8 +21,8 @@ func _ready() -> void:
 func set_editor(editor: EditorPlugin) -> void:
 	_editor = editor
 	_init_connections()
-	_data.set_editor(editor)
 	_load_data()
+	_data.set_editor(editor)
 	_data_to_childs()
 
 func _init_connections() -> void:

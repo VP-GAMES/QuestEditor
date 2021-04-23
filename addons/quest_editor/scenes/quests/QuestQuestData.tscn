@@ -23,25 +23,26 @@ margin_right = 1024.0
 margin_bottom = 162.0
 
 [node name="QuestQuestRequerements" parent="." instance=ExtResource( 5 )]
-margin_bottom = 190.0
+margin_bottom = 242.0
 
 [node name="HSeparatorAfterRequerements" type="HSeparator" parent="."]
-margin_top = 194.0
+margin_top = 246.0
 margin_right = 1024.0
-margin_bottom = 198.0
+margin_bottom = 250.0
 
 [node name="QuestQuestStart" parent="." instance=ExtResource( 6 )]
-margin_bottom = 226.0
+margin_top = 254.0
+margin_bottom = 278.0
 
 [node name="HSeparator2" type="HSeparator" parent="."]
-margin_top = 230.0
+margin_top = 282.0
 margin_right = 1024.0
-margin_bottom = 234.0
+margin_bottom = 286.0
 
 [node name="HBoxTasksAdd" type="HBoxContainer" parent="."]
-margin_top = 238.0
+margin_top = 290.0
 margin_right = 1024.0
-margin_bottom = 258.0
+margin_bottom = 310.0
 
 [node name="Button" type="Button" parent="HBoxTasksAdd"]
 margin_right = 22.0
@@ -56,9 +57,9 @@ margin_bottom = 17.0
 text = "Tasks"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_top = 262.0
+margin_top = 314.0
 margin_right = 1024.0
-margin_bottom = 286.0
+margin_bottom = 338.0
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 margin_top = 5.0
@@ -102,14 +103,14 @@ margin_right = 1024.0
 margin_bottom = 24.0
 
 [node name="HSeparator3" type="HSeparator" parent="."]
-margin_top = 290.0
+margin_top = 342.0
 margin_right = 1024.0
-margin_bottom = 294.0
+margin_bottom = 346.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
-margin_top = 298.0
+margin_top = 350.0
 margin_right = 1024.0
-margin_bottom = 322.0
+margin_bottom = 374.0
 
 [node name="CheckBox" type="CheckBox" parent="HBoxContainer2"]
 margin_right = 114.0
@@ -123,9 +124,9 @@ margin_right = 118.0
 margin_bottom = 19.0
 
 [node name="HBoxStart2" type="HBoxContainer" parent="."]
-margin_top = 326.0
+margin_top = 378.0
 margin_right = 1024.0
-margin_bottom = 350.0
+margin_bottom = 402.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxStart2"]
