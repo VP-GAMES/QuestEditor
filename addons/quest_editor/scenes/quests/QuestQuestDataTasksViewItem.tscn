@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestDataTasksViewItem.gd" type="Script" id=1]
 [ext_resource path="res://addons/quest_editor/ui_extensions/dropdown/Dropdown.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/quest_editor/icons/Trash.png" type="Texture" id=3]
 
 [node name="HBoxContainer" type="HBoxContainer"]
 margin_right = 1024.0
@@ -22,33 +23,40 @@ text = "Action"
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 134.0
-margin_right = 396.0
+margin_right = 388.0
 margin_bottom = 24.0
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 400.0
+margin_left = 392.0
 margin_top = 5.0
-margin_right = 430.0
+margin_right = 422.0
 margin_bottom = 19.0
 text = "Type"
 
 [node name="Dialogue" parent="." instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 434.0
-margin_right = 697.0
+margin_left = 426.0
+margin_right = 680.0
 margin_bottom = 24.0
 
 [node name="Label3" type="Label" parent="."]
-margin_left = 701.0
+margin_left = 684.0
 margin_top = 5.0
-margin_right = 757.0
+margin_right = 740.0
 margin_bottom = 19.0
 text = "Dialogue"
 
 [node name="Dropdown3" parent="." instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 761.0
+margin_left = 744.0
+margin_right = 998.0
+margin_bottom = 24.0
+
+[node name="Del" type="Button" parent="."]
+margin_left = 1002.0
 margin_right = 1024.0
 margin_bottom = 24.0
+rect_min_size = Vector2( 20, 20 )
+icon = ExtResource( 3 )
