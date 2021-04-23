@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://addons/quest_editor/ui_extensions/dropdown/Dropdown.tscn" type="PackedScene" id=1]
-[ext_resource path="res://addons/quest_editor/icons/Add.png" type="Texture" id=2]
+[ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestDataTasks.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestDataNameDescription.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestData.gd" type="Script" id=4]
 [ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestDataRequerements.tscn" type="PackedScene" id=5]
@@ -34,75 +34,14 @@ margin_bottom = 250.0
 margin_top = 254.0
 margin_bottom = 278.0
 
-[node name="HSeparator2" type="HSeparator" parent="."]
+[node name="HSeparatorAfterStart" type="HSeparator" parent="."]
 margin_top = 282.0
 margin_right = 1024.0
 margin_bottom = 286.0
 
-[node name="HBoxTasksAdd" type="HBoxContainer" parent="."]
-margin_top = 290.0
-margin_right = 1024.0
-margin_bottom = 310.0
+[node name="QuestQuestTasks" parent="." instance=ExtResource( 2 )]
 
-[node name="Button" type="Button" parent="HBoxTasksAdd"]
-margin_right = 22.0
-margin_bottom = 20.0
-icon = ExtResource( 2 )
-
-[node name="Label" type="Label" parent="HBoxTasksAdd"]
-margin_left = 26.0
-margin_top = 3.0
-margin_right = 61.0
-margin_bottom = 17.0
-text = "Tasks"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_top = 314.0
-margin_right = 1024.0
-margin_bottom = 338.0
-
-[node name="Label" type="Label" parent="HBoxContainer"]
-margin_top = 5.0
-margin_right = 41.0
-margin_bottom = 19.0
-text = "Action"
-
-[node name="Dropdown" parent="HBoxContainer" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 45.0
-margin_right = 337.0
-margin_bottom = 24.0
-
-[node name="Label2" type="Label" parent="HBoxContainer"]
-margin_left = 341.0
-margin_top = 5.0
-margin_right = 371.0
-margin_bottom = 19.0
-text = "Type"
-
-[node name="Dropdown2" parent="HBoxContainer" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 375.0
-margin_right = 667.0
-margin_bottom = 24.0
-
-[node name="Label3" type="Label" parent="HBoxContainer"]
-margin_left = 671.0
-margin_top = 5.0
-margin_right = 727.0
-margin_bottom = 19.0
-text = "Dialogue"
-
-[node name="Dropdown3" parent="HBoxContainer" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 731.0
-margin_right = 1024.0
-margin_bottom = 24.0
-
-[node name="HSeparator3" type="HSeparator" parent="."]
+[node name="HSeparatorAfterTasks" type="HSeparator" parent="."]
 margin_top = 342.0
 margin_right = 1024.0
 margin_bottom = 346.0

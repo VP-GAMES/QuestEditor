@@ -33,6 +33,8 @@ export (Array) var requerements
 export (String) var quest_trigger
 export (String) var quest_start_dialogue = ""
 export (String) var quest_running_dialogue = ""
+# * TASKS
+export (Array) var tasks
 
 const UUID = preload("res://addons/quest_editor/uuid/uuid.gd")
 
@@ -60,7 +62,7 @@ const REQUEREMENT_TEXT ="TEXT"
 const REQUEREMENT_NUMBER = "NUMBER"
 
 func add_requerement() -> void:
-	var requerement = {"method": "", "type": "BOOL", "response": ""}
+	var requerement = {"method": "", "type": REQUEREMENT_BOOL, "response": ""}
 	if _undo_redo != null:
 		_undo_redo.create_action("Add requerement")
 		_undo_redo.add_do_method(self, "_add_requerement", requerement)
@@ -90,3 +92,38 @@ func _del_requerement(requerement) -> void:
 	if index > -1:
 		requerements.remove(index)
 		emit_signal("requerements_changed")
+
+# ***** TASKS *****
+signal tasks_changed
+
+func add_task() -> void:
+	var task = {"trigger": "", "dialogue": "", "number": 0 }
+	if _undo_redo != null:
+		_undo_redo.create_action("Add task")
+		_undo_redo.add_do_method(self, "_add_task", task)
+		_undo_redo.add_undo_method(self, "_del_task", task)
+		_undo_redo.commit_action()
+	else:
+		_add_task(task)
+
+func _add_task(task: Dictionary, position = tasks.size()) -> void:
+	if not tasks:
+		tasks = []
+	tasks.insert(position, task)
+	emit_signal("tasks_changed")
+
+func del_task(task) -> void:
+	if _undo_redo != null:
+		var index = tasks.find(task)
+		_undo_redo.create_action("Del task")
+		_undo_redo.add_do_method(self, "_del_task", task)
+		_undo_redo.add_undo_method(self, "_add_task", task, false, index)
+		_undo_redo.commit_action()
+	else:
+		_del_task(task)
+
+func _del_task(task) -> void:
+	var index = tasks.find(task)
+	if index > -1:
+		tasks.remove(index)
+		emit_signal("tasks_changed")

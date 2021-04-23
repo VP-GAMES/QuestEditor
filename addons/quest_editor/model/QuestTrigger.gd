@@ -29,7 +29,7 @@ signal scene_changed
 export (String) var uuid
 export (String) var name
 export (String) var scene
-export (String) var type = "UNDEFINED"
+export (String) var type = UNDEFINED
 export (String) var dimension = ""
 
 func change_name(new_name: String):
