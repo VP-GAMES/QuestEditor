@@ -55,6 +55,10 @@ func change_description(new_description: String):
 # ***** REQUEREMENTS *****
 signal requerements_changed
 
+const REQUEREMENT_BOOL ="BOOL"
+const REQUEREMENT_TEXT ="TEXT"
+const REQUEREMENT_NUMBER = "NUMBER"
+
 func add_requerement() -> void:
 	var requerement = {"method": "", "type": "BOOL", "response": ""}
 	if _undo_redo != null:

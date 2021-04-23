@@ -1,7 +1,7 @@
 tool
 extends HBoxContainer
 
-const _types = ["BOOL", "TEXT", "NUMBER"]
+const _types = [QuestQuest.REQUEREMENT_BOOL, QuestQuest.REQUEREMENT_TEXT, QuestQuest.REQUEREMENT_NUMBER]
 
 var _requerement: Dictionary
 var _quest: QuestQuest
@@ -57,7 +57,7 @@ func _update_view() -> void:
 	_update_response_ui_visibility()
 
 func _update_response_ui_visibility() -> void:
-	if _requerement.type == "BOOL":
+	if _requerement.type == QuestQuest.REQUEREMENT_BOOL:
 		_response_ui.hide()
 	else:
 		_response_ui.show()
