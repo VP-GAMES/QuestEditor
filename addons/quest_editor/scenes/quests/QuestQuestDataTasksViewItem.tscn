@@ -12,14 +12,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="Action" type="Label" parent="."]
 margin_top = 5.0
 margin_right = 130.0
 margin_bottom = 19.0
 rect_min_size = Vector2( 130, 0 )
 text = "Action"
 
-[node name="Type" parent="." instance=ExtResource( 2 )]
+[node name="Trigger" parent="." instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 134.0

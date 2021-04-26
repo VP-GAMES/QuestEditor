@@ -15,6 +15,8 @@ func set_data(quest: QuestQuest, data: QuestData) -> void:
 	_quest = quest
 	_init_connections()
 	_fill_trigger_ui_dropdown()
+	_fill_start_ui_dropdown()
+	_fill_running_ui_dropdown()
 	_trigger_ui.set_selected_by_value(_quest.quest_trigger)
 	_start_ui.set_selected_by_value(_quest.quest_start_dialogue)
 	_running_ui.set_selected_by_value(_quest.quest_running_dialogue)
@@ -43,8 +45,8 @@ func _fill_trigger_ui_dropdown() -> void:
 		var item_t = {"text": trigger.name, "value": trigger.uuid}
 		_trigger_ui.add_item(item_t)
 
-func _on_trigger_selection_changed(quest: Dictionary) -> void:
-	_quest.quest_trigger = quest.value
+func _on_trigger_selection_changed(trigger: Dictionary) -> void:
+	_quest.quest_trigger = trigger.value
 
 # *** INIT DIALOGUE EDITOR ***
 func _process(delta: float) -> void:
