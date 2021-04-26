@@ -62,7 +62,7 @@ const REQUEREMENT_TEXT ="TEXT"
 const REQUEREMENT_NUMBER = "NUMBER"
 
 func add_requerement() -> void:
-	var requerement = {"method": "", "type": REQUEREMENT_BOOL, "response": ""}
+	var requerement = {"method": "", "params": "", "type": REQUEREMENT_BOOL, "response": ""}
 	if _undo_redo != null:
 		_undo_redo.create_action("Add requerement")
 		_undo_redo.add_do_method(self, "_add_requerement", requerement)
