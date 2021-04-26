@@ -20,14 +20,30 @@ text = "Player method"
 
 [node name="Method" type="LineEdit" parent="."]
 margin_left = 134.0
-margin_right = 386.0
+margin_right = 309.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 313.0
+margin_top = 5.0
+margin_right = 360.0
+margin_bottom = 19.0
+text = "Params"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Params" type="LineEdit" parent="."]
+margin_left = 364.0
+margin_right = 540.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 390.0
+margin_left = 544.0
 margin_top = 5.0
-margin_right = 484.0
+margin_right = 638.0
 margin_bottom = 19.0
 text = "Response type"
 __meta__ = {
@@ -35,13 +51,13 @@ __meta__ = {
 }
 
 [node name="Type" type="OptionButton" parent="."]
-margin_left = 488.0
-margin_right = 741.0
+margin_left = 642.0
+margin_right = 818.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 
 [node name="Response" type="LineEdit" parent="."]
-margin_left = 745.0
+margin_left = 822.0
 margin_right = 998.0
 margin_bottom = 24.0
 size_flags_horizontal = 3

@@ -68,6 +68,7 @@ func _fill_start_ui_dropdown() -> void:
 	if dialogue_editor:
 		var dialogue_data = dialogue_editor.get_data()
 		_start_ui.clear()
+		_start_ui.add_item({"text": "NONE", "value": ""})
 		for dialogue in dialogue_data.dialogues:
 			var item_d = {"text": dialogue.name, "value": dialogue.uuid}
 			_start_ui.add_item(item_d)
@@ -83,6 +84,7 @@ func _fill_running_ui_dropdown() -> void:
 	if dialogue_editor:
 		var dialogue_data = dialogue_editor.get_data()
 		_running_ui.clear()
+		_running_ui.add_item({"text": "NONE", "value": ""})
 		for dialogue in dialogue_data.dialogues:
 			var item_d = {"text": dialogue.name, "value": dialogue.uuid}
 			_running_ui.add_item(item_d)
