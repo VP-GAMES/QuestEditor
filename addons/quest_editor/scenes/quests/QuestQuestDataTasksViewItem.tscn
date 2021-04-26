@@ -23,36 +23,38 @@ text = "Action"
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 134.0
-margin_right = 388.0
+margin_right = 379.0
 margin_bottom = 24.0
 
-[node name="Label2" type="Label" parent="."]
-margin_left = 392.0
+[node name="LabelDialogue" type="Label" parent="."]
+margin_left = 383.0
 margin_top = 5.0
-margin_right = 422.0
+margin_right = 439.0
 margin_bottom = 19.0
-text = "Type"
+text = "Dialogue"
 
 [node name="Dialogue" parent="." instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 426.0
-margin_right = 680.0
+margin_left = 443.0
+margin_right = 689.0
 margin_bottom = 24.0
 
-[node name="Label3" type="Label" parent="."]
-margin_left = 684.0
+[node name="LabelQuantity" type="Label" parent="."]
+margin_left = 693.0
 margin_top = 5.0
-margin_right = 740.0
+margin_right = 748.0
 margin_bottom = 19.0
-text = "Dialogue"
+text = "Quantity"
 
-[node name="Dropdown3" parent="." instance=ExtResource( 2 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 744.0
+[node name="Quantity" type="LineEdit" parent="."]
+margin_left = 752.0
 margin_right = 998.0
 margin_bottom = 24.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Del" type="Button" parent="."]
 margin_left = 1002.0

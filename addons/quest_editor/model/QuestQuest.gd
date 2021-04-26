@@ -97,7 +97,7 @@ func _del_requerement(requerement) -> void:
 signal tasks_changed
 
 func add_task() -> void:
-	var task = {"trigger": "", "dialogue": "", "number": 0 }
+	var task = {"trigger": "", "dialogue": "", "quantity": 0, "done": false }
 	if _undo_redo != null:
 		_undo_redo.create_action("Add task")
 		_undo_redo.add_do_method(self, "_add_task", task)

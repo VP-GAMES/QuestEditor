@@ -179,16 +179,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/quest_editor/use/3d/QuestEnemy3D.gd"
 }, {
-"base": "Node2D",
-"class": "QuestItem2D",
-"language": "GDScript",
-"path": "res://addons/quest_editor/use/2d/QuestItem2D.gd"
-}, {
-"base": "Node2D",
-"class": "QuestItem3D",
-"language": "GDScript",
-"path": "res://addons/quest_editor/use/3d/QuestItem3D.gd"
-}, {
 "base": "Node",
 "class": "QuestManager",
 "language": "GDScript",
@@ -269,8 +259,6 @@ _global_script_class_icons={
 "QuestDestination3D": "",
 "QuestEnemy2D": "",
 "QuestEnemy3D": "",
-"QuestItem2D": "",
-"QuestItem3D": "",
 "QuestManager": "",
 "QuestNPC2D": "",
 "QuestNPC3D": "",

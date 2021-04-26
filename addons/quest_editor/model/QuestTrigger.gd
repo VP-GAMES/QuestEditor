@@ -18,7 +18,6 @@ const TYPE_2D ="2D"
 const TYPE_3D ="3D"
 const DESTINATION = "DESTINATION"
 const ENEMY = "ENEMY"
-const ITEM = "ITEM"
 const NPC = "NPC"
 const TRIGGER = "TRIGGER"
 const UNDEFINED = "UNDEFINED"
@@ -49,8 +48,6 @@ func scene_valide(scene_path) -> bool:
 		return true
 	if scene is QuestEnemy2D:
 		return true
-	if scene is QuestItem2D:
-		return true
 	if scene is QuestNPC2D:
 		return true
 	if scene is QuestTrigger2D:
@@ -58,8 +55,6 @@ func scene_valide(scene_path) -> bool:
 	if scene is QuestDestination3D:
 		return true
 	if scene is QuestEnemy3D:
-		return true
-	if scene is QuestItem3D:
 		return true
 	if scene is QuestNPC3D:
 		return true
@@ -72,8 +67,6 @@ func _scene_type(new_scene) -> String:
 		return DESTINATION
 	if new_scene is QuestEnemy2D:
 		return ENEMY
-	if new_scene is QuestItem2D:
-		return ITEM
 	if new_scene is QuestNPC2D:
 		return NPC
 	if new_scene is QuestTrigger2D:
@@ -82,8 +75,6 @@ func _scene_type(new_scene) -> String:
 		return DESTINATION
 	if new_scene is QuestEnemy3D:
 		return ENEMY
-	if new_scene is QuestItem3D:
-		return ITEM
 	if new_scene is QuestNPC3D:
 		return NPC
 	if new_scene is QuestTrigger3D:
@@ -95,8 +86,6 @@ func _scene_dimension(new_scene) -> String:
 		return TYPE_2D
 	if new_scene is QuestEnemy2D:
 		return TYPE_2D
-	if new_scene is QuestItem2D:
-		return TYPE_2D
 	if new_scene is QuestNPC2D:
 		return TYPE_2D
 	if new_scene is QuestTrigger2D:
@@ -104,8 +93,6 @@ func _scene_dimension(new_scene) -> String:
 	if new_scene is QuestDestination3D:
 		return TYPE_3D
 	if new_scene is QuestEnemy3D:
-		return TYPE_3D
-	if new_scene is QuestItem3D:
 		return TYPE_3D
 	if new_scene is QuestNPC3D:
 		return TYPE_3D
