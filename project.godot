@@ -288,6 +288,10 @@ enabled=PoolStringArray( "dialogue_editor", "inventory_editor", "localization_ed
 
 translations=PoolStringArray( "res://localization/localizations.en.translation", "res://localization/localizations.de.translation", "res://localization/localizations.ru.translation" )
 
+[quest_editor]
+
+quests_split_offset=215
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

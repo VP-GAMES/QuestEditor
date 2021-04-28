@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://addons/quest_editor/ui_extensions/dropdown/Dropdown.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestDataDelivery.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestDataTasks.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestDataNameDescription.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestData.gd" type="Script" id=4]
 [ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestDataRequerements.tscn" type="PackedScene" id=5]
 [ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestDataStart.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/quest_editor/icons/Add.png" type="Texture" id=7]
 
 [node name="QuestQuestData" type="VBoxContainer"]
 anchor_right = 1.0
@@ -17,7 +18,7 @@ __meta__ = {
 
 [node name="VBox" type="VBoxContainer" parent="."]
 margin_right = 1024.0
-margin_bottom = 402.0
+margin_bottom = 406.0
 
 [node name="QuestQuestNameDescription" parent="VBox" instance=ExtResource( 3 )]
 
@@ -50,53 +51,31 @@ margin_top = 342.0
 margin_right = 1024.0
 margin_bottom = 346.0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBox"]
-margin_top = 350.0
-margin_right = 1024.0
-margin_bottom = 374.0
+[node name="VBoxDelivery" parent="VBox" instance=ExtResource( 1 )]
 
-[node name="CheckBox" type="CheckBox" parent="VBox/HBoxContainer2"]
-margin_right = 114.0
-margin_bottom = 24.0
-text = "Deliver quest"
-
-[node name="Label" type="Label" parent="VBox/HBoxContainer2"]
-margin_left = 118.0
-margin_top = 5.0
-margin_right = 118.0
-margin_bottom = 19.0
-
-[node name="HBoxStart2" type="HBoxContainer" parent="VBox"]
+[node name="HSeparatorAfterDelivery" type="HSeparator" parent="VBox"]
 margin_top = 378.0
 margin_right = 1024.0
-margin_bottom = 402.0
-size_flags_horizontal = 3
+margin_bottom = 382.0
 
-[node name="Label" type="Label" parent="VBox/HBoxStart2"]
-margin_top = 5.0
-margin_right = 43.0
-margin_bottom = 19.0
-text = "Trigger"
-
-[node name="StartTrigger" parent="VBox/HBoxStart2" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 47.0
-margin_right = 503.0
-margin_bottom = 24.0
-caret_blink = true
-caret_blink_speed = 0.5
-
-[node name="Label2" type="Label" parent="VBox/HBoxStart2"]
-margin_left = 507.0
-margin_top = 5.0
-margin_right = 563.0
-margin_bottom = 19.0
-text = "Dialogue"
-
-[node name="StartDialogue" parent="VBox/HBoxStart2" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 567.0
+[node name="VBoxRewards" type="VBoxContainer" parent="VBox"]
+margin_top = 386.0
 margin_right = 1024.0
-margin_bottom = 24.0
+margin_bottom = 406.0
+
+[node name="HBox" type="HBoxContainer" parent="VBox/VBoxRewards"]
+margin_right = 1024.0
+margin_bottom = 20.0
+
+[node name="Button" type="Button" parent="VBox/VBoxRewards/HBox"]
+margin_right = 22.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+icon = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="VBox/VBoxRewards/HBox"]
+margin_left = 26.0
+margin_top = 3.0
+margin_right = 79.0
+margin_bottom = 17.0
+text = "Rewards"

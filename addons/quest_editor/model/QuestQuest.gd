@@ -35,6 +35,10 @@ export (String) var quest_start_dialogue = ""
 export (String) var quest_running_dialogue = ""
 # * TASKS
 export (Array) var tasks
+# * DELIVERY
+export (bool) var delivery
+export (String) var delivery_trigger
+export (String) var delivery_dialogue = ""
 
 const UUID = preload("res://addons/quest_editor/uuid/uuid.gd")
 
