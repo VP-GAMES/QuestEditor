@@ -41,6 +41,7 @@ func _on_trigger_gui_input(event: InputEvent) -> void:
 
 func _fill_trigger_ui_dropdown() -> void:
 	_trigger_ui.clear()
+	_trigger_ui.add_item({"text": "NONE", "value": ""})
 	for trigger in _data.all_npcs():
 		var item_t = {"text": trigger.name, "value": trigger.uuid}
 		_trigger_ui.add_item(item_t)	

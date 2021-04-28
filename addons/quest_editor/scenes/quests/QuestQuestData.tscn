@@ -51,7 +51,7 @@ margin_top = 342.0
 margin_right = 1024.0
 margin_bottom = 346.0
 
-[node name="VBoxDelivery" parent="VBox" instance=ExtResource( 1 )]
+[node name="QuestQuestDelivery" parent="VBox" instance=ExtResource( 1 )]
 
 [node name="HSeparatorAfterDelivery" type="HSeparator" parent="VBox"]
 margin_top = 378.0
