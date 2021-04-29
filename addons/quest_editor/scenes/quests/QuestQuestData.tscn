@@ -6,7 +6,7 @@
 [ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestData.gd" type="Script" id=4]
 [ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestDataRequerements.tscn" type="PackedScene" id=5]
 [ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestDataStart.tscn" type="PackedScene" id=6]
-[ext_resource path="res://addons/quest_editor/icons/Add.png" type="Texture" id=7]
+[ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestDataRewards.tscn" type="PackedScene" id=7]
 
 [node name="QuestQuestData" type="VBoxContainer"]
 anchor_right = 1.0
@@ -18,7 +18,7 @@ __meta__ = {
 
 [node name="VBox" type="VBoxContainer" parent="."]
 margin_right = 1024.0
-margin_bottom = 406.0
+margin_bottom = 410.0
 
 [node name="QuestQuestNameDescription" parent="VBox" instance=ExtResource( 3 )]
 
@@ -58,24 +58,5 @@ margin_top = 378.0
 margin_right = 1024.0
 margin_bottom = 382.0
 
-[node name="VBoxRewards" type="VBoxContainer" parent="VBox"]
-margin_top = 386.0
-margin_right = 1024.0
-margin_bottom = 406.0
-
-[node name="HBox" type="HBoxContainer" parent="VBox/VBoxRewards"]
-margin_right = 1024.0
-margin_bottom = 20.0
-
-[node name="Button" type="Button" parent="VBox/VBoxRewards/HBox"]
-margin_right = 22.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 20, 20 )
-icon = ExtResource( 7 )
-
-[node name="Label" type="Label" parent="VBox/VBoxRewards/HBox"]
-margin_left = 26.0
-margin_top = 3.0
-margin_right = 79.0
-margin_bottom = 17.0
-text = "Rewards"
+[node name="VBoxRewards" parent="VBox" instance=ExtResource( 7 )]
+margin_bottom = 410.0

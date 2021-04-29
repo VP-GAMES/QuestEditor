@@ -39,6 +39,8 @@ export (Array) var tasks
 export (bool) var delivery
 export (String) var delivery_trigger = ""
 export (String) var delivery_dialogue = ""
+# * TASKS
+export (Array) var rewards
 
 const UUID = preload("res://addons/quest_editor/uuid/uuid.gd")
 
@@ -131,3 +133,42 @@ func _del_task(task) -> void:
 	if index > -1:
 		tasks.remove(index)
 		emit_signal("tasks_changed")
+
+# ***** REWARD *****
+signal rewards_changed
+
+const REWARD_BOOL ="BOOL"
+const REWARD_TEXT ="TEXT"
+const REWARD_NUMBER = "NUMBER"
+
+func add_reward() -> void:
+	var reward = {"method": "", "params": "", "type": REQUEREMENT_BOOL, "response": ""}
+	if _undo_redo != null:
+		_undo_redo.create_action("Add reward")
+		_undo_redo.add_do_method(self, "_add_reward", reward)
+		_undo_redo.add_undo_method(self, "_del_reward", reward)
+		_undo_redo.commit_action()
+	else:
+		_add_reward(reward)
+
+func _add_reward(reward: Dictionary, position = rewards.size()) -> void:
+	if not rewards:
+		rewards = []
+	rewards.insert(position, reward)
+	emit_signal("rewards_changed")
+
+func del_reward(reward) -> void:
+	if _undo_redo != null:
+		var index = rewards.find(reward)
+		_undo_redo.create_action("Del reward")
+		_undo_redo.add_do_method(self, "_del_reward", reward)
+		_undo_redo.add_undo_method(self, "_add_reward", reward, false, index)
+		_undo_redo.commit_action()
+	else:
+		_del_reward(reward)
+
+func _del_reward(reward) -> void:
+	var index = rewards.find(reward)
+	if index > -1:
+		rewards.remove(index)
+		emit_signal("rewards_changed")

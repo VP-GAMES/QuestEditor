@@ -10,6 +10,7 @@ onready var _requerements_ui = $VBox/QuestQuestRequerements as VBoxContainer
 onready var _start_ui = $VBox/QuestQuestStart as VBoxContainer
 onready var _tasks_ui = $VBox/QuestQuestTasks as VBoxContainer
 onready var _delivery_ui = $VBox/QuestQuestDelivery as VBoxContainer
+onready var _rewards_ui = $VBox/VBoxRewards as VBoxContainer
 
 func set_data(data: QuestData) -> void:
 	_data = data
@@ -33,5 +34,6 @@ func _selection_changed() -> void:
 		_start_ui.set_data(_quest, _data)
 		_tasks_ui.set_data(_quest, _data)
 		_delivery_ui.set_data(_quest, _data)
+		_rewards_ui.set_data(_quest, _data)
 	else:
 		_vbox_ui.hide()
