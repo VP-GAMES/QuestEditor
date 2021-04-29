@@ -3,8 +3,10 @@
 tool
 class_name InventoryManagerInventory
 
-const INVENTORY = "91086e3f-5289-4b86-8d21-6c44bbf917a9"
+const ANY = "e4530fc7-c5d6-41af-9b6e-35249272186a"
+const CLOTHES = "4fffd81e-1325-4ffd-a881-2a4a722089fa"
 
 const INVENTORIES = [
- "Inventory"
+ "Any",
+ "Clothes"
 ]

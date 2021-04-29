@@ -22,6 +22,8 @@ func set_editor(editor: EditorPlugin) -> void:
 const UUID = preload("res://addons/inventory_editor/uuid/uuid.gd")
 # ***** EDITOR_PLUGIN_END *****
 
+const default_path = "res://inventory/"
+
 # ***** INVENTORY *****
 signal inventory_added(inventory)
 signal inventory_removed(inventory)
@@ -409,8 +411,11 @@ func save() -> void:
 	_editor.get_editor_interface().get_resource_filesystem().scan()
 
 func _save_data_inventories() -> void:
+	var directory = Directory.new()
+	if not directory.dir_exists(default_path):
+		directory.make_dir(default_path)
 	var file = File.new()
-	file.open("res://addons/inventory_editor/InventoryManagerInventory.gd", File.WRITE)
+	file.open(default_path + "InventoryManagerInventory.gd", File.WRITE)
 	var source_code = "# List of creted inventories for InventoryManger to use in source code: MIT License\n"
 	source_code += AUTHOR
 	source_code += "tool\n"
@@ -430,7 +435,7 @@ func _save_data_inventories() -> void:
 
 func _save_data_items() -> void:
 	var file = File.new()
-	file.open("res://addons/inventory_editor/InventoryManagerItem.gd", File.WRITE)
+	file.open(default_path + "InventoryManagerItem.gd", File.WRITE)
 	var source_code = "# List of creted items for InventoryManger to use in source code: MIT License\n"
 	source_code += AUTHOR
 	source_code += "tool\n"

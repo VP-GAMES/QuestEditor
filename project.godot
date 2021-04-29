@@ -107,12 +107,12 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "InventoryManagerInventory",
 "language": "GDScript",
-"path": "res://addons/inventory_editor/InventoryManagerInventory.gd"
+"path": "res://inventory/InventoryManagerInventory.gd"
 }, {
 "base": "Reference",
 "class": "InventoryManagerItem",
 "language": "GDScript",
-"path": "res://addons/inventory_editor/InventoryManagerItem.gd"
+"path": "res://inventory/InventoryManagerItem.gd"
 }, {
 "base": "Resource",
 "class": "InventoryType",
