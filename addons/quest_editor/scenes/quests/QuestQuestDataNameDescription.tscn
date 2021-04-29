@@ -32,10 +32,17 @@ valign = 1
 
 [node name="UIName" type="LineEdit" parent="HBoxName"]
 margin_left = 134.0
-margin_right = 1024.0
+margin_right = 577.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
+
+[node name="Dropdown" parent="HBoxName" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 581.0
+margin_right = 1024.0
+margin_bottom = 30.0
 
 [node name="HBoxDescription" type="HBoxContainer" parent="."]
 margin_top = 34.0
@@ -51,7 +58,7 @@ text = "Description"
 
 [node name="Description" type="TextEdit" parent="HBoxDescription"]
 margin_left = 134.0
-margin_right = 1024.0
+margin_right = 577.0
 margin_bottom = 120.0
 rect_min_size = Vector2( 0, 120 )
 size_flags_horizontal = 3
@@ -59,7 +66,8 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
 
 [node name="Dropdown" parent="HBoxDescription" instance=ExtResource( 2 )]
-visible = false
-margin_left = 556.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 581.0
 margin_right = 1024.0
 margin_bottom = 120.0

@@ -313,6 +313,12 @@ func setting_triggers_split_offset() -> int:
 func setting_triggers_split_offset_put(offset: int) -> void:
 	ProjectSettings.set_setting(SETTINGS_TRIGGERS_SPLIT_OFFSET, offset)
 
+func setting_localization_editor_enabled() -> bool:
+	if ProjectSettings.has_setting("editor_plugins/enabled"):
+		var enabled_plugins = ProjectSettings.get_setting("editor_plugins/enabled") as Array
+		return enabled_plugins.has("localization_editor")
+	return false
+
 # ***** UTILS *****
 func filename(value: String) -> String:
 	var index = value.find_last("/")
