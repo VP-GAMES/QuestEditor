@@ -1,3 +1,8 @@
 keys,en,de,ru
 BOY,Boy,Junge,Мальчик
 GIRL,Girl,Mädchen,Девочка
+QUEST_START_01,"Hello, do you need help?","Hallo, brauchts du Hilfe?","Привет, тебе нужна помошь?"
+QUEST_START_02,"Yes, please go to the wood and kill 1 enemy, speak with NPC, trigger switsch and find a hidden item.","Ja, bitte gehe in den Wald, bekämpfe einen Gegner, lege den Schalter um und finde ein verstecktes Item.","Да, пожалуйста сходи в лес, победи врага, переключи выключатель и найди спрятанный предмет."
+QUEST_START_03,"Thank you, i try to do so.","Danke dir, ich versuche es zu erledigen.","Спасибо тебе, я попробую все сделать."
+QUEST_START_04,"Sorry, i have no time.",Entschuldige ich habe leider keine Zeit.,"Извени, но я не могу."
+QUEST_START_05,Good look!,Viel Erfolg!,Успеха!

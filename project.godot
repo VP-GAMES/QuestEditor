@@ -278,7 +278,7 @@ config/icon="res://icon.png"
 [dialogue_editor]
 
 scenes_split_offset=300
-dialogues_selected_dialogue="Recursion"
+dialogues_selected_dialogue="Quest"
 
 [editor_plugins]
 
