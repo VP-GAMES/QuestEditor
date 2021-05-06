@@ -51,7 +51,7 @@ func _fill_dropdown_description_ui() -> void:
 		for key in localization_editor.get_data().data.keys:
 			var item = {"text": key.value, "value": key.value}
 			_dropdown_description_ui.add_item(item)
-		_dropdown_description_ui.set_selected_by_value(_quest.uiname)
+		_dropdown_description_ui.set_selected_by_value(_quest.description)
 
 func _init_connections() -> void:
 	if not _uiname_ui.is_connected("text_changed", self, "_on_uiname_changed"):
