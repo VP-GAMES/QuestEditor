@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://addons/quest_editor/use/2d/QuestNpc2D.gd" type="Script" id=1]
-[ext_resource path="res://quest_example/textures/NPC.png" type="Texture" id=2]
+[ext_resource path="res://quest_example/textures/Girl.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 580.544, 228.882 )

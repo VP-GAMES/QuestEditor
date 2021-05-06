@@ -278,7 +278,7 @@ config/icon="res://icon.png"
 [dialogue_editor]
 
 scenes_split_offset=300
-dialogues_selected_dialogue="Quest"
+dialogues_selected_dialogue="2d32ccab-9668-4dd3-9e0d-560e799add0c"
 
 [editor_plugins]
 

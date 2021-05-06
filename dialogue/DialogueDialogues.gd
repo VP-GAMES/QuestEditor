@@ -4,7 +4,9 @@ tool
 class_name DialogueDialogues
 
 const QUEST = "f8991765-0fff-4d5c-b806-f18501d05346"
+const QUESTSPEAKJOHN = "2d32ccab-9668-4dd3-9e0d-560e799add0c"
 
 const DIALOGUES = [
- "Quest"
+ "Quest",
+ "QuestSpeakJohn"
 ]
