@@ -279,6 +279,7 @@ config/icon="res://icon.png"
 [autoload]
 
 InventoryManager="*res://addons/inventory_editor/InventoryManager.gd"
+DialogueManager="*res://addons/dialogue_editor/DialogueManager.gd"
 
 [dialogue_editor]
 

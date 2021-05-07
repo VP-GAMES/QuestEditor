@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://quest_example/textures/Background.png" type="Texture" id=1]
 [ext_resource path="res://quest_example/2d/player/Player.tscn" type="PackedScene" id=2]
@@ -10,12 +10,17 @@
 [ext_resource path="res://quest_example/2d/Level.gd" type="Script" id=8]
 [ext_resource path="res://quest_example/quest_ui/QuestUi.tscn" type="PackedScene" id=9]
 [ext_resource path="res://quest_example/textures/Quest.png" type="Texture" id=10]
+[ext_resource path="res://addons/dialogue_editor/DialogueDialogue2D.gd" type="Script" id=11]
+[ext_resource path="res://quest_example/textures/Girl.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5878.86, 10 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 354.342 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 473.982, 223.308 )
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 8 )
@@ -80,6 +85,18 @@ position = Vector2( 5600, 0 )
 position = Vector2( 0, -300 )
 shape = SubResource( 2 )
 
+[node name="Girl" type="Sprite" parent="."]
+position = Vector2( 1008.95, 503.661 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 12 )
+
+[node name="Dialogue2D" type="Area2D" parent="Girl"]
+script = ExtResource( 11 )
+dialogue_name = "f8991765-0fff-4d5c-b806-f18501d05346"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Girl/Dialogue2D"]
+shape = SubResource( 3 )
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 549 )
 scale = Vector2( 0.2, 0.2 )
@@ -107,8 +124,10 @@ margin_bottom = 370.0
 [node name="QuestButton" type="TextureButton" parent="CanvasLayer"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -70.0
-margin_bottom = 70.0
+margin_left = -70.0496
+margin_top = 0.0496063
+margin_right = -0.0495605
+margin_bottom = 70.0496
 texture_normal = ExtResource( 10 )
 expand = true
 __meta__ = {
