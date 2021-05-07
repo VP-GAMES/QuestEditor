@@ -273,7 +273,12 @@ _global_script_class_icons={
 [application]
 
 config/name="QuestEditor"
+run/main_scene="res://quest_example/2d/Level.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+InventoryManager="*res://addons/inventory_editor/InventoryManager.gd"
 
 [dialogue_editor]
 

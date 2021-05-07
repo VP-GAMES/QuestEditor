@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://quest_example/textures/Background.png" type="Texture" id=1]
 [ext_resource path="res://quest_example/2d/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://quest_example/textures/BackgroundSide.png" type="Texture" id=3]
 [ext_resource path="res://quest_example/textures/BackgroundLeft.png" type="Texture" id=4]
 [ext_resource path="res://quest_example/textures/BackgroundRight.png" type="Texture" id=5]
+[ext_resource path="res://quest_example/inventory_ui/InventoryUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://quest_example/textures/Chest.png" type="Texture" id=7]
+[ext_resource path="res://quest_example/2d/Level.gd" type="Script" id=8]
+[ext_resource path="res://quest_example/quest_ui/QuestUi.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5878.86, 10 )
@@ -13,8 +17,10 @@ extents = Vector2( 5878.86, 10 )
 extents = Vector2( 10, 354.342 )
 
 [node name="Level" type="Node2D"]
+script = ExtResource( 8 )
 
 [node name="Background" type="Node2D" parent="."]
+position = Vector2( 0, 550 )
 
 [node name="Background" type="Sprite" parent="Background"]
 position = Vector2( 0, -320 )
@@ -74,5 +80,31 @@ position = Vector2( 0, -300 )
 shape = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, -3 )
+position = Vector2( 0, 549 )
 scale = Vector2( 0.2, 0.2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource( 6 )]
+visible = false
+anchor_left = 0.00103468
+anchor_right = 0.00103468
+margin_left = 68.9405
+margin_top = 70.0
+margin_right = 368.94
+margin_bottom = 370.0
+
+[node name="InventoryButton" type="TextureButton" parent="CanvasLayer"]
+margin_right = 70.0
+margin_bottom = 70.0
+texture_normal = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quest" parent="CanvasLayer" instance=ExtResource( 9 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -300.0
+margin_right = 0.0
