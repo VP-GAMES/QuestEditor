@@ -35,8 +35,8 @@ margin_bottom = 20.0
 rect_min_size = Vector2( 0, 20 )
 size_flags_horizontal = 3
 bbcode_enabled = true
-bbcode_text = "[center][color=yellow]HEAD[/color][/center]"
-text = "HEAD"
+bbcode_text = "[center][color=yellow]NO QUEST[/color][/center]"
+text = "NO QUEST"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect/Margin/VBox"]
 margin_top = 24.0
@@ -45,5 +45,5 @@ margin_bottom = 275.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
-bbcode_text = "[center]Quest description[/center]"
-text = "Quest description"
+bbcode_text = "[center]...[/center]"
+text = "..."

@@ -278,6 +278,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
+LocalizationManager="*res://addons/localization_editor/LocalizationManager.gd"
 InventoryManager="*res://addons/inventory_editor/InventoryManager.gd"
 DialogueManager="*res://addons/dialogue_editor/DialogueManager.gd"
 
