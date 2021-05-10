@@ -16,3 +16,5 @@ shape = SubResource( 1 )
 [node name="Girl" type="Sprite" parent="."]
 position = Vector2( 0, -220 )
 texture = ExtResource( 2 )
+
+[node name="QuestTriggerUUID_69d85fe9-197e-4dd6-b295-00fbec1d6192" type="Node" parent="."]

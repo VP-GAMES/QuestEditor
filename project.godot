@@ -164,7 +164,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/quest_editor/use/2d/QuestDestination2D.gd"
 }, {
-"base": "Node2D",
+"base": "Area",
 "class": "QuestDestination3D",
 "language": "GDScript",
 "path": "res://addons/quest_editor/use/3d/QuestDestination3D.gd"
@@ -174,15 +174,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/quest_editor/use/2d/QuestEnemy2D.gd"
 }, {
-"base": "Node2D",
+"base": "Area",
 "class": "QuestEnemy3D",
 "language": "GDScript",
 "path": "res://addons/quest_editor/use/3d/QuestEnemy3D.gd"
-}, {
-"base": "Node",
-"class": "QuestManager",
-"language": "GDScript",
-"path": "res://addons/quest_editor/QuestManager.gd"
 }, {
 "base": "Area2D",
 "class": "QuestNPC2D",
@@ -219,7 +214,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/quest_editor/use/2d/QuestTrigger2D.gd"
 }, {
-"base": "Node2D",
+"base": "Area",
 "class": "QuestTrigger3D",
 "language": "GDScript",
 "path": "res://addons/quest_editor/use/3d/QuestTrigger3D.gd"
@@ -259,7 +254,6 @@ _global_script_class_icons={
 "QuestDestination3D": "",
 "QuestEnemy2D": "",
 "QuestEnemy3D": "",
-"QuestManager": "",
 "QuestNPC2D": "",
 "QuestNPC3D": "",
 "QuestPlayer2D": "",
@@ -281,6 +275,7 @@ config/icon="res://icon.png"
 LocalizationManager="*res://addons/localization_editor/LocalizationManager.gd"
 InventoryManager="*res://addons/inventory_editor/InventoryManager.gd"
 DialogueManager="*res://addons/dialogue_editor/DialogueManager.gd"
+QuestManager="*res://addons/quest_editor/QuestManager.gd"
 
 [dialogue_editor]
 

@@ -44,9 +44,13 @@ export (Array) var rewards
 
 const UUID = preload("res://addons/quest_editor/uuid/uuid.gd")
 
+const QUESTSTATE_UNDEFINED ="UNDEFINED"
+const QUESTSTATE_STARTED ="STARTED"
+const QUESTSTATE_DONE ="DONE"
+
 func _init() -> void:
 	uuid = UUID.v4()
-	state = "UNDEFINED"
+	state = QUESTSTATE_UNDEFINED
 
 func change_name(new_name: String):
 	name = new_name
