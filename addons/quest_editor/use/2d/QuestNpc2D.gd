@@ -14,6 +14,7 @@ export(String) var activate = "action"
 export(String) var cancel = "cancel"
 
 var _uuid: String
+var _quest: QuestQuest
 
 func get_uuid() -> String:
 	if not _uuid or _uuid.empty():
@@ -65,6 +66,33 @@ func _input(event: InputEvent):
 
 func _start_dialogue() -> void:
 	var trigger = questManager.get_trigger_by_ui_uuid(_uuid)
-	var quest = questManager.get_quest_available_by_trigger(trigger.uuid)
+	_quest = questManager.get_quest_available_by_trigger(trigger.uuid)
 	if not dialogueManager.is_started():
-		dialogueManager.start_dialogue(quest.quest_start_dialogue)
+		var dialogue_started = false
+		if _quest.is_state_undefined() and _quest.is_quest_start_dialogue() :
+			dialogueManager.start_dialogue(_quest.quest_start_dialogue)
+			dialogue_started = true
+		if _quest.is_state_started() and _quest.is_quest_running_dialogue():
+			dialogueManager.start_dialogue(_quest.quest_running_dialogue)
+			dialogue_started = true
+		if dialogue_started:
+			if not dialogueManager.is_connected("dialogue_event", self, "_dialogue_event_accept_quest"):
+				dialogueManager.connect("dialogue_event", self, "_dialogue_event_accept_quest")
+			if not dialogueManager.is_connected("dialogue_canceled", self, "_dialogue_canceled_event"):
+				dialogueManager.connect("dialogue_canceled", self, "_dialogue_canceled_event")
+			if not dialogueManager.is_connected("dialogue_ended", self, "_dialogue_ended_event"):
+				dialogueManager.connect("dialogue_ended", self, "_dialogue_ended_event")
+
+func _dialogue_event_accept_quest(event: String) -> void:
+	if event == "ACCEPT_QUEST":
+		_quest.state = QuestQuest.QUESTSTATE_STARTED
+
+func _dialogue_canceled_event(event) -> void:
+	_dialogue_ended()
+
+func _dialogue_ended_event(event) -> void:
+	_dialogue_ended()
+
+func _dialogue_ended() -> void:
+	dialogueManager.disconnect("dialogue_event", self, "_dialogue_event_accept_quest")
+	dialogueManager.disconnect("dialogue_ended", self, "_dialogue_ended_event")

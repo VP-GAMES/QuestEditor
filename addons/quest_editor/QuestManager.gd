@@ -30,6 +30,6 @@ func get_trigger_by_ui_uuid(trigger_ui: String) -> QuestTrigger:
 
 func get_quest_available_by_trigger(quest_trigger: String) -> QuestQuest:
 	for quest in _data.quests:
-		if quest.quest_trigger == quest_trigger and quest.state == QuestQuest.QUESTSTATE_UNDEFINED:
+		if quest.quest_trigger == quest_trigger and (quest.state == QuestQuest.QUESTSTATE_UNDEFINED or quest.state == QuestQuest.QUESTSTATE_STARTED):
 			return quest
 	return null

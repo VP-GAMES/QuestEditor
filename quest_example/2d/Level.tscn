@@ -90,8 +90,6 @@ scale = Vector2( 0.2, 0.2 )
 position = Vector2( 1000, 549 )
 scale = Vector2( 0.2, 0.2 )
 
-[node name="QuestTriggerUUID_757b1327-7316-448e-b989-f53f7f95c26b" type="Node" parent="Girl"]
-
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 549 )
 scale = Vector2( 0.2, 0.2 )

@@ -64,6 +64,21 @@ func change_description(new_description: String):
 	description = new_description
 	emit_signal("description_changed")
 
+func is_state_undefined() -> bool:
+	return state == QUESTSTATE_UNDEFINED
+
+func is_state_started() -> bool:
+	return state == QUESTSTATE_STARTED
+
+func is_state_done() -> bool:
+	return state == QUESTSTATE_DONE
+
+func is_quest_start_dialogue() -> bool:
+	return quest_start_dialogue and not quest_start_dialogue.empty()
+
+func is_quest_running_dialogue() -> bool:
+	return quest_running_dialogue and not quest_running_dialogue.empty()
+
 # ***** REQUEREMENTS *****
 signal requerements_changed
 
