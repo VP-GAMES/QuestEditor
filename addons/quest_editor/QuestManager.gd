@@ -29,7 +29,37 @@ func get_trigger_by_ui_uuid(trigger_ui: String) -> QuestTrigger:
 	return null
 
 func get_quest_available_by_trigger(quest_trigger: String) -> QuestQuest:
+	var response_quest = null
 	for quest in _data.quests:
-		if quest.quest_trigger == quest_trigger and (quest.state == QuestQuest.QUESTSTATE_UNDEFINED or quest.state == QuestQuest.QUESTSTATE_STARTED):
-			return quest
-	return null
+		if quest.quest_trigger == quest_trigger:
+			if quest.state == QuestQuest.QUESTSTATE_STARTED:
+				response_quest = quest
+			if quest.state == QuestQuest.QUESTSTATE_UNDEFINED:
+				if _precompleted_quest_done(quest) and _quest_requerements_fulfilled(quest):
+					 response_quest = quest
+	return response_quest
+
+func _precompleted_quest_done(quest: QuestQuest) -> bool:
+	if not quest.precompleted_quest or quest.precompleted_quest.empty():
+		return true
+	else:
+		return _data.get_quest_by_uuid(quest.precompleted_quest).state == QuestQuest.QUESTSTATE_DONE
+
+func _quest_requerements_fulfilled(quest: QuestQuest) -> bool:
+	if quest.requerements.empty():
+		return true
+	for requerement in quest.requerements:
+		if not _player.has_method(requerement.method):
+			return false
+		else:
+			match requerement.type:
+				QuestQuest.REQUEREMENT_BOOL:
+					if not _player.call(requerement.method, requerement.params) == true:
+						return false
+				QuestQuest.REQUEREMENT_NUMBER:
+					if not _player.call(requerement.method, requerement.params) == int(requerement.response):
+						return false
+				QuestQuest.REQUEREMENT_TEXT:
+					if not _player.call(requerement.method, requerement.params) == requerement.response:
+						return false
+	return true

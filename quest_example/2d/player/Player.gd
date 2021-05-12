@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends QuestPlayer2D
 
 const FLOOR_NORMAL: = Vector2.UP
 export var speed: = Vector2(400.0, 500.0)

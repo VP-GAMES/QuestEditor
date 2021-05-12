@@ -27,7 +27,6 @@ export (String) var description
 export (String) var state
 # * REQUEREMENT
 export (String) var precompleted_quest = ""
-export (String) var quest_requerement = ""
 export (Array) var requerements
 # * DIALOGUE TRIGGER
 export (String) var quest_trigger = ""
