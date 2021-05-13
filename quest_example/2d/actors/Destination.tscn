@@ -16,3 +16,6 @@ shape = SubResource( 1 )
 [node name="Destination" type="Sprite" parent="."]
 position = Vector2( 0, -250 )
 texture = ExtResource( 2 )
+offset = Vector2( 0, 50 )
+
+[node name="QuestTriggerUUID_0576442f-a29f-44b0-9053-a4de02c6614f" type="Node" parent="."]
