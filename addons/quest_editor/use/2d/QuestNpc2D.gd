@@ -58,16 +58,29 @@ func _on_body_exited(body: Node) -> void:
 func _input(event: InputEvent):
 	if inside and dialogueManager:
 		if event.is_action_released(activate):
-			_start_dialogue()
+			var trigger = questManager.get_trigger_by_ui_uuid(_uuid)
+			_quest = questManager.get_quest_available_by_start_trigger(trigger.uuid)
+			if not questManager.is_quest_started():
+				if _quest:
+					_start_quest_and_dialogue()
+			else:
+				if _quest:
+					if _quest.is_quest_running_dialogue() and not dialogueManager.is_started():
+						dialogueManager.start_dialogue(_quest.quest_running_dialogue)
+				else:
+					_quest = questManager.started_quest()
+					var task_trigger = questManager.get_trigger_by_ui_uuid(_uuid)
+					var task = questManager.get_task_and_update_quest_state(_quest, task_trigger.uuid)
+					if task.dialogue and not task.dialogue.empty():
+						dialogueManager.start_dialogue(task.dialogue)
+					print("===> ", task.done)
 		if event.is_action_released(activate):
-			dialogueManager.next_sentence()
+				dialogueManager.next_sentence()
 		if event.is_action_released(cancel):
 			dialogueManager.cancel_dialogue()
 
-func _start_dialogue() -> void:
-	var trigger = questManager.get_trigger_by_ui_uuid(_uuid)
-	_quest = questManager.get_quest_available_by_trigger(trigger.uuid)
-	if _quest and not dialogueManager.is_started():
+func _start_quest_and_dialogue() -> void:
+	if not dialogueManager.is_started():
 		if _quest.is_state_undefined() and _quest.is_quest_start_dialogue():
 			dialogueManager.start_dialogue(_quest.quest_start_dialogue)
 			if not dialogueManager.is_connected("dialogue_event", self, "_dialogue_event_accept_quest"):
@@ -76,8 +89,6 @@ func _start_dialogue() -> void:
 				dialogueManager.connect("dialogue_canceled", self, "_dialogue_canceled_event")
 			if not dialogueManager.is_connected("dialogue_ended", self, "_dialogue_ended_event"):
 				dialogueManager.connect("dialogue_ended", self, "_dialogue_ended_event")
-		elif _quest.is_state_started() and _quest.is_quest_running_dialogue():
-			dialogueManager.start_dialogue(_quest.quest_running_dialogue)
 
 func _dialogue_event_accept_quest(event: String) -> void:
 	if event == "ACCEPT_QUEST":

@@ -10,6 +10,8 @@ var questManager
 const questManagerName = "QuestManager"
 
 var inside
+export(String) var activate = "action"
+export(String) var cancel = "cancel"
 
 var _uuid: String
 var _quest: QuestQuest
@@ -47,7 +49,24 @@ func _ready() -> void:
 func _on_body_entered(body: Node) -> void:
 	inside = true
 	if dialogueManager:
-		_start_dialogue()
+		var trigger = questManager.get_trigger_by_ui_uuid(_uuid)
+		_quest = questManager.get_quest_available_by_start_trigger(trigger.uuid)
+		if not questManager.is_quest_started():
+			if _quest:
+				_start_quest_and_dialogue()
+		else:
+			if _quest:
+				if _quest.is_quest_running_dialogue() and not dialogueManager.is_started():
+					dialogueManager.start_dialogue(_quest.quest_running_dialogue)
+					dialogueManager.next_sentence()
+			else:
+				_quest = questManager.started_quest()
+				var task_trigger = questManager.get_trigger_by_ui_uuid(_uuid)
+				var task = questManager.get_task_and_update_quest_state(_quest, task_trigger.uuid)
+				if task.dialogue and not task.dialogue.empty():
+					dialogueManager.start_dialogue(task.dialogue)
+					dialogueManager.next_sentence()
+				print("===> ", task.done)
 
 func _on_body_exited(body: Node) -> void:
 	inside = false
@@ -55,10 +74,13 @@ func _on_body_exited(body: Node) -> void:
 		if dialogueManager.is_started():
 			dialogueManager.cancel_dialogue()
 
-func _start_dialogue() -> void:
-	var trigger = questManager.get_trigger_by_ui_uuid(_uuid)
-	_quest = questManager.get_quest_available_by_trigger(trigger.uuid)
-	if _quest and not dialogueManager.is_started():
+func _input(event: InputEvent):
+	if inside and dialogueManager:
+		if event.is_action_released(activate):
+				dialogueManager.next_sentence()
+
+func _start_quest_and_dialogue() -> void:
+	if not dialogueManager.is_started():
 		if _quest.is_state_undefined() and _quest.is_quest_start_dialogue():
 			dialogueManager.start_dialogue(_quest.quest_start_dialogue)
 			dialogueManager.next_sentence()

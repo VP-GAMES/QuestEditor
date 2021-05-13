@@ -23,6 +23,18 @@ func load_data() -> void:
 func set_player(player) -> void:
 	_player = player
 
+func is_quest_started() -> bool:
+	for quest in _data.quests:
+		if quest.state == QuestQuest.QUESTSTATE_STARTED:
+			return true
+	return false
+
+func started_quest() -> QuestQuest:
+	for quest in _data.quests:
+		if quest.state == QuestQuest.QUESTSTATE_STARTED:
+			return quest
+	return null
+
 func start_quest(quest: QuestQuest) -> void:
 	quest.state = QuestQuest.QUESTSTATE_STARTED
 	emit_signal("quest_started", quest)
@@ -30,6 +42,9 @@ func start_quest(quest: QuestQuest) -> void:
 func end_quest(quest: QuestQuest) -> void:
 	quest.state = QuestQuest.QUESTSTATE_DONE
 	emit_signal("quest_ended", quest)
+
+func get_task_and_update_quest_state(quest: QuestQuest, trigger_uuid: String, add_quantity = 0):
+	return quest.update_task_state(trigger_uuid, add_quantity)
 
 func get_trigger_by_ui_uuid(trigger_ui: String) -> QuestTrigger:
 	for trigger in _data.triggers:
@@ -41,7 +56,7 @@ func get_trigger_by_ui_uuid(trigger_ui: String) -> QuestTrigger:
 					return trigger
 	return null
 
-func get_quest_available_by_trigger(quest_trigger: String) -> QuestQuest:
+func get_quest_available_by_start_trigger(quest_trigger: String) -> QuestQuest:
 	var response_quest = null
 	for quest in _data.quests:
 		if quest.quest_trigger == quest_trigger:

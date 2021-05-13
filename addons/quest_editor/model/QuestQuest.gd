@@ -120,8 +120,20 @@ func _del_requerement(requerement) -> void:
 # ***** TASKS *****
 signal tasks_changed
 
+func update_task_state(trigger_uuid, add_quantity = 0):
+	for task in tasks:
+		if task.trigger == trigger_uuid:
+			if task.quantity > 0:
+				task.quantity_now += add_quantity
+				if task.quantity_now >= task.quantity:
+					task.done = true
+			else:
+				task.done = true
+			return task
+	return null
+
 func add_task() -> void:
-	var task = {"trigger": "", "dialogue": "", "quantity": 0, "done": false }
+	var task = {"trigger": "", "dialogue": "", "quantity": 0, "quantity_now": 0, "done": false }
 	if _undo_redo != null:
 		_undo_redo.create_action("Add task")
 		_undo_redo.add_do_method(self, "_add_task", task)
