@@ -9,6 +9,7 @@ QUEST_START_02,"Yes, please go to the wood and kill 1 enemy, speak with John, tr
 QUEST_START_03,"Thank you, i try to do so.","Danke dir, ich versuche es zu erledigen.","Спасибо тебе, я попробую все сделать."
 QUEST_START_04,"Sorry, i have no time.",Entschuldige ich habe leider keine Zeit.,"Извени, но я не могу."
 QUEST_START_05,Good look!,Viel Erfolg!,Успеха!
+QUEST_STARTET,You have already a task.,Du hast bereits eine Aufgabe.,У тебя уже есть задание.
 QUEST_START_NAME,[center][color=yellow]The long search[/color][/center],[center][color=yellow]Die lange Suche[/color][/center],[center][color=yellow]Долгий поиск[/color][/center]
 QUEST_START_DESCRIPTION,"[center]Go to the wood and kill 1 enemy, speak with John, trigger switsch and find a hidden item.[/center]","[center]Gehe in den Wald, bekämpfe einen Gegner, sprich mit Johan, lege den Schalter um und finde ein verstecktes Item.[/center]","[center]Сходи в лес, победи врага, поговори с Ваней, переключи выключатель и найди спрятанный предмет.[/center]"
 QUEST_SPEACK_JOHN_01,"Hi John, i search for a hidden item!","Hallo Johan, ich suche nach dem verstecktem Item.","Привет Ваня, я ищу спрятанный предмет."
