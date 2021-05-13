@@ -71,21 +71,19 @@ func _start_dialogue() -> void:
 		var dialogue_started = false
 		if _quest.is_state_undefined() and _quest.is_quest_start_dialogue() :
 			dialogueManager.start_dialogue(_quest.quest_start_dialogue)
-			dialogue_started = true
-		if _quest.is_state_started() and _quest.is_quest_running_dialogue():
-			dialogueManager.start_dialogue(_quest.quest_running_dialogue)
-			dialogue_started = true
-		if dialogue_started:
+			dialogue_started = true			
 			if not dialogueManager.is_connected("dialogue_event", self, "_dialogue_event_accept_quest"):
 				dialogueManager.connect("dialogue_event", self, "_dialogue_event_accept_quest")
 			if not dialogueManager.is_connected("dialogue_canceled", self, "_dialogue_canceled_event"):
 				dialogueManager.connect("dialogue_canceled", self, "_dialogue_canceled_event")
 			if not dialogueManager.is_connected("dialogue_ended", self, "_dialogue_ended_event"):
 				dialogueManager.connect("dialogue_ended", self, "_dialogue_ended_event")
+		if _quest.is_state_started() and _quest.is_quest_running_dialogue():
+			dialogueManager.start_dialogue(_quest.quest_running_dialogue)
 
 func _dialogue_event_accept_quest(event: String) -> void:
 	if event == "ACCEPT_QUEST":
-		_quest.state = QuestQuest.QUESTSTATE_STARTED
+		questManager.start_quest(_quest)
 
 func _dialogue_canceled_event(event) -> void:
 	_dialogue_ended()

@@ -32,3 +32,13 @@ func calculate_move_velocity(
 	if is_jump_interrupted:
 		velocity.y = 0.0
 	return velocity
+
+# Methods for requerements
+func is_valid_player() -> bool:
+	return true
+
+func player_lvl() -> int:
+	return 5 
+
+func player_class() -> String:
+	return "PALADIN" 

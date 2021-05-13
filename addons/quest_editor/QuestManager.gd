@@ -3,6 +3,11 @@
 tool
 extends Node
 
+signal quest_loaded(quest)
+signal quest_started(quest)
+signal quest_updated(quest)
+signal quest_ended(quest)
+
 var _player
 var _data: = QuestData.new()
 var _data_loaded = false
@@ -17,6 +22,14 @@ func load_data() -> void:
 
 func set_player(player) -> void:
 	_player = player
+
+func start_quest(quest: QuestQuest) -> void:
+	quest.state = QuestQuest.QUESTSTATE_STARTED
+	emit_signal("quest_started", quest)
+
+func end_quest(quest: QuestQuest) -> void:
+	quest.state = QuestQuest.QUESTSTATE_DONE
+	emit_signal("quest_ended", quest)
 
 func get_trigger_by_ui_uuid(trigger_ui: String) -> QuestTrigger:
 	for trigger in _data.triggers:
@@ -50,16 +63,19 @@ func _quest_requerements_fulfilled(quest: QuestQuest) -> bool:
 		return true
 	for requerement in quest.requerements:
 		if not _player.has_method(requerement.method):
-			return false
+			assert(false, "Player has no method " + requerement.method + " defined in " + quest.name)
 		else:
 			match requerement.type:
 				QuestQuest.REQUEREMENT_BOOL:
-					if not _player.call(requerement.method, requerement.params) == true:
-						return false
+					return _call_requerement_method(requerement) == true
 				QuestQuest.REQUEREMENT_NUMBER:
-					if not _player.call(requerement.method, requerement.params) == int(requerement.response):
-						return false
+					return _call_requerement_method(requerement) == int(requerement.response)
 				QuestQuest.REQUEREMENT_TEXT:
-					if not _player.call(requerement.method, requerement.params) == requerement.response:
-						return false
+					return _call_requerement_method(requerement) == requerement.response
 	return true
+
+func _call_requerement_method(requerement):
+	if requerement.params.empty():
+		return _player.call(requerement.method)
+	else:
+		return _player.call(requerement.method, requerement.params)
