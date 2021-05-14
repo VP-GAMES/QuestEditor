@@ -16,3 +16,5 @@ shape = SubResource( 1 )
 [node name="Enemy" type="Sprite" parent="."]
 position = Vector2( 0, -220 )
 texture = ExtResource( 2 )
+
+[node name="QuestTriggerUUID_0121f4f9-3cfc-4ae8-a6e3-191bf7e8991d" type="Node" parent="."]

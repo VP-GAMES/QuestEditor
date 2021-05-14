@@ -124,6 +124,8 @@ func update_task_state(trigger_uuid, add_quantity = 0):
 	for task in tasks:
 		if task.trigger == trigger_uuid:
 			if task.quantity > 0:
+				if not task.has("quantity_now"):
+					task["quantity_now"] = 0
 				task.quantity_now += add_quantity
 				if task.quantity_now >= task.quantity:
 					task.done = true

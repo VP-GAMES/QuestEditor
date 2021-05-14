@@ -169,7 +169,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/quest_editor/use/3d/QuestDestination3D.gd"
 }, {
-"base": "Node2D",
+"base": "Area2D",
 "class": "QuestEnemy2D",
 "language": "GDScript",
 "path": "res://addons/quest_editor/use/2d/QuestEnemy2D.gd"
@@ -317,6 +317,11 @@ action={
 cancel={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"unicode":0,"echo":false,"script":null)
+ ]
+}
+attack={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":70,"unicode":0,"echo":false,"script":null)
  ]
 }
 

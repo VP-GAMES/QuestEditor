@@ -73,7 +73,6 @@ func _input(event: InputEvent):
 					var task = questManager.get_task_and_update_quest_state(_quest, task_trigger.uuid)
 					if task.dialogue and not task.dialogue.empty():
 						dialogueManager.start_dialogue(task.dialogue)
-					print("===> ", task.done)
 		if event.is_action_released(activate):
 				dialogueManager.next_sentence()
 		if event.is_action_released(cancel):

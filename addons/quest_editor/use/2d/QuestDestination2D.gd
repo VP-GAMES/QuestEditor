@@ -66,7 +66,6 @@ func _on_body_entered(body: Node) -> void:
 				if task.dialogue and not task.dialogue.empty():
 					dialogueManager.start_dialogue(task.dialogue)
 					dialogueManager.next_sentence()
-				print("===> ", task.done)
 
 func _on_body_exited(body: Node) -> void:
 	inside = false
