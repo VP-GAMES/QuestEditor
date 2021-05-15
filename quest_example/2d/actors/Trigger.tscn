@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://addons/quest_editor/use/2d/QuestTrigger2D.gd" type="Script" id=1]
+[ext_resource path="res://quest_example/2d/actors/Trigger.gd" type="Script" id=1]
 [ext_resource path="res://quest_example/textures/Trigger.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -16,3 +16,5 @@ shape = SubResource( 1 )
 [node name="Trigger" type="Sprite" parent="."]
 position = Vector2( 0, -256 )
 texture = ExtResource( 2 )
+
+[node name="QuestTriggerUUID_78f370ab-49b4-42ca-8da0-a21bdbb65639" type="Node" parent="."]

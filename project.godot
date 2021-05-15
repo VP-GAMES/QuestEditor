@@ -209,7 +209,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/quest_editor/model/QuestTrigger.gd"
 }, {
-"base": "Node2D",
+"base": "Area2D",
 "class": "QuestTrigger2D",
 "language": "GDScript",
 "path": "res://addons/quest_editor/use/2d/QuestTrigger2D.gd"
