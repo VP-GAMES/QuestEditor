@@ -110,7 +110,7 @@ position = Vector2( 300, 549 )
 scale = Vector2( 0.2, 0.2 )
 
 [node name="Item2D" type="Node2D" parent="."]
-position = Vector2( 100, 495 )
+position = Vector2( -100, 495 )
 script = ExtResource( 16 )
 item_put = "29e273d0-c864-4f32-8511-923ba53a0399"
 to_inventory = "8e526c15-dfbe-478b-b0c9-a05aa8722cb0"

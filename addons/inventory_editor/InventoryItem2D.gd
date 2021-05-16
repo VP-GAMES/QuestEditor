@@ -7,6 +7,8 @@ class_name Item2D
 var inside 
 var _inventoryManager
 const InventoryManagerName = "InventoryManager"
+var questManager
+const questManagerName = "QuestManager"
 
 export(String) var item_put # item_uuid 
 export(String) var to_inventory # inventory_uuid
@@ -22,6 +24,8 @@ func _ready() -> void:
 				assert(area.connect("body_entered", self, "_on_body_entered") == OK)
 			if not area.is_connected("body_exited", self, "_on_body_exited"):
 				assert(area.connect("body_exited", self, "_on_body_exited") == OK)
+	if get_tree().get_root().has_node(questManagerName):
+		questManager = get_tree().get_root().get_node(questManagerName)
 
 func _on_body_entered(body: Node) -> void:
 	if _inventoryManager.player != body:
@@ -29,7 +33,10 @@ func _on_body_entered(body: Node) -> void:
 	inside = true
 	var remainder = _inventoryManager.add_item(to_inventory, item_put, quantity)
 	if remove_collected and remainder == 0:
-		queue_free() 
+		queue_free()
+		if questManager and questManager.is_quest_started():
+			var quest = questManager.started_quest()
+			var task = questManager.get_task_and_update_quest_state(quest, item_put, quantity)
 
 func _on_body_exited(body: Node) -> void:
 	inside = false
