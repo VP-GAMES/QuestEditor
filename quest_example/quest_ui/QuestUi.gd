@@ -23,7 +23,7 @@ func _on_quest_started(quest: QuestQuest) -> void:
 	_quest = quest
 	_quest_text_update()
 
-func _on_quest_ended(quest: QuestQuest) -> void:
+func _on_quest_ended(_quest_param: QuestQuest) -> void:
 	_quest = null
 	_quest_text_update()
 

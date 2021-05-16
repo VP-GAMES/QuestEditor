@@ -19,7 +19,7 @@ func _ready() -> void:
 	_inventory_button_ui.connect("pressed", self, "_on_inventory_button_pressed")
 	_quest_button_ui.connect("pressed", self, "_on_quest_button_pressed")
 
-func _on_quest_started(quest: QuestQuest) -> void:
+func _on_quest_started(_quest_param: QuestQuest) -> void:
 	_quest_button_ui.texture_normal = textureExtended
 
 func _on_quest_ended(_quest: QuestQuest) -> void:

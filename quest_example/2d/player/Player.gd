@@ -27,13 +27,13 @@ func get_direction() -> Vector2:
 func calculate_move_velocity(
 		linear_velocity: Vector2,
 		direction: Vector2,
-		speed: Vector2,
+		speed_param: Vector2,
 		is_jump_interrupted: bool
 	) -> Vector2:
 	var velocity: = linear_velocity
-	velocity.x = speed.x * direction.x
+	velocity.x = speed_param.x * direction.x
 	if direction.y != 0.0:
-		velocity.y = speed.y * direction.y
+		velocity.y = speed_param.y * direction.y
 	if is_jump_interrupted:
 		velocity.y = 0.0
 	return velocity
