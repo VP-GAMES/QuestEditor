@@ -7,6 +7,7 @@ signal quest_loaded(quest)
 signal quest_started(quest)
 signal quest_updated(quest)
 signal quest_ended(quest)
+signal player_changed
 
 var _player
 var _data: = QuestData.new()
@@ -22,6 +23,7 @@ func load_data() -> void:
 
 func set_player(player) -> void:
 	_player = player
+	emit_signal("player_changed")
 
 func is_quest_started() -> bool:
 	for quest in _data.quests:
@@ -44,7 +46,10 @@ func end_quest(quest: QuestQuest) -> void:
 	emit_signal("quest_ended", quest)
 
 func get_task_and_update_quest_state(quest: QuestQuest, trigger_uuid: String, add_quantity = 0):
-	return quest.update_task_state(trigger_uuid, add_quantity)
+	var task = quest.update_task_state(trigger_uuid, add_quantity)
+	if task and task.done == true:
+		emit_signal("quest_updated", quest)
+	return task
 
 func get_trigger_by_ui_uuid(trigger_ui: String) -> QuestTrigger:
 	for trigger in _data.triggers:

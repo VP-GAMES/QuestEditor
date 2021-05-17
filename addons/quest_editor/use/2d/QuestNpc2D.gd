@@ -46,6 +46,11 @@ func _ready() -> void:
 	if not is_connected("body_exited", self, "_on_body_exited"):
 		assert(connect("body_exited", self, "_on_body_exited") == OK)
 
+func is_quest_available() -> bool:
+	var trigger = questManager.get_trigger_by_ui_uuid(get_uuid())
+	var quest = questManager.get_quest_available_by_start_trigger(trigger.uuid)
+	return quest != null
+
 func _on_body_entered(body: Node) -> void:
 	inside = true
 
@@ -57,7 +62,7 @@ func _on_body_exited(body: Node) -> void:
 
 func _input(event: InputEvent):
 	if inside and dialogueManager:
-		if event.is_action_released(activate):
+		if event.is_action_released(activate) and not dialogueManager.is_started():
 			var trigger = questManager.get_trigger_by_ui_uuid(_uuid)
 			_quest = questManager.get_quest_available_by_start_trigger(trigger.uuid)
 			if not questManager.is_quest_started():

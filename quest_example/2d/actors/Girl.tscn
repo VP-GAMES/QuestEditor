@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://addons/quest_editor/use/2d/QuestNpc2D.gd" type="Script" id=1]
+[ext_resource path="res://quest_example/2d/actors/Girl.gd" type="Script" id=1]
 [ext_resource path="res://quest_example/textures/Girl.png" type="Texture" id=2]
+[ext_resource path="res://quest_example/textures/Attention.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 580.544, 228.882 )
@@ -18,3 +19,7 @@ position = Vector2( 0, -220 )
 texture = ExtResource( 2 )
 
 [node name="QuestTriggerUUID_69d85fe9-197e-4dd6-b295-00fbec1d6192" type="Node" parent="."]
+
+[node name="Attention" type="Sprite" parent="."]
+position = Vector2( 5.2738, -694.621 )
+texture = ExtResource( 3 )
