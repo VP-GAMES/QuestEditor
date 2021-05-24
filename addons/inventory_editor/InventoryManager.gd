@@ -115,6 +115,12 @@ func create_inventory(inventory_uuid:String) -> void:
 		items.append({})
 	_data.inventories[inventory_uuid] = items
 
+func get_item_properties_by_name(item_name: String) -> Array:
+	return _db.get_item_by_name(item_name).properties
+
+func get_item_properties(item_uuid: String) -> Array:
+	return _db.get_item_by_uuid(item_uuid).properties
+
 func get_item_db(item_uuid: String) -> InventoryItem:
 	return _db.get_item_by_uuid(item_uuid)
 
@@ -129,7 +135,7 @@ func remove_item_by_name(inventory_name: String, item_name: String, quantity: in
 	var item = _db.get_inventory_by_name(item_name)
 	remove_item(inventory.uuid, item.uuid, quantity)
 
-func remove_item(inventory_uuid: String, item_uuid: String, quantity: int = 1, save = true) -> void:
+func remove_item(inventory_uuid: String, item_uuid: String, quantity: int = 1, save = true) -> int:
 	if(quantity < 0):
 		printerr("Can't remove negative number of items")
 	if _data.inventories.has(inventory_uuid):
@@ -143,7 +149,9 @@ func remove_item(inventory_uuid: String, item_uuid: String, quantity: int = 1, s
 					items[index] = {}
 				if save:
 					save()
+				return index
 				emit_signal("inventory_changed", inventory_uuid)
+	return -1
 
 func move_item_by_names(inventory_name_from: String, from_index: int, inventory_name_to: String, to_index: int) -> void:
 	var inventory_from = _db.get_inventory_by_name(inventory_name_from)
@@ -228,3 +236,25 @@ func has_item_quantity(item_uuid: String) -> int:
 		if item and item.quantity:
 			quantity = item.quantity
 	return quantity
+
+func is_craft_possible(inventory_uuid, recipe_uuid) -> bool:
+	var recipe_db = get_item_db(recipe_uuid)
+	for ingridient in recipe_db.ingredients:
+		if ingridient.quantity > inventory_item_quantity(inventory_uuid, ingridient.uuid):
+			return false
+	return true
+
+func craft_item(inventory_uuid, recipe_uuid) -> void:
+	var recipe_db = get_item_db(recipe_uuid)
+	for ingridient in recipe_db.ingredients:
+		remove_item(inventory_uuid, ingridient.uuid, ingridient.quantity, false)
+	if inventory_has_item(inventory_uuid, recipe_db.item):
+		add_item(inventory_uuid, recipe_db.item, 1, false)
+		remove_item(inventory_uuid, recipe_db.uuid, 1)
+	elif inventory_item_quantity(inventory_uuid, recipe_db.uuid) > 0:
+		remove_item(inventory_uuid, recipe_db.uuid, 1, false)
+		add_item(inventory_uuid, recipe_db.item, 1)
+	else:
+		var index = remove_item(inventory_uuid, recipe_db.uuid, 1)
+		_data.inventories[inventory_uuid][index] = {"item_uuid": recipe_db.item, "quantity": 1}
+	emit_signal("inventory_changed", inventory_uuid)

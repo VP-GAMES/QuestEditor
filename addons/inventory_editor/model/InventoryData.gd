@@ -247,6 +247,8 @@ func all_items() -> Array:
 	for type in types:
 		for item in type.items:
 			items.append(item)
+	for recipe in recipes:
+		items.append(recipe)
 	return items
 
 func add_item(sendSignal = true) -> void:
@@ -345,6 +347,9 @@ func get_item_by_uuid(uuid: String) -> InventoryItem:
 		for item in type.items:
 			if item.uuid == uuid:
 				return item
+	for recipe in recipes:
+		if recipe.uuid == uuid:
+			return recipe
 	return null
 
 func get_item_by_name(item_name: String) -> InventoryItem:
@@ -352,6 +357,110 @@ func get_item_by_name(item_name: String) -> InventoryItem:
 		for item in type.items:
 			if item.name == item_name:
 				return item
+	for recipe in recipes:
+		if recipe.name == item_name:
+			return recipe
+	return null
+
+# ***** RECIPE *****
+signal recipe_added(recipe)
+signal recipe_removed(recipe)
+signal recipe_selection_changed(recipe)
+signal recipe_icon_changed(item)
+
+func emit_recipe_icon_changed(recipe: InventoryRecipe) -> void:
+	emit_signal("recipe_icon_changed", recipe)
+
+export(Array) var recipes = []
+var _recipe_selected: InventoryRecipe
+
+func add_recipe(sendSignal = true) -> void:
+	var recipe = _create_recipe()
+	if _undo_redo != null:
+		_undo_redo.create_action("Add recipe")
+		_undo_redo.add_do_method(self, "_add_recipe", recipe)
+		_undo_redo.add_undo_method(self, "_del_recipe", recipe)
+		_undo_redo.commit_action()
+	else:
+		_add_recipe(recipe, sendSignal)
+
+func _create_recipe() -> InventoryRecipe:
+	var recipe = InventoryRecipe.new()
+	recipe.set_editor(_editor)
+	recipe.uuid = UUID.v4()
+	recipe.name = _next_recipe_name()
+	recipe.ingredients = []
+	return recipe
+
+func _next_recipe_name() -> String:
+	var base_name = "Recipe"
+	var value = -9223372036854775807
+	var recipe_found = false
+	if recipes:
+		for recipe in recipes:
+			var name = recipe.name
+			if name.begins_with(base_name):
+				recipe_found = true
+				var behind = recipe.name.substr(base_name.length())
+				var regex = RegEx.new()
+				regex.compile("^[0-9]+$")
+				var result = regex.search(behind)
+				if result:
+					var new_value = int(behind)
+					if  value < new_value:
+						value = new_value
+	var next_name = base_name
+	if value != -9223372036854775807:
+		next_name += str(value + 1)
+	elif recipe_found:
+		next_name += "1"
+	return next_name
+
+func _add_recipe(recipe: InventoryRecipe, sendSignal = true, position = recipes.size()) -> void:
+	if not recipes:
+		recipes = []
+	recipes.insert(position, recipe)
+	emit_signal("recipe_added", recipe)
+	select_recipe(recipe)
+
+func del_recipe(recipe) -> void:
+	if _undo_redo != null:
+		var index = recipes.find(recipe)
+		_undo_redo.create_action("Del recipe")
+		_undo_redo.add_do_method(self, "_del_recipe", recipe)
+		_undo_redo.add_undo_method(self, "_add_recipe", recipe, false, index)
+		_undo_redo.commit_action()
+	else:
+		_del_recipe(recipe)
+
+func _del_recipe(recipe) -> void:
+	var index = recipes.find(recipe)
+	if index > -1:
+		recipes.remove(index)
+		emit_signal("recipe_removed", recipe)
+		_recipe_selected = null
+		var recipe_selected = selected_recipe()
+		select_recipe(recipe_selected)
+
+func selected_recipe() -> InventoryRecipe:
+	if not _recipe_selected and not recipes.empty():
+		_recipe_selected = recipes[0]
+	return _recipe_selected
+
+func select_recipe(recipe: InventoryRecipe) -> void:
+	_recipe_selected = recipe
+	emit_signal("recipe_selection_changed", _recipe_selected)
+
+func get_recipe_by_uuid(uuid: String) -> InventoryRecipe:
+	for recipe in recipes:
+		if recipe.uuid == uuid:
+			return recipe
+	return null
+
+func get_recipe_by_name(recipe_name: String) -> InventoryRecipe:
+	for recipe in recipes:
+		if recipe.name == recipe_name:
+			return recipe
 	return null
 
 # ***** EDITOR SETTINGS *****
@@ -365,6 +474,8 @@ const SETTINGS_TYPES_SPLIT_OFFSET = "inventory_editor/types_split_offset"
 const SETTINGS_TYPES_SPLIT_OFFSET_DEFAULT = 215
 const SETTINGS_ITEMS_SPLIT_OFFSET = "inventory_editor/items_split_offset"
 const SETTINGS_ITEMS_SPLIT_OFFSET_DEFAULT = 215
+const SETTINGS_CRAFT_SPLIT_OFFSET = "inventory_editor/craft_split_offset"
+const SETTINGS_CRAFT_SPLIT_OFFSET_DEFAULT = 215
 const SUPPORTED_IMAGE_RESOURCES = ["bmp", "jpg", "jpeg", "png", "svg", "svgz", "tres"]
 
 func setting_inventories_split_offset() -> int:
@@ -375,6 +486,7 @@ func setting_inventories_split_offset() -> int:
 
 func setting_inventories_split_offset_put(offset: int) -> void:
 	ProjectSettings.set_setting(SETTINGS_INVENTORIES_SPLIT_OFFSET, offset)
+	ProjectSettings.save()
 
 func setting_types_split_offset() -> int:
 	var offset = SETTINGS_TYPES_SPLIT_OFFSET_DEFAULT
@@ -384,6 +496,7 @@ func setting_types_split_offset() -> int:
 
 func setting_types_split_offset_put(offset: int) -> void:
 	ProjectSettings.set_setting(SETTINGS_TYPES_SPLIT_OFFSET, offset)
+	ProjectSettings.save()
 
 func setting_items_split_offset() -> int:
 	var offset = SETTINGS_ITEMS_SPLIT_OFFSET_DEFAULT
@@ -393,6 +506,25 @@ func setting_items_split_offset() -> int:
 
 func setting_items_split_offset_put(offset: int) -> void:
 	ProjectSettings.set_setting(SETTINGS_ITEMS_SPLIT_OFFSET, offset)
+	ProjectSettings.save()
+
+func setting_craft_split_offset() -> int:
+	var offset = SETTINGS_CRAFT_SPLIT_OFFSET_DEFAULT
+	if ProjectSettings.has_setting(SETTINGS_CRAFT_SPLIT_OFFSET):
+		offset = ProjectSettings.get_setting(SETTINGS_CRAFT_SPLIT_OFFSET)
+	return offset
+
+func setting_craft_split_offset_put(offset: int) -> void:
+	ProjectSettings.set_setting(SETTINGS_CRAFT_SPLIT_OFFSET, offset)
+	ProjectSettings.save()
+
+func setting_localization_editor_enabled() -> bool:
+	if ProjectSettings.has_setting("editor_plugins/enabled"):
+		var enabled_plugins = ProjectSettings.get_setting("editor_plugins/enabled") as Array
+		for plugin in enabled_plugins:
+			if "localization_editor" in plugin:
+				return true
+	return false
 
 # ***** LOAD SAVE *****
 func init_data() -> void:
@@ -403,12 +535,15 @@ func init_data() -> void:
 			types = resource.types
 		if resource.inventories and not resource.inventories.empty():
 			inventories = resource.inventories
+		if resource.recipes and not resource.recipes.empty():
+			recipes = resource.recipes
 
-func save() -> void:
+func save(update_script_classes = false) -> void:
 	ResourceSaver.save(PATH_TO_SAVE, self)
 	_save_data_inventories()
 	_save_data_items()
-	_editor.get_editor_interface().get_resource_filesystem().scan()
+	if update_script_classes:
+		_editor.get_editor_interface().get_resource_filesystem().update_script_classes()
 
 func _save_data_inventories() -> void:
 	var directory = Directory.new()

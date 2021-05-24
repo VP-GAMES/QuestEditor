@@ -2,11 +2,9 @@
 
 [ext_resource path="res://addons/inventory_editor/ui/InventoryItemUIIcon.gd" type="Script" id=1]
 [ext_resource path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://addons/inventory_editor/ui/PopupDescription.tscn" type="PackedScene" id=3]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.396078, 0.180392, 0.0901961, 1 )
-
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 20
 font_data = ExtResource( 2 )
 
@@ -22,14 +20,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Popup" type="Popup" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-
-[node name="Panel" type="Panel" parent="Popup"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_styles/panel = SubResource( 1 )
+[node name="Popup" parent="." instance=ExtResource( 3 )]
 
 [node name="Quantity" type="Label" parent="."]
 anchor_left = 1.0
@@ -38,7 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -40.0
 margin_top = -26.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 2
 valign = 2

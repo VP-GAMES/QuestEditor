@@ -15,6 +15,7 @@ export(int) var index = -1
 export(bool) var has_popup = true
 export(bool) var show_quantity = true
 
+onready var _popup_ui = $Popup as Popup
 onready var _quantity_ui = $Quantity as Label
 
 func set_inventory_manager(inv_uuid, manager) -> void:
@@ -96,26 +97,15 @@ func drop_data(position: Vector2, data) -> void:
 func _gui_input(event: InputEvent) -> void:
 	if has_popup and event is InputEventMouseButton:
 		if event.button_index == BUTTON_RIGHT and event.pressed:
-			if _item_db and _item_db.properties and _item_db.properties.size() > 0:
+			if _item_db and _item_db.description:
 				_create_properties_popup()
+				_popup_ui.show()
+	if event is InputEventMouseButton and event.pressed and event.doubleclick:
+		if _item_db is InventoryRecipe:
+			if _inventoryManager.is_craft_possible(inventory, _item_db.uuid):
+				_inventoryManager.craft_item(inventory, _item_db.uuid)
 
 func _create_properties_popup() -> void:
-	var popup = $Popup
-	for property in _item_db.properties:
-		popup.add_child(_create_properties_hbox(property))
+	_popup_ui.update_item_data(_item_db)
 	var transform =  get_global_transform_with_canvas()
-	popup.popup(Rect2(transform.origin.x + rect_size.x + margin_left + margin_right, transform.origin.y, 100, 100))
-	popup.set_as_minsize()
-
-func _create_properties_hbox(property:Dictionary) -> HBoxContainer:
-	var hBox = HBoxContainer.new()
-	hBox.anchor_right = 1
-	var labelName = Label.new()
-	labelName.set_h_size_flags(SIZE_EXPAND_FILL)
-	labelName.text = property.name
-	var labelValue = Label.new()
-	labelValue.set_h_size_flags(SIZE_EXPAND_FILL)
-	labelValue.text = property.value
-	hBox.add_child(labelName)
-	hBox.add_child(labelValue)
-	return hBox
+	_popup_ui.popup(Rect2(transform.origin.x + rect_size.x + margin_left + margin_right, transform.origin.y, 100, 100))

@@ -11,7 +11,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-inventory = "8e526c15-dfbe-478b-b0c9-a05aa8722cb0"
+inventory = "e4530fc7-c5d6-41af-9b6e-35249272186a"
 Item = ExtResource( 3 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]

@@ -29,6 +29,17 @@ func add_item(item: Dictionary) -> void:
 func get_selected() -> int:
 	return selected
 
+func set_selected(index: int) -> void:
+	selected = index
+	text = _items[selected].text
+
+func set_selected_by_value(value) -> void:
+	text = ""
+	for index in range(_items.size()):
+		if _items[index].value == value:
+			selected = index
+			text = _items[selected].text
+
 func _ready() -> void:
 	_group.resource_local_to_scene = false
 	_init_connections()
@@ -80,9 +91,10 @@ func _init_check_box(index: int) -> CheckBox:
 	var check_box = DropdownCheckBox.instance()
 	check_box.set_button_group(_group)
 	check_box.text = _items[index].text
-	var item_icon = load(_items[index].icon)
-	item_icon = resize_texture(item_icon, Vector2(16, 16))
-	check_box.icon = item_icon
+	if _items[index].has("icon") and _items[index].icon:
+		var item_icon = load(_items[index].icon)
+		item_icon = resize_texture(item_icon, Vector2(16, 16))
+		check_box.icon = item_icon
 	if index == selected:
 		check_box.set_pressed(true)
 	check_box.connect("pressed", self, "_on_selection_changed", [index])

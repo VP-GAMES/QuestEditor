@@ -114,6 +114,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://inventory/InventoryManagerItem.gd"
 }, {
+"base": "InventoryItem",
+"class": "InventoryRecipe",
+"language": "GDScript",
+"path": "res://addons/inventory_editor/model/InventoryRecipe.gd"
+}, {
 "base": "Resource",
 "class": "InventoryType",
 "language": "GDScript",
@@ -241,6 +246,7 @@ _global_script_class_icons={
 "InventoryItem": "",
 "InventoryManagerInventory": "",
 "InventoryManagerItem": "",
+"InventoryRecipe": "",
 "InventoryType": "",
 "InventoryUI": "",
 "Item2D": "",

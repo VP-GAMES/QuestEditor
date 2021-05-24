@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://addons/inventory_editor/icons/Add.png" type="Texture" id=1]
 [ext_resource path="res://addons/inventory_editor/icons/Item.png" type="Texture" id=2]
@@ -9,15 +9,20 @@
 [ext_resource path="res://addons/inventory_editor/scenes/items/InventoryItemDataPutScene.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/inventory_editor/scenes/items/InventoryItemDataPathScene.tscn" type="PackedScene" id=8]
 [ext_resource path="res://addons/inventory_editor/icons/File.png" type="Texture" id=9]
+[ext_resource path="res://addons/inventory_editor/ui_extensions/dropdown/Dropdown.tscn" type="PackedScene" id=10]
+[ext_resource path="res://addons/inventory_editor/default/fonts/Pangolin-Regular.ttf" type="DynamicFontData" id=11]
 
-[sub_resource type="ProceduralSky" id=1]
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 11 )
 
-[sub_resource type="Environment" id=2]
+[sub_resource type="ProceduralSky" id=2]
+
+[sub_resource type="Environment" id=3]
 background_mode = 2
-background_sky = SubResource( 1 )
+background_sky = SubResource( 2 )
 
-[sub_resource type="World" id=3]
-environment = SubResource( 2 )
+[sub_resource type="World" id=4]
+environment = SubResource( 3 )
 
 [node name="InventoryItemData" type="HBoxContainer"]
 margin_left = 221.0
@@ -114,16 +119,44 @@ rect_min_size = Vector2( 20, 20 )
 hint_tooltip = "Open scene"
 icon = ExtResource( 9 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginData/VBox"]
+[node name="HBoxDescription" type="HBoxContainer" parent="MarginData/VBox"]
 margin_top = 96.0
 margin_right = 399.0
-margin_bottom = 101.0
+margin_bottom = 216.0
+rect_min_size = Vector2( 0, 5 )
+
+[node name="Label" type="Label" parent="MarginData/VBox/HBoxDescription"]
+margin_right = 100.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_vertical = 5
+text = "Description"
+
+[node name="Description" type="TextEdit" parent="MarginData/VBox/HBoxDescription"]
+margin_left = 104.0
+margin_right = 249.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 120 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+
+[node name="Dropdown" parent="MarginData/VBox/HBoxDescription" instance=ExtResource( 10 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 253.0
+margin_right = 399.0
+margin_bottom = 120.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginData/VBox"]
+margin_top = 220.0
+margin_right = 399.0
+margin_bottom = 225.0
 rect_min_size = Vector2( 0, 5 )
 
 [node name="HBoxAdd" type="HBoxContainer" parent="MarginData/VBox"]
-margin_top = 105.0
+margin_top = 229.0
 margin_right = 399.0
-margin_bottom = 125.0
+margin_bottom = 249.0
 
 [node name="Add" type="Button" parent="MarginData/VBox/HBoxAdd"]
 margin_right = 22.0
@@ -140,9 +173,9 @@ margin_bottom = 17.0
 text = "Properties"
 
 [node name="HBoxNames" type="HBoxContainer" parent="MarginData/VBox"]
-margin_top = 129.0
+margin_top = 253.0
 margin_right = 399.0
-margin_bottom = 143.0
+margin_bottom = 267.0
 
 [node name="Name" type="Label" parent="MarginData/VBox/HBoxNames"]
 margin_right = 197.0
@@ -158,14 +191,14 @@ size_flags_horizontal = 3
 text = "Value"
 
 [node name="HSeparator" type="HSeparator" parent="MarginData/VBox"]
-margin_top = 147.0
+margin_top = 271.0
 margin_right = 399.0
-margin_bottom = 151.0
+margin_bottom = 275.0
 
 [node name="VBoxProperties" type="VBoxContainer" parent="MarginData/VBox"]
-margin_top = 155.0
+margin_top = 279.0
 margin_right = 399.0
-margin_bottom = 185.0
+margin_bottom = 309.0
 
 [node name="InventoryItemDataProperty" parent="MarginData/VBox/VBoxProperties" instance=ExtResource( 6 )]
 anchor_right = 0.0
@@ -250,7 +283,7 @@ __meta__ = {
 [node name="Viewport" type="Viewport" parent="MarginPreview/VBox/VBoxPreview/ViewportContainer3D"]
 size = Vector2( 400, 441 )
 own_world = true
-world = SubResource( 3 )
+world = SubResource( 4 )
 handle_input_locally = false
 render_target_update_mode = 0
 
