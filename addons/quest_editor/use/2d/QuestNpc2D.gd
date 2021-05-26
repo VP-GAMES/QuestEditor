@@ -54,6 +54,11 @@ func is_quest_available() -> bool:
 	var quest = questManager.get_quest_available_by_start_trigger(trigger.uuid)
 	return quest != null
 
+func is_quest_delivery_available() -> bool:
+	var trigger = questManager.get_trigger_by_ui_uuid(get_uuid())
+	var quest = questManager.get_quest_available_by_delivery_trigger(trigger.uuid)
+	return quest != null and quest.tasks_done()
+
 func _on_body_entered(body: Node) -> void:
 	inside = true
 
@@ -73,7 +78,11 @@ func _input(event: InputEvent):
 					_start_quest_and_dialogue()
 			else:
 				if _quest:
-					if _quest.is_quest_running_dialogue() and not dialogueManager.is_started():
+					if _quest.tasks_done() and _quest.is_quest_delivery_dialogue() and not dialogueManager.is_started():
+						if _quest.delivery_trigger == trigger.uuid:
+							dialogueManager.start_dialogue(_quest.delivery_dialogue)
+							#TODO
+					elif _quest.is_quest_running_dialogue() and not dialogueManager.is_started():
 						dialogueManager.start_dialogue(_quest.quest_running_dialogue)
 				else:
 					_quest = questManager.started_quest()

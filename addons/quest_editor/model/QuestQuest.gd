@@ -79,6 +79,9 @@ func is_quest_start_dialogue() -> bool:
 func is_quest_running_dialogue() -> bool:
 	return quest_running_dialogue and not quest_running_dialogue.empty()
 
+func is_quest_delivery_dialogue() -> bool:
+	return delivery_dialogue and not delivery_dialogue.empty()
+
 func check_state() -> void:
 	if state == QUESTSTATE_DONE:
 		return

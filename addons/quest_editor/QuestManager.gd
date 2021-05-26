@@ -75,6 +75,14 @@ func get_quest_available_by_start_trigger(quest_trigger: String) -> QuestQuest:
 					 response_quest = quest
 	return response_quest
 
+func get_quest_available_by_delivery_trigger(delivery_trigger: String) -> QuestQuest:
+	var response_quest = null
+	for quest in _data.quests:
+		if quest.delivery_trigger == delivery_trigger:
+			if quest.state == QuestQuest.QUESTSTATE_STARTED:
+				response_quest = quest
+	return response_quest
+
 func _precompleted_quest_done(quest: QuestQuest) -> bool:
 	if not quest.precompleted_quest or quest.precompleted_quest.empty():
 		return true
