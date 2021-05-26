@@ -78,6 +78,14 @@ func is_quest_start_dialogue() -> bool:
 func is_quest_running_dialogue() -> bool:
 	return quest_running_dialogue and not quest_running_dialogue.empty()
 
+func check_state() -> void:
+	if state == QUESTSTATE_DONE:
+		return
+	for task in tasks:
+		if task.done == false:
+				return
+	state = QUESTSTATE_DONE
+
 # ***** REQUEREMENTS *****
 signal requerements_changed
 

@@ -21,5 +21,6 @@ texture = ExtResource( 2 )
 [node name="QuestTriggerUUID_eaf855c0-96bb-4e99-8ba4-4db19746f7de" type="Node" parent="."]
 
 [node name="Attention" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0, -700 )
 texture = ExtResource( 3 )

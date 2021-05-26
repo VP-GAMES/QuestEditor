@@ -14,3 +14,5 @@ QUEST_START_NAME,[center][color=yellow]The long search[/color][/center],[center]
 QUEST_START_DESCRIPTION,"[center]Go to the wood and\nkill 1 enemy,\nspeak with John,\ntrigger switsch\nand\nfind a hidden item.[/center]","[center]Gehe in den Wald, bekämpfe einen Gegner, sprich mit Johan, lege den Schalter um und finde ein verstecktes Item.[/center]","[center]Сходи в лес, победи врага, поговори с Ваней, переключи выключатель и найди спрятанный предмет.[/center]"
 QUEST_SPEACK_JOHN_01,"Hi John, i search for a hidden item!","Hallo Johan, ich suche nach dem verstecktem Item.","Привет Ваня, я ищу спрятанный предмет."
 QUEST_SPEACK_JOHN_02,"Hi, you find a hidden item in a wood.",Du findest das Item in Wald.,Ты найдешь предмет в лесу.
+QUEST_STARTED_TEXT,[center]Quest started:[/center],[center]Quest gestartet:[/center],[center]Квест начат:[/center]
+QUEST_ENDED_TEXT,[center]Quest_ended:[/center],[center]Quest beendet:[/center],[center]Квест завершен:[/center]

@@ -108,5 +108,7 @@ func _dialogue_ended_event(event) -> void:
 	_dialogue_ended()
 
 func _dialogue_ended() -> void:
-	dialogueManager.disconnect("dialogue_event", self, "_dialogue_event_accept_quest")
-	dialogueManager.disconnect("dialogue_ended", self, "_dialogue_ended_event")
+	if dialogueManager.is_connected("dialogue_event", self, "_dialogue_event_accept_quest"):
+		dialogueManager.disconnect("dialogue_event", self, "_dialogue_event_accept_quest")
+	if dialogueManager.is_connected("dialogue_ended", self, "_dialogue_ended_event"):
+		dialogueManager.disconnect("dialogue_ended", self, "_dialogue_ended_event")
