@@ -177,6 +177,7 @@ func _draw_view_stacksize_ui() -> void:
 
 func _draw_view_description_ui() -> void:
 	_description_ui.text = _item.description
+	_dropdown_description_ui.set_selected_by_value(_item.description)
 
 func _draw_view_properties_ui() -> void:
 	_clear_view_properties()

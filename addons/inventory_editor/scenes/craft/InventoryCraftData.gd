@@ -70,7 +70,8 @@ func _dropdown_item_update() -> void:
 		for item in _data.all_items():
 			var item_d = {"text": item.name, "value": item.uuid, "icon": item.icon }
 			_dropdown_item_ui.add_item(item_d)
-		_dropdown_item_ui.set_selected_by_value(_recipe.item)
+		if _recipe:
+			_dropdown_item_ui.set_selected_by_value(_recipe.item)
 
 func _on_dropdown_item_selection_changed(item: Dictionary):
 	_recipe.item = item.value

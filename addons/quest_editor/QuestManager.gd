@@ -51,6 +51,7 @@ func get_task_and_update_quest_state(quest: QuestQuest, trigger_uuid: String, ad
 		emit_signal("quest_updated", quest)
 		quest.check_state()
 		if quest.state == QuestQuest.QUESTSTATE_DONE:
+			call_rewards_methods(quest)
 			emit_signal("quest_ended", quest)
 	return task
 
@@ -110,3 +111,10 @@ func _call_requerement_method(requerement):
 		return _player.call(requerement.method)
 	else:
 		return _player.call(requerement.method, requerement.params)
+
+func call_rewards_methods(quest: QuestQuest):
+	for reward in quest.rewards:
+		if reward.params.empty():
+			return _player.call(reward.method)
+		else:
+			return _player.call(reward.method, reward.params)

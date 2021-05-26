@@ -17,3 +17,5 @@ QUEST_SPEACK_JOHN_02,"Hi, you find a hidden item in a wood.",Du findest das Item
 QUEST_DELIVERY,Thank you for your help. You are the best of the best! Here some rewards.,Danke für Deine Hilfe. Du bist der Beste! Hier ist Deine Belohnung.,Спасибо за твою помошь. Ты супеер. Вот твоя награда. 
 QUEST_STARTED_TEXT,[center]Quest started:[/center],[center]Quest gestartet:[/center],[center]Квест начат:[/center]
 QUEST_ENDED_TEXT,[center]Quest_ended:[/center],[center]Quest beendet:[/center],[center]Квест завершен:[/center]
+ITEM_HEALTH,[center]Restores 10 HP[/center],[center]Heilt 10 HP[/center],[center]Востанавливает 10 HP[/center]
+ITEM_HEALTH_BIG,[center]Restores 25 HP[/center],[center]Heilt 25 HP[/center],[center]Востанавливает 25 HP[/center]

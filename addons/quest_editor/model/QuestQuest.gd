@@ -212,7 +212,7 @@ const REWARD_TEXT ="TEXT"
 const REWARD_NUMBER = "NUMBER"
 
 func add_reward() -> void:
-	var reward = {"method": "", "params": "", "type": REQUEREMENT_BOOL, "response": ""}
+	var reward = {"method": "", "params": ""}
 	if _undo_redo != null:
 		_undo_redo.create_action("Add reward")
 		_undo_redo.add_do_method(self, "_add_reward", reward)

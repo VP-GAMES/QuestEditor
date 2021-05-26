@@ -54,3 +54,6 @@ func player_lvl() -> int:
 
 func player_class() -> String:
 	return "PALADIN" 
+
+func reward() -> void:
+	_inventoryManager.add_item(InventoryManagerInventory.INVENTORY, InventoryManagerItem.HEALTHBIG_2D, 1)

@@ -156,7 +156,6 @@ margin_left = 68.9405
 margin_top = 70.0
 margin_right = 368.94
 margin_bottom = 370.0
-inventory = "8e526c15-dfbe-478b-b0c9-a05aa8722cb0"
 
 [node name="QuestButton" type="TextureButton" parent="CanvasLayer"]
 anchor_left = 1.0
