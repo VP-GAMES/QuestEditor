@@ -20,6 +20,8 @@ func set_editor(editor: EditorPlugin) -> void:
 const UUID = preload("res://addons/quest_editor/uuid/uuid.gd")
 # ***** EDITOR_PLUGIN_END *****
 
+const default_path = "res://quest/"
+
 # ***** QUEST *****
 signal quest_added(quest)
 signal quest_removed(quest)
@@ -281,8 +283,58 @@ func init_data() -> void:
 		if resource.triggers and not resource.triggers.empty():
 			triggers = resource.triggers
 
-func save() -> void:
+func save(update_script_classes = false) -> void:
 	ResourceSaver.save(PATH_TO_SAVE, self)
+	_save_data_quests()
+	_save_data_triggers()
+	if update_script_classes:
+		_editor.get_editor_interface().get_resource_filesystem().update_script_classes()
+
+func _save_data_quests() -> void:
+	var directory = Directory.new()
+	if not directory.dir_exists(default_path):
+		directory.make_dir(default_path)
+	var file = File.new()
+	file.open(default_path + "QuestManagerQuests.gd", File.WRITE)
+	var source_code = "# List of created quests for QuestManger to use in source code: MIT License\n"
+	source_code += AUTHOR
+	source_code += "tool\n"
+	source_code += "class_name QuestManagerQuests\n\n"
+	for quest in quests:
+		var namePrepared = quest.name.replace(" ", "")
+		namePrepared = namePrepared.to_upper()
+		source_code += "const " + namePrepared + " = \"" + quest.uuid +"\"\n"
+	source_code += "\nconst QUESTS = [\n"
+	for index in range(quests.size()):
+		source_code += " \"" + quests[index].name + "\""
+		if index != quests.size() - 1:
+			source_code += ",\n"
+	source_code += "\n]"
+	file.store_string(source_code)
+	file.close()
+
+func _save_data_triggers() -> void:
+	var directory = Directory.new()
+	if not directory.dir_exists(default_path):
+		directory.make_dir(default_path)
+	var file = File.new()
+	file.open(default_path + "QuestManagerTriggers.gd", File.WRITE)
+	var source_code = "# List of created triggers for QuestManger to use in source code: MIT License\n"
+	source_code += AUTHOR
+	source_code += "tool\n"
+	source_code += "class_name QuestManagerTriggers\n\n"
+	for trigger in triggers:
+		var namePrepared = trigger.name.replace(" ", "")
+		namePrepared = namePrepared.to_upper()
+		source_code += "const " + namePrepared + " = \"" + trigger.uuid +"\"\n"
+	source_code += "\nconst TRIGGERS = [\n"
+	for index in range(triggers.size()):
+		source_code += " \"" + triggers[index].name + "\""
+		if index != triggers.size() - 1:
+			source_code += ",\n"
+	source_code += "\n]"
+	file.store_string(source_code)
+	file.close()
 
 # ***** EDITOR SETTINGS *****
 const BACKGROUND_COLOR_SELECTED = Color("#868991")
@@ -290,6 +342,7 @@ const SLOT_COLOR_DEFAULT = Color(1, 1, 1)
 const SLOT_COLOR_PATH = Color(0.4, 0.78, 0.945)
 
 const PATH_TO_SAVE = "res://addons/quest_editor/QuestsSave.res"
+const AUTHOR = "# @author Vladimir Petrenko\n"
 const SETTINGS_QUESTS_SPLIT_OFFSET = "quest_editor/quests_split_offset"
 const SETTINGS_QUESTS_SPLIT_OFFSET_DEFAULT = 215
 const SETTINGS_TRIGGERS_SPLIT_OFFSET = "quest_editor/triggers_split_offset"

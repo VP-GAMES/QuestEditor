@@ -184,6 +184,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/quest_editor/use/3d/QuestEnemy3D.gd"
 }, {
+"base": "Reference",
+"class": "QuestManagerQuests",
+"language": "GDScript",
+"path": "res://quest/QuestManagerQuests.gd"
+}, {
+"base": "Reference",
+"class": "QuestManagerTriggers",
+"language": "GDScript",
+"path": "res://quest/QuestManagerTriggers.gd"
+}, {
 "base": "Area2D",
 "class": "QuestNPC2D",
 "language": "GDScript",
@@ -260,6 +270,8 @@ _global_script_class_icons={
 "QuestDestination3D": "",
 "QuestEnemy2D": "",
 "QuestEnemy3D": "",
+"QuestManagerQuests": "",
+"QuestManagerTriggers": "",
 "QuestNPC2D": "",
 "QuestNPC3D": "",
 "QuestPlayer2D": "",

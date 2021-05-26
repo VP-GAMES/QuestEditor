@@ -21,6 +21,9 @@ func get_uuid() -> String:
 		_update_uuid()
 	return _uuid
 
+func get_quest() -> QuestQuest:
+	return _quest
+
 func _process(delta: float) -> void:
 	if not _uuid or _uuid.empty():
 		_update_uuid()

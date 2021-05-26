@@ -120,6 +120,24 @@ func _del_requerement(requerement) -> void:
 # ***** TASKS *****
 signal tasks_changed
 
+func get_task(trigger_uuid: String):
+	for task in tasks:
+		if task.trigger == trigger_uuid:
+			return task
+	return null
+
+func has_task(trigger_uuid: String) -> bool:
+	for task in tasks:
+		if task.trigger == trigger_uuid:
+			return true
+	return false
+
+func get_task_state(trigger_uuid: String) -> bool:
+	for task in tasks:
+		if task.trigger == trigger_uuid and task.done == true:
+			return true
+	return false
+
 func update_task_state(trigger_uuid, add_quantity = 0):
 	for task in tasks:
 		if task.trigger == trigger_uuid:

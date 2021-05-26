@@ -30,6 +30,8 @@ func _init_connections() -> void:
 		assert(_save_ui.connect("pressed", self, "save_data") == OK)
 	if not _tabs_ui.is_connected("tab_changed", self, "_on_tab_changed"):
 		assert(_tabs_ui.connect("tab_changed", self, "_on_tab_changed") == OK)
+	if not _save_ui.is_connected("pressed", self, "_on_save_data"):
+		assert(_save_ui.connect("pressed", self, "_on_save_data") == OK)
 
 func get_data() -> QuestData:
 	return _data
@@ -44,5 +46,8 @@ func _data_to_childs() -> void:
 	_quests_ui.set_data(_data)
 	_triggers_ui.set_data(_data)
 
-func save_data() -> void:
-	_data.save()
+func _on_save_data() -> void:
+	save_data(true)
+
+func save_data(update_script_classes = false) -> void:
+	_data.save(update_script_classes)
