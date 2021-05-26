@@ -35,7 +35,8 @@ export (String) var quest_running_dialogue = ""
 # * TASKS
 export (Array) var tasks
 # * DELIVERY
-export (bool) var delivery
+export (bool) var delivery = false
+export (bool) var delivery_done = false
 export (String) var delivery_trigger = ""
 export (String) var delivery_dialogue = ""
 # * TASKS
@@ -81,10 +82,12 @@ func is_quest_running_dialogue() -> bool:
 func check_state() -> void:
 	if state == QUESTSTATE_DONE:
 		return
-	for task in tasks:
-		if task.done == false:
-				return
-	state = QUESTSTATE_DONE
+	if not tasks_done():
+		return
+	if not delivery:
+		state = QUESTSTATE_DONE
+	elif delivery_done:
+		state = QUESTSTATE_DONE
 
 # ***** REQUEREMENTS *****
 signal requerements_changed
@@ -127,6 +130,12 @@ func _del_requerement(requerement) -> void:
 
 # ***** TASKS *****
 signal tasks_changed
+
+func tasks_done() -> bool:
+	for task in tasks:
+		if task.done == false:
+			return false
+	return true
 
 func get_task(trigger_uuid: String):
 	for task in tasks:
