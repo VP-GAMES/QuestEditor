@@ -1,3 +1,5 @@
+# Quest data rewards item UI for QuestEditor : MIT License
+# @author Vladimir Petrenko
 tool
 extends HBoxContainer
 

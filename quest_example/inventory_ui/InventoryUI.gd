@@ -1,4 +1,4 @@
-# Example implementation for inventory to demonstrate functionality of InventoryEditor : MIT License
+# Example implementation for inventory to demonstrate functionality of QuestEditor : MIT License
 # @author Vladimir Petrenko
 tool
 extends InventoryUI

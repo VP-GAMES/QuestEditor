@@ -1,4 +1,4 @@
-# Triggers view for DialogueEditor : MIT License
+# Quest triggers view data UI for QuestEditor : MIT License
 # @author Vladimir Petrenko
 tool
 extends VBoxContainer

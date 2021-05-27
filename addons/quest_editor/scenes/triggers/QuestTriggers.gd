@@ -1,4 +1,4 @@
-# Trigger triggers UI for TriggerEditor : MIT License
+# Quest triggers UI for QuestEditor : MIT License
 # @author Vladimir Petrenko
 tool
 extends Panel

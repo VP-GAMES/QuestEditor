@@ -1,3 +1,5 @@
+# Quest data rewards view UI for QuestEditor : MIT License
+# @author Vladimir Petrenko
 tool
 extends VBoxContainer
 

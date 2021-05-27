@@ -1,3 +1,5 @@
+# Quest trigger data UI for QuestEditor : MIT License
+# @author Vladimir Petrenko
 tool
 extends VBoxContainer
 

@@ -1,3 +1,5 @@
+# Quest 2D destination implementation for QuestEditor : MIT License
+# @author Vladimir Petrenko
 tool
 extends Area2D
 class_name QuestDestination2D

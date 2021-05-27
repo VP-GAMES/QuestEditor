@@ -209,7 +209,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/quest_editor/use/2d/QuestPlayer2D.gd"
 }, {
-"base": "Area",
+"base": "KinematicBody",
 "class": "QuestPlayer3D",
 "language": "GDScript",
 "path": "res://addons/quest_editor/use/3d/QuestPlayer3D.gd"

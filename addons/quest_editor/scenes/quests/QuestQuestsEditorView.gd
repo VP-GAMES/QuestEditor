@@ -1,4 +1,4 @@
-# Quests view for DialogueEditor : MIT License
+# Quests view for QuestEditor : MIT License
 # @author Vladimir Petrenko
 tool
 extends VBoxContainer

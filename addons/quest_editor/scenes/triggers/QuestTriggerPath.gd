@@ -1,6 +1,6 @@
-# Path UI LineEdit for InventoryEditor : MIT License
+# Path UI LineEdit for QuestEditor : MIT License
 # @author Vladimir Petrenko
-# Drag and drop not work just now, see Workaround -> InventoryItemDataPut
+# Drag and drop not work just now, see Workaround -> QuestTriggerPathPut
 # https://github.com/godotengine/godot/issues/30480
 tool
 extends LineEdit

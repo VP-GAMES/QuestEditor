@@ -1,3 +1,5 @@
+# Quest 2D player implementation for QuestEditor : MIT License
+# @author Vladimir Petrenko
 extends KinematicBody2D
 class_name QuestPlayer2D
 

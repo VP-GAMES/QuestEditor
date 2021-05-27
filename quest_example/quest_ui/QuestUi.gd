@@ -1,3 +1,5 @@
+# Example implementation for inventory item to demonstrate functionality of QuestEditor : MIT License
+# @author Vladimir Petrenko
 extends Control
 
 var _questManager
