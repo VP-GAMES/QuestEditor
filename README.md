@@ -8,13 +8,13 @@ The following screenshots show the working areas of the plugin:
 
 ### Images
 2D Level example
-![2D Level example](https://raw.githubusercontent.com/VP-GAMES/InventoryEditor/main/.github/images/level2d.png)
+![2D Level example](https://raw.githubusercontent.com/VP-GAMES/QuestEditor/main/.github/images/level2d.png)
 
 Triggers manager
-![Triggers manager](https://raw.githubusercontent.com/VP-GAMES/InventoryEditor/main/.github/images/triggers.png)
+![Triggers manager](https://raw.githubusercontent.com/VP-GAMES/QuestEditor/main/.github/images/triggers.png)
 
 Quests preview
-![Quests preview](https://raw.githubusercontent.com/VP-GAMES/InventoryEditor/main/.github/images/quests.png)
+![Quests preview](https://raw.githubusercontent.com/VP-GAMES/QuestEditor/main/.github/images/quests.png)
 
 How to install
 -----------------
