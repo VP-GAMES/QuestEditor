@@ -81,7 +81,6 @@ __meta__ = {
 }
 
 [node name="Weapon" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, -50 )
 rotation = -1.5708
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

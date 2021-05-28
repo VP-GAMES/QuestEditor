@@ -19,3 +19,4 @@ func _on_quest_updated(_quest: QuestQuest) -> void:
 			show()
 			if has_node("Item2D"):
 				_collision_shape.call_deferred("set_disabled", false)
+	
