@@ -17,4 +17,5 @@ func _on_quest_updated(_quest: QuestQuest) -> void:
 	if _quest.uuid == QuestManagerQuests.QUEST_2D:
 		if _quest.get_task_state(QuestManagerTriggers.JOHN_2D):
 			show()
-			_collision_shape.call_deferred("set_disabled", false)
+			if has_node("Item2D"):
+				_collision_shape.call_deferred("set_disabled", false)
