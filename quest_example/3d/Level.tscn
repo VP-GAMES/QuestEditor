@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://addons/quest_editor/default/fonts/Pangolin-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://quest_example/3d/player/Player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,9 @@
 [ext_resource path="res://quest_example/3d/actors/Girl.tscn" type="PackedScene" id=10]
 [ext_resource path="res://quest_example/3d/actors/John.tscn" type="PackedScene" id=11]
 [ext_resource path="res://quest_example/3d/actors/Trigger.tscn" type="PackedScene" id=12]
+[ext_resource path="res://addons/inventory_editor/InventoryItem3D.gd" type="Script" id=13]
+[ext_resource path="res://quest_example/3d/actors/Item.tscn" type="PackedScene" id=14]
+[ext_resource path="res://quest_example/3d/Item.gd" type="Script" id=15]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -89,6 +92,17 @@ transform = Transform( -0.814936, 0, -0.579552, 0, 1, 0, 0.579552, 0, -0.814936,
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -21, 0, -21 )
+
+[node name="Item" type="Spatial" parent="."]
+script = ExtResource( 15 )
+
+[node name="Item3D" type="Spatial" parent="Item"]
+script = ExtResource( 13 )
+item_put = "6550b66f-7b71-4737-b2d1-f70fe102d6b8"
+to_inventory = "8e526c15-dfbe-478b-b0c9-a05aa8722cb0"
+
+[node name="InventoryItem_6550b66f-7b71-4737-b2d1-f70fe102d6b8" type="Area" parent="Item/Item3D" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1036, 0, 0 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
