@@ -14,3 +14,5 @@ transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 2.16
 shape = SubResource( 1 )
 
 [node name="godotEnemy" parent="." instance=ExtResource( 2 )]
+
+[node name="QuestTriggerUUID_766aeadd-4625-43f4-8e4b-aa7efbb97c7e" type="Node" parent="."]

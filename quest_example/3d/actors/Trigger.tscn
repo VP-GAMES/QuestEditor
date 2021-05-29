@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://addons/quest_editor/use/3d/QuestTrigger3D.gd" type="Script" id=1]
+[ext_resource path="res://quest_example/3d/actors/Trigger.gd" type="Script" id=1]
 [ext_resource path="res://quest_example/3d/models/godotTrigger.glb" type="PackedScene" id=2]
+[ext_resource path="res://quest_example/3d/models/godotPlate.glb" type="PackedScene" id=3]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.651212, 1.39368, 1.65569 )
+extents = Vector3( 2.18546, 1.39368, 3.8407 )
 
 [node name="Trigger" type="Area"]
 script = ExtResource( 1 )
@@ -14,3 +15,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45803, 0 )
 shape = SubResource( 1 )
 
 [node name="godotTrigger" parent="." instance=ExtResource( 2 )]
+
+[node name="godotPlate" parent="." instance=ExtResource( 3 )]
+
+[node name="QuestTriggerUUID_1e583bdc-c77a-4850-a269-9be44ebcb81e" type="Node" parent="."]
