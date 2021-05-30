@@ -94,6 +94,7 @@ transform = Transform( -0.814936, 0, -0.579552, 0, 1, 0, 0.579552, 0, -0.814936,
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -21, 0, -21 )
 
 [node name="Item" type="Spatial" parent="."]
+visible = false
 script = ExtResource( 15 )
 
 [node name="Item3D" type="Spatial" parent="Item"]

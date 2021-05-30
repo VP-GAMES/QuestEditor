@@ -1,7 +1,7 @@
 tool
 extends QuestNPC3D
 
-onready var _attention = $Attention as Sprite
+onready var _attention = $Attention
 
 func _ready() -> void:
 	._ready()

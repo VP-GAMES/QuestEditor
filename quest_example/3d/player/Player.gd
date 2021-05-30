@@ -32,3 +32,16 @@ func handle_movement(delta):
 func _input(event: InputEvent):
 	if event.is_action_released(attack):
 		_animationPlayer.play("attack")
+
+# Methods for requerements
+func is_valid_player() -> bool:
+	return true
+
+func player_lvl() -> int:
+	return 5 
+
+func player_class() -> String:
+	return "PALADIN" 
+
+func reward() -> void:
+	_inventoryManager.add_item(InventoryManagerInventory.INVENTORY, InventoryManagerItem.HEALTHBIG_3D, 1)
