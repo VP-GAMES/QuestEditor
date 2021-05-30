@@ -99,6 +99,8 @@ func _draw_view() -> void:
 
 func _draw_view_uiname_ui() -> void:
 	_uiname_ui.text = str(_quest.uiname)
+	_dropdown_name_ui.set_selected_by_value(_quest.uiname)
 
 func _draw_view_description_ui() -> void:
 	_description_ui.text = str(_quest.description)
+	_dropdown_description_ui.set_selected_by_value(_quest.description)

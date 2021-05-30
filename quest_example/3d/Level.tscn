@@ -101,7 +101,7 @@ script = ExtResource( 13 )
 item_put = "6550b66f-7b71-4737-b2d1-f70fe102d6b8"
 to_inventory = "8e526c15-dfbe-478b-b0c9-a05aa8722cb0"
 
-[node name="InventoryItem_6550b66f-7b71-4737-b2d1-f70fe102d6b8" type="Area" parent="Item/Item3D" instance=ExtResource( 14 )]
+[node name="InventoryItem_6550b66f-7b71-4737-b2d1-f70fe102d6b8" parent="Item/Item3D" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1036, 0, 0 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
