@@ -7,6 +7,8 @@ const _localizationManagerName = "LocalizationManager"
 
 var _quest: QuestQuest
 
+export(bool) var active =  true
+
 onready var _name_ui = $Margin/VBox/HBoxName/Name as RichTextLabel
 onready var _description_ui = $Margin/VBox/HBoxDescription/Description as RichTextLabel
 onready var _tasks_ui = $Margin/VBox/VBoxTasks
@@ -14,6 +16,8 @@ onready var _tasks_ui = $Margin/VBox/VBoxTasks
 const QuestWatcherTask = preload("res://addons/quest_editor/ui/QuestWatcherTask.tscn")
 
 func _ready() -> void:
+	if not active:
+		return
 	if get_tree().get_root().has_node(_questManagerName):
 		_questManager = get_tree().get_root().get_node(_questManagerName)
 		_questManager.connect("quest_started", self, "_on_quest_started")
