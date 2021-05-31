@@ -55,6 +55,9 @@ func get_task_and_update_quest_state(quest: QuestQuest, trigger_uuid: String, ad
 			emit_signal("quest_ended", quest)
 	return task
 
+func get_quest_trigger_by_ui_uuid(trigger_ui: String) -> QuestTrigger:
+	return _data.get_trigger_by_uuid(trigger_ui)
+
 func get_trigger_by_ui_uuid(trigger_ui: String) -> QuestTrigger:
 	for trigger in _data.triggers:
 		if trigger.scene:

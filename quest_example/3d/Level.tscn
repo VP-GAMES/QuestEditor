@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://addons/quest_editor/default/fonts/Pangolin-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://quest_example/3d/player/Player.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://addons/inventory_editor/InventoryItem3D.gd" type="Script" id=13]
 [ext_resource path="res://quest_example/3d/actors/Item.tscn" type="PackedScene" id=14]
 [ext_resource path="res://quest_example/3d/Item.gd" type="Script" id=15]
+[ext_resource path="res://addons/quest_editor/ui/QuestWatcher.tscn" type="PackedScene" id=16]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -156,3 +157,10 @@ custom_fonts/normal_font = SubResource( 5 )
 bbcode_enabled = true
 
 [node name="Timer" type="Timer" parent="CanvasLayer"]
+
+[node name="QuestWatcher" parent="CanvasLayer" instance=ExtResource( 16 )]
+visible = false
+anchor_left = 0.01
+anchor_top = 0.1
+anchor_right = 0.99
+anchor_bottom = 0.9
