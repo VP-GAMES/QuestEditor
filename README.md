@@ -2,13 +2,17 @@
 
 This is a Godot Editor plugin to manage quests in godot. The plugin allows you to quickly and easily manage all your quests. You can create your own quests. Resources are assigned very easily using drag and drop. The assigned resources can be viewed in preview window, to check them.
 
-Version: 0.7.5 ALPHA
+Version: 0.8.6 ALPHA
 
 The following screenshots show the working areas of the plugin:
 
 ### Images
 2D Level example
 ![2D Level example](https://raw.githubusercontent.com/VP-GAMES/QuestEditor/main/.github/images/level2d.png)
+
+3D Level example
+![3D Level example](https://raw.githubusercontent.com/VP-GAMES/QuestEditor/main/.github/images/level3d.png)
+
 
 Triggers manager
 ![Triggers manager](https://raw.githubusercontent.com/VP-GAMES/QuestEditor/main/.github/images/triggers.png)
