@@ -27,13 +27,16 @@ func _on_quest_updated(_quest: QuestQuest) -> void:
 	_check_attention()
 
 func _check_attention() -> void:
-	var quest = questManager.started_quest()
-	if quest:
-		var task_trigger = questManager.get_trigger_by_ui_uuid(_uuid)
-		var task = quest.get_task(task_trigger.uuid)
-		if task and task.done != true:
-			_attention.show()
+	if (not questManager.is_quest_started() and is_quest_available()) or (get_quest() and is_quest_delivery_available()):
+		_attention.show()
+	else:
+		var quest = questManager.started_quest()
+		if quest:
+			var task_trigger = questManager.get_trigger_by_ui_uuid(_uuid)
+			var task = quest.get_task(task_trigger.uuid)
+			if task and task.done != true:
+				_attention.show()
+			else:
+				_attention.hide()
 		else:
 			_attention.hide()
-	else:
-		_attention.hide()
