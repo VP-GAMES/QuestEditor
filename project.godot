@@ -298,7 +298,7 @@ QuestManager="*res://addons/quest_editor/QuestManager.gd"
 [dialogue_editor]
 
 scenes_split_offset=300
-dialogues_selected_dialogue="f8991765-0fff-4d5c-b806-f18501d05346"
+dialogues_selected_dialogue="950769bd-2106-40d6-b14f-d70207c56318"
 dialogues_editor_locale="en"
 
 [editor_plugins]

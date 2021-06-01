@@ -19,3 +19,9 @@ QUEST_STARTED_TEXT,[center]Quest started:[/center],[center]Quest gestartet:[/cen
 QUEST_ENDED_TEXT,[center]Quest_ended:[/center],[center]Quest beendet:[/center],[center]Квест завершен:[/center]
 ITEM_HEALTH,[center]Restores 10 HP[/center],[center]Heilt 10 HP[/center],[center]Востанавливает 10 HP[/center]
 ITEM_HEALTH_BIG,[center]Restores 25 HP[/center],[center]Heilt 25 HP[/center],[center]Востанавливает 25 HP[/center]
+QUEST_NEXT_NAME,Speak NPC,Sprich mit NPC,Поговори с НПЦ
+QUEST_NEXT_DESCRIPTION,Speak NPC,Sprich mit NPC,Поговори с НПЦ
+QUEST_NEXT_01,"John, can you give me another job?","Johan, kannst du mir eine andere Aufgabe geben?","Ваня, ты можешь дать другое задание?"
+QUEST_NEXT_02,"Yes, please speak with other NPC.","Ja, bitte sprich mit anderem NPC.","Да, пожалуйста ппоговори с другим НПЦ."
+QUEST_NEXT_03,I have to speak with you.,Ich soll mit dir sprechen.,Я должен поговорить с тобой.
+QUEST_NEXT_04,Nice,Schön,Отличсно
