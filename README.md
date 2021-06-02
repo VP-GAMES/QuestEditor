@@ -2,7 +2,7 @@
 
 This is a Godot Editor plugin to manage quests in godot. The plugin allows you to quickly and easily manage all your quests. You can create your own quests. Resources are assigned very easily using drag and drop. The assigned resources can be viewed in preview window, to check them.
 
-Version: 0.8.6 ALPHA
+Version: 0.9.0
 
 The following screenshots show the working areas of the plugin:
 

@@ -309,11 +309,12 @@ func _chech_uuids() -> void:
 			if not dialogue.uuid or dialogue.uuid.empty():
 				dialogue.uuid = UUID.v4()
 
-func save() -> void:
+func save(update_script_classes = false) -> void:
 	ResourceSaver.save(PATH_TO_SAVE, self)
 	_save_data_dialogue_names()
 	_save_data_dialogue_events()
-	_editor.get_editor_interface().get_resource_filesystem().scan()
+	if update_script_classes:
+		_editor.get_editor_interface().get_resource_filesystem().update_script_classes()
 
 func _save_data_dialogue_names() -> void:
 	var directory = Directory.new()
@@ -478,7 +479,9 @@ func setting_dialogue_editor_locale_put(locale: String) -> void:
 func setting_localization_editor_enabled() -> bool:
 	if ProjectSettings.has_setting("editor_plugins/enabled"):
 		var enabled_plugins = ProjectSettings.get_setting("editor_plugins/enabled") as Array
-		return enabled_plugins.has("localization_editor")
+		for plugin in enabled_plugins:
+			if "localization_editor" in plugin:
+				return true
 	return false
 
 # ***** UTILS *****
