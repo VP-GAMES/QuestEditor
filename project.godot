@@ -160,6 +160,11 @@ _global_script_classes=[ {
 "path": "res://localization/LocalizationPlaceholders.gd"
 }, {
 "base": "Resource",
+"class": "LocalizationSave",
+"language": "GDScript",
+"path": "res://addons/localization_editor/model/LocalizationSave.gd"
+}, {
+"base": "Resource",
 "class": "QuestData",
 "language": "GDScript",
 "path": "res://addons/quest_editor/model/QuestData.gd"
@@ -265,6 +270,7 @@ _global_script_class_icons={
 "LocalizationData": "",
 "LocalizationKeys": "",
 "LocalizationPlaceholders": "",
+"LocalizationSave": "",
 "QuestData": "",
 "QuestDestination2D": "",
 "QuestDestination3D": "",
