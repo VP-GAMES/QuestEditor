@@ -17,14 +17,19 @@ var _locales_selected: bool setget  locales_selected_put, locales_selected
 var data_remaps: Dictionary = {"remapkeys": []}
 var data_filter_remaps: Dictionary = {}
 
+var data_placeholders: Dictionary = {}
+var data_filter_placeholders: Dictionary = {}
+
 const uuid_gen = preload("res://addons/localization_editor/uuid/uuid.gd")
 
 const default_path = "res://localization/"
 const default_path_to_file = default_path + "localizations.csv"
+const default_path_to_placeholders = default_path + "Placeholders.tres"
 const AUTHOR = "# @author Vladimir Petrenko\n"
 const SETTINGS_PATH_TO_FILE = "localization_editor/locales_path_to_file"
 const SETTINGS_LOCALES_VISIBILITY = "localization_editor/locales_visibility"
 const SETTINGS_TRANSLATIONS_SPLIT_OFFSET = "localization_editor/translations_split_offset"
+const SETTINGS_PLACEHOLDERS_SPLIT_OFFSET = "localization_editor/placeholders_split_offset"
 
 func set_editor(editor: EditorPlugin) -> void:
 	_editor = editor
@@ -68,6 +73,7 @@ func save_data_translations(update_script_classes = false) -> void:
 	_save_data_translations_csv()
 	_save_data_translations_keys()
 	_save_data_translations_placeholders()
+	_save_data_placeholders()
 	_save_data_translations_to_project_settings()
 	if update_script_classes:
 		_editor.get_editor_interface().get_resource_filesystem().update_script_classes()
@@ -141,6 +147,11 @@ func _save_data_translations_placeholders() -> void:
 	source_code += "\n]"
 	file.store_string(source_code)
 	file.close()
+
+func _save_data_placeholders() -> void:
+	var placeholders_data = LocalizationPlaceholdersData.new()
+	placeholders_data.placeholders = data_placeholders
+	ResourceSaver.save(default_path_to_placeholders, placeholders_data)
 
 func _save_data_translations_to_project_settings() -> void:
 	var file = setting_path_to_file()
@@ -449,6 +460,13 @@ func data_filter_remaps_put(type: String, filter: String) -> void:
 	data_filter_remaps[type] = filter
 	emit_signal("data_changed")
 
+func data_filter_placeholders_by_type(type: String) -> String:
+	return data_filter_placeholders[type] if data_filter_remaps.has(type) else ""
+
+func data_filter_placeholders_put(type: String, filter: String) -> void:
+	data_filter_placeholders[type] = filter
+	emit_signal("data_changed")
+
 # ***** REMAPS *****
 func remaps() -> Array:
 	return data_remaps.remapkeys
@@ -670,6 +688,59 @@ func remap_type(remap) -> String:
 func supported_file_extensions() -> Array:
 	return ["ogg", "wav", "mp3", "bmp", "dds", "exr", "hdr", "jpg", "jpeg", "png", "tga", "svg", "svgz", "webp", "webm", "o"]
 
+# ***** PLACEHOLDERS *****
+func init_data_placeholders() -> void:
+	var  placeholders = calc_placeholders()
+	for key in placeholders.keys():
+		if not data_placeholders.has(key):
+			data_placeholders[key] = placeholders[key]
+	var file = File.new()
+	if file.file_exists(default_path_to_placeholders):
+		var resource = ResourceLoader.load(default_path_to_placeholders)
+		if resource and resource.placeholders and not resource.placeholders.empty():
+			for key in resource.placeholders.keys():
+					data_placeholders[key] = resource.placeholders[key]
+
+func calc_placeholders() -> Dictionary:
+	var placeholders = {}
+	var regex = RegEx.new()
+	regex.compile("{{(.+?)}}")
+	for key in data.keys:
+		for index in range(key.translations.size()):
+			var results = regex.search_all(key.translations[index].value)
+			for result in results:
+				var name = result.get_string()
+				var clean_name = name.replace("{{", "");
+				clean_name = clean_name.replace("}}", "");
+				if not placeholders.has(name):
+					var placeholder = {}
+					for locale in data.locales:
+						placeholder[locale] = ""
+					placeholders[clean_name] = placeholder
+	return placeholders
+
+func placeholders_filtered() -> Dictionary:
+	var placeholders = _filter_by_placeholderkeys()
+	for filter_placeholderkey in data_filter_placeholders.keys():
+		if filter_placeholderkey != "placeholderkeys":
+			placeholders = _key_filter_by_placeholders(placeholders, filter_placeholderkey)
+	return placeholders
+
+func _key_filter_by_placeholders(placeholders, locale) -> Dictionary:
+	var new_placeholders = {}
+	for placeholderkey in placeholders.keys():
+		var value = placeholders[placeholderkey][locale]
+		if data_filter_placeholders[locale] == "" or data_filter_placeholders[locale] in value:
+			new_placeholders[placeholderkey] = placeholders[placeholderkey]
+	return new_placeholders
+
+func _filter_by_placeholderkeys() -> Array:
+	var placeholders = {}
+	for placeholderkey in data_placeholders.keys():
+		if not data_filter_placeholders.has("placeholderkeys") or data_filter_placeholders["placeholderkeys"] == "" or placeholderkey == null or placeholderkey == "" or data_filter_placeholders["placeholderkeys"] in placeholderkey:
+			placeholders[placeholderkey] = data_placeholders[placeholderkey]
+	return placeholders
+
 # ***** EDITOR SETTINGS *****
 signal settings_changed
 
@@ -715,6 +786,15 @@ func setting_translations_split_offset() -> int:
 
 func setting_translations_split_offset_put(offset: int) -> void:
 	ProjectSettings.set_setting(SETTINGS_TRANSLATIONS_SPLIT_OFFSET, offset)
+
+func setting_placeholders_split_offset() -> int:
+	var offset = 350
+	if ProjectSettings.has_setting(SETTINGS_PLACEHOLDERS_SPLIT_OFFSET):
+		offset = ProjectSettings.get_setting(SETTINGS_PLACEHOLDERS_SPLIT_OFFSET)
+	return offset
+
+func setting_placeholders_split_offset_put(offset: int) -> void:
+	ProjectSettings.set_setting(SETTINGS_PLACEHOLDERS_SPLIT_OFFSET, offset)
 
 # ***** UTILS *****
 func filename(value: String) -> String:
