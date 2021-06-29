@@ -1,4 +1,4 @@
-# Quest data for QuestEditor : MIT License
+	# Quest data for QuestEditor : MIT License
 # @author Vladimir Petrenko
 tool
 extends Resource
@@ -369,7 +369,9 @@ func setting_triggers_split_offset_put(offset: int) -> void:
 func setting_localization_editor_enabled() -> bool:
 	if ProjectSettings.has_setting("editor_plugins/enabled"):
 		var enabled_plugins = ProjectSettings.get_setting("editor_plugins/enabled") as Array
-		return enabled_plugins.has("localization_editor")
+		for plugin in enabled_plugins:
+			if "localization_editor" in plugin:
+				return true
 	return false
 
 # ***** UTILS *****
