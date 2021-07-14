@@ -1,4 +1,4 @@
-	# Quest data for QuestEditor : MIT License
+# Quest data for QuestEditor : MIT License
 # @author Vladimir Petrenko
 tool
 extends Resource

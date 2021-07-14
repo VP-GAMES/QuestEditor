@@ -90,7 +90,7 @@ func _input(event: InputEvent):
 					_quest = questManager.started_quest()
 					var task_trigger = questManager.get_trigger_by_ui_uuid(_uuid)
 					var task = questManager.get_task_and_update_quest_state(_quest, task_trigger.uuid)
-					if task.dialogue and not task.dialogue.empty():
+					if task and task.dialogue and not task.dialogue.empty():
 						dialogueManager.start_dialogue(task.dialogue)
 		if event.is_action_released(activate):
 				dialogueManager.next_sentence()

@@ -14,6 +14,7 @@ func set_editor(editor: EditorPlugin) -> void:
 		_undo_redo = _editor.get_undo_redo()
 # ***** EDITOR_PLUGIN_END *****
 
+
 const TYPE_2D ="2D"
 const TYPE_3D ="3D"
 const DESTINATION = "DESTINATION"
@@ -30,6 +31,14 @@ export (String) var name
 export (String) var scene
 export (String) var type = UNDEFINED
 export (String) var dimension = ""
+
+var _loaded_scene
+
+func get_loaded_scene():
+	if scene:
+		if not _loaded_scene:
+			_loaded_scene =  load(scene).instance()
+		return _loaded_scene
 
 func change_name(new_name: String):
 	name = new_name

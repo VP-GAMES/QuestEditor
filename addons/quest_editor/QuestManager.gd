@@ -48,11 +48,12 @@ func end_quest(quest: QuestQuest) -> void:
 func get_task_and_update_quest_state(quest: QuestQuest, trigger_uuid: String, add_quantity = 0):
 	var task = quest.update_task_state(trigger_uuid, add_quantity)
 	if task and task.done == true:
-		emit_signal("quest_updated", quest)
 		quest.check_state()
 		if quest.state == QuestQuest.QUESTSTATE_DONE:
 			call_rewards_methods(quest)
 			emit_signal("quest_ended", quest)
+		else:
+			emit_signal("quest_updated", quest)
 	return task
 
 func get_quest_trigger_by_ui_uuid(trigger_ui: String) -> QuestTrigger:
@@ -61,7 +62,7 @@ func get_quest_trigger_by_ui_uuid(trigger_ui: String) -> QuestTrigger:
 func get_trigger_by_ui_uuid(trigger_ui: String) -> QuestTrigger:
 	for trigger in _data.triggers:
 		if trigger.scene:
-			var scene =  load(trigger.scene).instance()
+			var scene =  trigger.get_loaded_scene()
 			if scene.has_method("get_uuid"):
 				var trigger_uuid = scene.get_uuid()
 				if trigger_ui == trigger_uuid:
@@ -116,8 +117,9 @@ func _call_requerement_method(requerement):
 		return _player.call(requerement.method, requerement.params)
 
 func call_rewards_methods(quest: QuestQuest):
-	for reward in quest.rewards:
-		if reward.params.empty():
-			return _player.call(reward.method)
-		else:
-			return _player.call(reward.method, reward.params)
+	if quest.rewards:
+		for reward in quest.rewards:
+			if reward.params.empty():
+				return _player.call(reward.method)
+			else:
+				return _player.call(reward.method, reward.params)

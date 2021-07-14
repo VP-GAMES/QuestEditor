@@ -53,6 +53,8 @@ func _ready() -> void:
 
 func is_quest_available() -> bool:
 	var trigger = questManager.get_trigger_by_ui_uuid(get_uuid())
+	if not trigger:
+		printerr(name, " Trigger with uuid ", get_uuid(), " not found")
 	var quest = questManager.get_quest_available_by_start_trigger(trigger.uuid)
 	return quest != null
 
@@ -91,7 +93,7 @@ func _input(event: InputEvent):
 					_quest = questManager.started_quest()
 					var task_trigger = questManager.get_trigger_by_ui_uuid(_uuid)
 					var task = questManager.get_task_and_update_quest_state(_quest, task_trigger.uuid)
-					if task.dialogue and not task.dialogue.empty():
+					if task and task.dialogue and not task.dialogue.empty():
 						dialogueManager.start_dialogue(task.dialogue)
 		if event.is_action_released(activate):
 				dialogueManager.next_sentence()
