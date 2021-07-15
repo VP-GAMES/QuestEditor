@@ -17,6 +17,7 @@ func set_data(quest: QuestQuest, data: QuestData) -> void:
 	_quest = quest
 	_init_connections()
 	_fill_trigger_ui_dropdown()
+	_delivery_ui.pressed = _quest.delivery
 	_trigger_ui.set_selected_by_value(_quest.delivery_trigger)
 	_dialogue_ui.set_selected_by_value(_quest.delivery_dialogue)
 	_on_delivery_pressed()
