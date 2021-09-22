@@ -28,6 +28,7 @@ func _ready() -> void:
 		_localizationManager = get_tree().get_root().get_node(_localizationManagerName)
 	if get_tree().get_root().has_node(_questManagerName):
 		_questManager = get_tree().get_root().get_node(_questManagerName)
+		_questManager.set_player($Player)
 		_questManager.connect("quest_started", self, "_on_quest_started")
 		_questManager.connect("quest_ended", self, "_on_quest_ended")
 	_inventory_button_ui.connect("pressed", self, "_on_inventory_button_pressed")

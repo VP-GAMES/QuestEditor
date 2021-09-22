@@ -25,6 +25,11 @@ func set_player(player) -> void:
 	_player = player
 	emit_signal("player_changed")
 
+func player():
+	if not _player:
+		assert(false, "Player not specified for QuestEditor")
+	return _player
+
 func is_quest_started() -> bool:
 	for quest in _data.quests:
 		if quest.state == QuestQuest.QUESTSTATE_STARTED:
@@ -98,7 +103,7 @@ func _quest_requerements_fulfilled(quest: QuestQuest) -> bool:
 	if quest.requerements.empty():
 		return true
 	for requerement in quest.requerements:
-		if not _player.has_method(requerement.method):
+		if not player().has_method(requerement.method):
 			assert(false, "Player has no method " + requerement.method + " defined in " + quest.name)
 		else:
 			match requerement.type:
@@ -112,14 +117,14 @@ func _quest_requerements_fulfilled(quest: QuestQuest) -> bool:
 
 func _call_requerement_method(requerement):
 	if requerement.params.empty():
-		return _player.call(requerement.method)
+		return player().call(requerement.method)
 	else:
-		return _player.call(requerement.method, requerement.params)
+		return player().call(requerement.method, requerement.params)
 
 func call_rewards_methods(quest: QuestQuest):
 	if quest.rewards:
 		for reward in quest.rewards:
 			if reward.params.empty():
-				return _player.call(reward.method)
+				return player().call(reward.method)
 			else:
-				return _player.call(reward.method, reward.params)
+				return player().call(reward.method, reward.params)
