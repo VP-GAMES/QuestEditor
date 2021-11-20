@@ -5,13 +5,13 @@ extends Resource
 class_name InventoryData
 
 # ***** EDITOR_PLUGIN *****
-var _editor: EditorPlugin
-var _undo_redo: UndoRedo
+var _editor
+var _undo_redo
 
-func editor() -> EditorPlugin:
+func editor():
 	return _editor
 
-func set_editor(editor: EditorPlugin) -> void:
+func set_editor(editor) -> void:
 	_editor = editor
 	for inventory in inventories:
 		inventory.set_editor(_editor)

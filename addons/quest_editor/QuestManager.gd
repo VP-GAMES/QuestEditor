@@ -13,13 +13,24 @@ var _player
 var _data: = QuestData.new()
 var _data_loaded = false
 
-func _ready() -> void:
+const _path_to_save = "user://QuestsSave.res"
+
+func _init() -> void:
+	var file = File.new()
+	if file.file_exists(_path_to_save):
+		_data.PATH_TO_SAVE = _path_to_save
 	if not _data_loaded:
 		load_data()
 
 func load_data() -> void:
-	if not _data_loaded:
-		_data = ResourceLoader.load(_data.PATH_TO_SAVE) as QuestData
+	_data = ResourceLoader.load(_data.PATH_TO_SAVE) as QuestData
+
+func save_data() -> void:
+	_data.PATH_TO_SAVE = _path_to_save
+	_data.save(false)
+
+func reset_data() -> void:
+	_data.reset()
 
 func set_player(player) -> void:
 	_player = player
@@ -27,7 +38,7 @@ func set_player(player) -> void:
 
 func player():
 	if not _player:
-		assert(false, "Player not specified for QuestEditor")
+		assert(true, "Player not specified for QuestEditor")
 	return _player
 
 func is_quest_started() -> bool:
@@ -73,6 +84,10 @@ func get_trigger_by_ui_uuid(trigger_ui: String) -> QuestTrigger:
 				if trigger_ui == trigger_uuid:
 					return trigger
 	return null
+
+func print_trigges() -> void:
+	for trigger in _data.triggers:
+		var scene =  trigger.get_loaded_scene()
 
 func get_quest_available_by_start_trigger(quest_trigger: String) -> QuestQuest:
 	var response_quest = null

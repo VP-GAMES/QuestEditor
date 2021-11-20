@@ -5,10 +5,10 @@ extends Resource
 class_name InventoryType
 
 # ***** EDITOR_PLUGIN BOILERPLATE *****
-var _editor: EditorPlugin
-var _undo_redo: UndoRedo
+var _editor
+var _undo_redo
 
-func set_editor(editor: EditorPlugin) -> void:
+func set_editor(editor) -> void:
 	_editor = editor
 	for item in items:
 		item.set_editor(_editor)

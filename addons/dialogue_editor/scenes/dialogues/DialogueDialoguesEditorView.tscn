@@ -13,16 +13,18 @@ __meta__ = {
 }
 
 [node name="Split" type="HSplitContainer" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-split_offset = -297
+split_offset = -745
 
 [node name="Dialogs" parent="Split" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 209.0
-margin_bottom = 600.0
+margin_bottom = 1080.0
 
 [node name="Editors" parent="Split" instance=ExtResource( 3 )]
+margin_right = 1920.0
+margin_bottom = 1080.0

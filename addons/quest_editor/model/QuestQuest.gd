@@ -5,10 +5,10 @@ extends Resource
 class_name QuestQuest
 
 # ***** EDITOR_PLUGIN BOILERPLATE *****
-var _editor: EditorPlugin
-var _undo_redo: UndoRedo
+var _editor
+var _undo_redo
 
-func set_editor(editor: EditorPlugin) -> void:
+func set_editor(editor) -> void:
 	_editor = editor
 	if _editor:
 		_undo_redo = _editor.get_undo_redo()
@@ -242,3 +242,10 @@ func _del_reward(reward) -> void:
 	if index > -1:
 		rewards.remove(index)
 		emit_signal("rewards_changed")
+
+func reset() -> void:
+	state = QUESTSTATE_UNDEFINED
+	for task in tasks:
+		task.quantity_now = 0
+		task.done = false
+	delivery_done = false

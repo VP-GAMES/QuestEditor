@@ -26,7 +26,7 @@ __meta__ = {
 }
 
 [node name="Margin" type="MarginContainer" parent="VBox"]
-margin_right = 1024.0
+margin_right = 1920.0
 margin_bottom = 26.0
 custom_constants/margin_right = 3
 custom_constants/margin_top = 3
@@ -36,7 +36,7 @@ custom_constants/margin_bottom = 3
 [node name="HBox" type="HBoxContainer" parent="VBox/Margin"]
 margin_left = 3.0
 margin_top = 3.0
-margin_right = 1021.0
+margin_right = 1917.0
 margin_bottom = 23.0
 size_flags_horizontal = 3
 
@@ -56,13 +56,16 @@ text = "Language:"
 
 [node name="Language" type="OptionButton" parent="VBox/Margin/HBox"]
 margin_left = 93.0
-margin_right = 122.0
+margin_right = 171.0
 margin_bottom = 20.0
+text = "Russian"
+items = [ "Russian", null, false, 0, null, "German", null, false, 1, null, "English", null, false, 2, null ]
+selected = 0
 
 [node name="Tabs" type="TabContainer" parent="VBox"]
 margin_top = 30.0
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tab_align = 0

@@ -23,7 +23,7 @@ func set_data(quest: QuestQuest, task) -> void:
 	_questManager.connect("quest_updated", self, "_on_quest_updated")
 	_update_data()
 
-func _on_quest_updated() -> void:
+func _on_quest_updated(_quest:QuestQuest) -> void:
 	_update_data()
 
 func _update_data() -> void:

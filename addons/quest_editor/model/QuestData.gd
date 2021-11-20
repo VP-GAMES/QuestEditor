@@ -5,15 +5,16 @@ extends Resource
 class_name QuestData
 
 # ***** EDITOR_PLUGIN *****
-var _editor: EditorPlugin
-var _undo_redo: UndoRedo
+var _editor
+var _undo_redo
 
-func editor() -> EditorPlugin:
+func editor():
 	return _editor
 
-func set_editor(editor: EditorPlugin) -> void:
+func set_editor(editor) -> void:
 	_editor = editor
 	for quest in quests:
+		quest.set_editor(_editor)
 		quest.set_editor(_editor)
 	_undo_redo = _editor.get_undo_redo()
 
@@ -273,6 +274,10 @@ func all_triggers() -> Array:
 			triggers_use.append(trigger)
 	return triggers_use
 
+func reset() -> void:
+	for quest in quests:
+		quest.reset()
+
 # ***** LOAD SAVE *****
 func init_data() -> void:
 	var file = File.new()
@@ -283,7 +288,16 @@ func init_data() -> void:
 		if resource.triggers and not resource.triggers.empty():
 			triggers = resource.triggers
 
-func save(update_script_classes = false) -> void:
+
+var _path_to_save = "user://QuestsSave.res"
+
+func reset_saved_user_data() -> void:
+	print("REMOVE USER SAVED DATA")
+	var dir = Directory.new()
+	if dir.file_exists(_path_to_save):
+		dir.remove(_path_to_save)
+
+func save(update_script_classes = false) -> void:	
 	ResourceSaver.save(PATH_TO_SAVE, self)
 	_save_data_quests()
 	_save_data_triggers()
@@ -341,7 +355,7 @@ const BACKGROUND_COLOR_SELECTED = Color("#868991")
 const SLOT_COLOR_DEFAULT = Color(1, 1, 1)
 const SLOT_COLOR_PATH = Color(0.4, 0.78, 0.945)
 
-const PATH_TO_SAVE = "res://addons/quest_editor/QuestsSave.res"
+var PATH_TO_SAVE = "res://addons/quest_editor/QuestsSave.res"
 const AUTHOR = "# @author Vladimir Petrenko\n"
 const SETTINGS_QUESTS_SPLIT_OFFSET = "quest_editor/quests_split_offset"
 const SETTINGS_QUESTS_SPLIT_OFFSET_DEFAULT = 215

@@ -43,8 +43,8 @@ __meta__ = {
 }
 
 [node name="VBox" type="VBoxContainer" parent="Margin"]
-margin_right = 1014.0
-margin_bottom = 590.0
+margin_right = 1910.0
+margin_bottom = 1070.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -52,7 +52,7 @@ __meta__ = {
 }
 
 [node name="HBoxName" type="HBoxContainer" parent="Margin/VBox"]
-margin_right = 1014.0
+margin_right = 1910.0
 margin_bottom = 22.0
 
 [node name="Label" type="Label" parent="Margin/VBox/HBoxName"]
@@ -66,7 +66,7 @@ text = "Name"
 
 [node name="Name" type="RichTextLabel" parent="Margin/VBox/HBoxName"]
 margin_left = 154.0
-margin_right = 1014.0
+margin_right = 1910.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 0, 22 )
 size_flags_horizontal = 3
@@ -76,7 +76,7 @@ bbcode_enabled = true
 
 [node name="HBoxDescription" type="HBoxContainer" parent="Margin/VBox"]
 margin_top = 26.0
-margin_right = 1014.0
+margin_right = 1910.0
 margin_bottom = 86.0
 
 [node name="Label" type="Label" parent="Margin/VBox/HBoxDescription"]
@@ -90,7 +90,7 @@ text = "Description"
 
 [node name="Description" type="RichTextLabel" parent="Margin/VBox/HBoxDescription"]
 margin_left = 154.0
-margin_right = 1014.0
+margin_right = 1910.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 60 )
 size_flags_horizontal = 3
@@ -100,7 +100,7 @@ bbcode_enabled = true
 
 [node name="HBoxPrecompleted" type="HBoxContainer" parent="Margin/VBox"]
 margin_top = 90.0
-margin_right = 1014.0
+margin_right = 1910.0
 margin_bottom = 112.0
 
 [node name="Label" type="Label" parent="Margin/VBox/HBoxPrecompleted"]
@@ -114,7 +114,7 @@ text = "Precompleted"
 
 [node name="Precompleted" type="RichTextLabel" parent="Margin/VBox/HBoxPrecompleted"]
 margin_left = 154.0
-margin_right = 1014.0
+margin_right = 1910.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 0, 22 )
 size_flags_horizontal = 3
@@ -124,7 +124,7 @@ bbcode_enabled = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Margin/VBox"]
 margin_top = 116.0
-margin_right = 1014.0
+margin_right = 1910.0
 margin_bottom = 136.0
 
 [node name="Label" type="Label" parent="Margin/VBox/HBoxContainer"]
@@ -137,5 +137,5 @@ text = "Tasks"
 
 [node name="VBoxTasks" type="VBoxContainer" parent="Margin/VBox"]
 margin_top = 140.0
-margin_right = 1014.0
+margin_right = 1910.0
 margin_bottom = 140.0

@@ -70,9 +70,9 @@ func _update_previews() -> void:
 		if _trigger.dimension == "2D":
 			_2D_preview_ui.show()
 			_update_preview2D()
-		if _trigger.dimension == "3D":
-			_3D_preview_ui.show()
-			_update_preview3D()
+#		if _trigger.dimension == "3D":
+#			_3D_preview_ui.show()
+#			_update_preview3D()
 
 func _update_preview2D() -> void:
 	for child in _2D_viewport_ui.get_children():

@@ -5,8 +5,8 @@ class_name LocalizationData
 
 signal data_changed
 
-var _editor: EditorPlugin
-var _undo_redo: UndoRedo
+var _editor
+var _undo_redo
 
 export(Dictionary) var data = {"locales": [], "keys": []}
 var data_filter: Dictionary = {}
@@ -31,15 +31,15 @@ const SETTINGS_LOCALES_VISIBILITY = "localization_editor/locales_visibility"
 const SETTINGS_TRANSLATIONS_SPLIT_OFFSET = "localization_editor/translations_split_offset"
 const SETTINGS_PLACEHOLDERS_SPLIT_OFFSET = "localization_editor/placeholders_split_offset"
 
-func set_editor(editor: EditorPlugin) -> void:
+func set_editor(editor) -> void:
 	_editor = editor
 	if _editor:
 		_undo_redo = _editor.get_undo_redo()
 
-func editor() -> EditorPlugin:
+func editor():
 	return _editor
 
-func undo_redo() -> UndoRedo:
+func undo_redo():
 	return _undo_redo
 
 func emit_signal_data_changed() -> void: 
@@ -734,7 +734,7 @@ func _key_filter_by_placeholders(placeholders, locale) -> Dictionary:
 			new_placeholders[placeholderkey] = placeholders[placeholderkey]
 	return new_placeholders
 
-func _filter_by_placeholderkeys() -> Array:
+func _filter_by_placeholderkeys() -> Dictionary:
 	var placeholders = {}
 	for placeholderkey in data_placeholders.keys():
 		if not data_filter_placeholders.has("placeholderkeys") or data_filter_placeholders["placeholderkeys"] == "" or placeholderkey == null or placeholderkey == "" or data_filter_placeholders["placeholderkeys"] in placeholderkey:

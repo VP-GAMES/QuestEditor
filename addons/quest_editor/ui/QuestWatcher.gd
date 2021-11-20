@@ -14,6 +14,7 @@ onready var _description_ui = $Margin/VBox/HBoxDescription/Description as RichTe
 onready var _tasks_ui = $Margin/VBox/VBoxTasks
 
 const QuestWatcherTask = preload("res://addons/quest_editor/ui/QuestWatcherTask.tscn")
+const QuestDeliveryTask = preload("res://addons/quest_editor/ui/QuestWatcherDelivery.tscn")
 
 func _ready() -> void:
 	if not active:
@@ -26,6 +27,12 @@ func _ready() -> void:
 	if get_tree().get_root().has_node(_localizationManagerName):
 		_localizationManager = get_tree().get_root().get_node(_localizationManagerName)
 		_localizationManager.connect("translation_changed", self, "_on_translation_changed")
+	if _questManager and _localizationManager:
+		_quest = _questManager.started_quest()
+		if _quest:
+			show()
+			_quest = _questManager.started_quest()
+			_quest_data_update()
 
 func _on_quest_started(quest: QuestQuest) -> void:
 	show()
@@ -56,17 +63,24 @@ func _quest_data_update() -> void:
 
 func _clear_tasks_view() -> void:
 	for task_ui in _tasks_ui.get_children():
-		task_ui.remove_child(task_ui)
+		_tasks_ui.remove_child(task_ui)
 		task_ui.queue_free()
 
 func _draw_tasks_view() -> void:
 	for task in _quest.tasks:
 		_draw_task_ui(task)
+	if _quest.delivery:
+		_draw_delivery_ui()
 
 func _draw_task_ui(task) -> void:
 	var task_ui = QuestWatcherTask.instance()
 	_tasks_ui.add_child(task_ui)
 	task_ui.set_data(_quest, task)
+
+func _draw_delivery_ui() -> void:
+	var delivery_ui = QuestDeliveryTask.instance()
+	_tasks_ui.add_child(delivery_ui)
+	delivery_ui.set_data(_quest)
 
 func _remove_break_sign(text: String) -> String:
 	return text.replace("\n", " ")

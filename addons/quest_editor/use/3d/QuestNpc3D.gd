@@ -1,6 +1,6 @@
 # Quest 3D NPC implementation for QuestEditor : MIT License
 # @author Vladimir Petrenko
-extends Area
+extends Area 
 class_name QuestNPC3D
 
 const UUID = preload("res://addons/quest_editor/uuid/uuid.gd")
@@ -53,24 +53,29 @@ func _ready() -> void:
 func is_quest_available() -> bool:
 	var trigger = questManager.get_trigger_by_ui_uuid(get_uuid())
 	if not trigger:
-		assert(false, str("No trigger specified for ", get_uuid(), " and NPC: ", name))
+		push_warning(str("No trigger specified for ", get_uuid(), " and NPC: ", get_parent().name))
+		return false
 	var quest = questManager.get_quest_available_by_start_trigger(trigger.uuid)
 	return quest != null
 
 func is_quest_delivery_available() -> bool:
 	var trigger = questManager.get_trigger_by_ui_uuid(get_uuid())
-	var quest = questManager.get_quest_available_by_delivery_trigger(trigger.uuid)
-	return quest != null and quest.tasks_done()
+	if not trigger:
+		push_warning(str("No trigger specified for ", get_uuid(), " and NPC: ", get_parent().name))
+		return false
+	var quest: QuestQuest = questManager.get_quest_available_by_delivery_trigger(trigger.uuid)
+	return quest != null and quest.tasks_done() and quest.delivery
 
 func _on_body_entered(body: Node) -> void:
 	if body == questManager.player():
 		inside = true
 
 func _on_body_exited(body: Node) -> void:
-	inside = false
-	if dialogueManager:
-		if dialogueManager.is_started():
-			dialogueManager.cancel_dialogue()
+	if body == questManager.player():
+		inside = false
+		if dialogueManager:
+			if dialogueManager.is_started():
+				dialogueManager.cancel_dialogue()
 
 func _input(event: InputEvent):
 	if inside and dialogueManager:

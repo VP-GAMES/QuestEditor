@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://addons/quest_editor/QuestEditor.gd" type="Script" id=1]
 [ext_resource path="res://addons/quest_editor/icons/Save.png" type="Texture" id=2]
 [ext_resource path="res://addons/quest_editor/scenes/quests/QuestQuestsEditorView.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/quest_editor/scenes/triggers/QuestTriggersEditorView.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/quest_editor/icons/Trash.png" type="Texture" id=5]
 
 [node name="QuestEditor" type="Control"]
 anchor_right = 1.0
@@ -25,7 +26,7 @@ __meta__ = {
 }
 
 [node name="Margin" type="MarginContainer" parent="VBox"]
-margin_right = 1024.0
+margin_right = 1920.0
 margin_bottom = 26.0
 custom_constants/margin_right = 3
 custom_constants/margin_top = 3
@@ -35,7 +36,7 @@ custom_constants/margin_bottom = 3
 [node name="HBox" type="HBoxContainer" parent="VBox/Margin"]
 margin_left = 3.0
 margin_top = 3.0
-margin_right = 1021.0
+margin_right = 1917.0
 margin_bottom = 23.0
 size_flags_horizontal = 3
 
@@ -46,10 +47,18 @@ rect_min_size = Vector2( 20, 20 )
 hint_tooltip = "Save"
 icon = ExtResource( 2 )
 
+[node name="Reset" type="Button" parent="VBox/Margin/HBox"]
+margin_left = 26.0
+margin_right = 48.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+hint_tooltip = "Save"
+icon = ExtResource( 5 )
+
 [node name="Tabs" type="TabContainer" parent="VBox"]
 margin_top = 30.0
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tab_align = 0
